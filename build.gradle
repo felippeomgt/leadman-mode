@@ -1,0 +1,54 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = 'https://repo.runelite.net'
+    }
+    mavenCentral()
+}
+
+def runeLiteVersion = 'latest.release'
+
+dependencies {
+    compileOnly group: 'net.runelite', name: 'client', version: runeLiteVersion
+
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-core:5.14.2'
+    testImplementation group: 'net.runelite', name: 'client', version: runeLiteVersion
+}
+
+group = 'com.leadman'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-Xlint:deprecation' << '-Xlint:unchecked'
+}
+
+// `gradle run` starts a real RuneLite client with Leadman registered as a built-in.
+// The launcher lives in the test source set so it never ships inside the plugin jar.
+application {
+    mainClass = 'com.leadman.LeadmanPluginLauncher'
+}
+
+tasks.named('run', JavaExec) {
+    classpath = sourceSets.test.runtimeClasspath
+}
+
+tasks.named('test', Test) {
+    testLogging {
+        events 'passed', 'failed', 'skipped'
+    }
+}
