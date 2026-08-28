@@ -134,16 +134,18 @@ every dosed potion looks like a missing item.
 
 The hub does not host jars — it builds from your repository at a pinned commit.
 
-1. **Push this repo to a public GitHub repository.** The hub will not accept a private
-   one, and it builds the source rather than trusting an artifact.
-2. **Add an `icon.png`** at the repository root, 128×128, if you want a listing image.
+1. **The repository must be public.** The hub builds the source rather than trusting an
+   artifact, so it cannot read a private repo. This one lives at
+   [`felippeomgt/leadman-mode`](https://github.com/felippeomgt/leadman-mode).
+2. **`icon.png`** is already at the repository root at 128×128, which is what the hub
+   shows in the listing.
 3. **Commit and note the full 40-character SHA** of the commit you want published. Tagging
    it (`v1.0.0`) is good practice, but the hub pins the SHA, not the tag.
 4. **Fork [`runelite/plugin-hub`](https://github.com/runelite/plugin-hub)** and add a
    single file named after your plugin, `plugins/leadman`, containing:
 
    ```
-   repository=https://github.com/<you>/leadman.git
+   repository=https://github.com/felippeomgt/leadman-mode.git
    commit=<the full 40-character SHA>
    ```
 
@@ -162,6 +164,7 @@ Things the review will care about, and where this plugin stands:
   search. Restriction plugins of this shape are already on the hub.
 - **`runelite-plugin.properties` must name the plugin class** — it points at
   `com.leadman.LeadmanPlugin`.
+- **A license file.** BSD 2-Clause, matching RuneLite itself.
 
 ## Layout
 
@@ -221,3 +224,7 @@ One design question in [`docs/DESIGN.md` §11](docs/DESIGN.md) is still open: th
 quest-item allowlist. `questItemBypass` is on by default but the list behind it is empty,
 so nothing bypasses anything yet — a quest that hands you a gated item and asks you to
 consume it can still stall.
+
+## License
+
+BSD 2-Clause. See [LICENSE](LICENSE).
