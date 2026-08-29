@@ -12,7 +12,7 @@ import java.util.List;
 import net.runelite.api.Skill;
 
 /** Shared helpers for turning rules into panel display values. */
-final class RuleDisplayUtil
+public final class RuleDisplayUtil
 {
 	private RuleDisplayUtil()
 	{
@@ -55,6 +55,34 @@ final class RuleDisplayUtil
 			fromRequirements(unlockService.displayBuryRequirements(key)), rule, false);
 
 		return lines;
+	}
+
+	public static boolean hasLockedActions(
+		UnlockService unlockService,
+		String key,
+		ItemRule rule,
+		CustomRule custom)
+	{
+		return actionLines(unlockService, key, rule, custom).stream()
+			.anyMatch(line -> !line.unlocked);
+	}
+
+	/** Comma-separated list of locked action names, or null if everything is open. */
+	public static String lockedActionsSummary(
+		UnlockService unlockService,
+		String key,
+		ItemRule rule,
+		CustomRule custom)
+	{
+		List<String> locked = new ArrayList<>();
+		for (LeadmanUi.ActionLine line : actionLines(unlockService, key, rule, custom))
+		{
+			if (!line.unlocked)
+			{
+				locked.add(line.label.replace(":", "").trim());
+			}
+		}
+		return locked.isEmpty() ? null : String.join(", ", locked);
 	}
 
 	private static void addLine(

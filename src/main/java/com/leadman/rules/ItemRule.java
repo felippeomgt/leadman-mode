@@ -21,6 +21,8 @@ public class ItemRule
 	private ItemClass itemClass;
 	private ConsumeClass consume;
 	private List<UnlockPath> paths;
+	/** When set, shop buy is allowed only after {@code packOf} appears in {@code obtained}. */
+	private String packOf;
 
 	public ItemRule()
 	{
@@ -58,6 +60,12 @@ public class ItemRule
 	public List<UnlockPath> getPaths()
 	{
 		return paths == null ? Collections.emptyList() : paths;
+	}
+
+	/** Normalised key of the single item that must be obtained before this pack can be bought. */
+	public String getPackOf()
+	{
+		return packOf;
 	}
 
 	public boolean hasSkillPath()

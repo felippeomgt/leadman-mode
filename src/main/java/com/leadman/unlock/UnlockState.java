@@ -24,6 +24,9 @@ public class UnlockState
 	/** Unlocks already shown, so a popup never fires twice for the same item. */
 	private Set<String> seen = new HashSet<>();
 
+	/** Most recent unlocks (obtain or fabrication), newest first. Capped in UnlockService. */
+	private java.util.List<String> recentUnlocked = new java.util.ArrayList<>();
+
 	/** True once the first full scan has run, so login does not fire a popup storm. */
 	private boolean seeded;
 
@@ -62,6 +65,15 @@ public class UnlockState
 	public void setSeeded(boolean seeded)
 	{
 		this.seeded = seeded;
+	}
+
+	public java.util.List<String> getRecentUnlocked()
+	{
+		if (recentUnlocked == null)
+		{
+			recentUnlocked = new java.util.ArrayList<>();
+		}
+		return recentUnlocked;
 	}
 
 	public int getVersion()

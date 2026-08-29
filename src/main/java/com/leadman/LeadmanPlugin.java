@@ -2,12 +2,17 @@ package com.leadman;
 
 import com.google.inject.Provides;
 import com.leadman.rules.ConsumeClass;
+import com.leadman.rules.ItemClass;
 import com.leadman.rules.ItemNames;
 import com.leadman.rules.ItemRule;
 import com.leadman.rules.RuleRepository;
+import com.leadman.ui.ItemCatalogDialog;
+import com.leadman.ui.LeadmanInventoryOverlay;
 import com.leadman.ui.LeadmanPanel;
 import com.leadman.ui.LeadmanOverlay;
+import com.leadman.ui.RuleDisplayUtil;
 import com.leadman.ui.UnlockNotification;
+import com.leadman.unlock.CustomRule;
 import com.leadman.unlock.UnlockService;
 import net.runelite.client.util.ImageUtil;
 import java.util.ArrayList;
@@ -24,6 +29,7 @@ import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.MenuEntry;
+import net.runelite.api.MenuAction;
 import net.runelite.api.Item;
 import net.runelite.api.ItemContainer;
 import net.runelite.api.Skill;
@@ -50,6 +56,7 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.game.ItemManager;
+import net.runelite.client.party.PartyService;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.ClientToolbar;
@@ -70,6 +77,11 @@ public class LeadmanPlugin extends Plugin
 		"offer", "sell", "buy"
 	));
 
+	private static final String COL_TAG = "<col=E2AE4A>";
+	private static final String COL_GOOD = "<col=00FF80>";
+	private static final String COL_WARN = "<col=FF981F>";
+	private static final String COL_END = "</col>";
+
 	/**
 	 * Options that never spend a charge. Everything else on a charged item is assumed to,
 	 * because teleport options are named after their destination and cannot be listed.
@@ -78,7 +90,8 @@ public class LeadmanPlugin extends Plugin
 		"drop", "examine", "use", "take", "remove", "deposit", "withdraw", "value",
 		"cancel", "destroy", "bury", "note", "un-note", "open", "close", "check",
 		"toggle", "empty", "fill", "clean", "search", "talk-to", "attack", "walk here",
-		"eat", "drink", "wear", "wield", "equip", "offer", "sell", "buy"
+		"eat", "drink", "wear", "wield", "equip", "offer", "sell", "buy",
+		"bank", "collect", "poll booth", "ring", "quick-withdraw", "quick-deposit"
 	));
 
 	@Inject
@@ -91,6 +104,9 @@ public class LeadmanPlugin extends Plugin
 	private LeadmanConfig config;
 
 	@Inject
+	private PartyService partyService;
+
+	@Inject
 	private ItemManager itemManager;
 
 	@Inject
@@ -101,6 +117,12 @@ public class LeadmanPlugin extends Plugin
 
 	@Inject
 	private LeadmanOverlay overlay;
+
+	@Inject
+	private LeadmanInventoryOverlay inventoryOverlay;
+
+	@Inject
+	private ItemCatalogDialog catalog;
 
 	@Inject
 	private OverlayManager overlayManager;
@@ -135,6 +157,7 @@ public class LeadmanPlugin extends Plugin
 		rules.load();
 		unlockService.reloadCustomRules();
 		overlayManager.add(overlay);
+		overlayManager.add(inventoryOverlay);
 
 		panel.init();
 		navButton = NavigationButton.builder()
@@ -156,6 +179,7 @@ public class LeadmanPlugin extends Plugin
 	{
 		unlockService.save();
 		overlayManager.remove(overlay);
+		overlayManager.remove(inventoryOverlay);
 		overlay.clear();
 		clientToolbar.removeNavigation(navButton);
 
@@ -246,6 +270,10 @@ public class LeadmanPlugin extends Plugin
 		clientThread.invokeLater(() -> {
 			unlockService.refreshSatisfied(true);
 			panel.refresh();
+			if (catalog.isVisible())
+			{
+				catalog.refresh();
+			}
 		});
 	}
 
@@ -290,26 +318,32 @@ public class LeadmanPlugin extends Plugin
 		if (newly.size() > config.popupBatchThreshold())
 		{
 			pushPopup(heading, newly.size() + " items unlocked", firstItemId(newly));
-			chat(heading + " unlocked " + newly.size() + " items. See the Leadman Mode panel for the list.");
+			chatUnlock(heading + " unlocked " + newly.size() + " items for trade.");
 			for (ItemRule rule : newly)
 			{
 				unlockService.markSeen(rule.getName());
+				unlockService.recordRecentUnlock(rule.getName());
 			}
 		}
 		else
 		{
 			for (ItemRule rule : newly)
 			{
+				unlockService.recordRecentUnlock(rule.getName());
 				if (!unlockService.markSeen(rule.getName()))
 				{
 					continue;
 				}
 				pushPopup(heading, rule.getDisplay(), lookupItemId(rule));
-				chat("Unlocked: " + rule.getDisplay() + " (" + heading + ")");
+				chatUnlock("Trade unlocked: " + rule.getDisplay() + " (" + heading + ")");
 			}
 		}
 
 		panel.refresh();
+		if (catalog.isVisible())
+		{
+			catalog.refresh();
+		}
 	}
 
 	@Subscribe
@@ -361,10 +395,15 @@ public class LeadmanPlugin extends Plugin
 					continue;
 				}
 				// Shop stock must never launder an item onto the Grand Exchange, so a
-				// purchase made with the shop open is not an "obtain".
+				// purchase made with the shop open is not an "obtain" — except SHOP_ONLY
+				// items that cannot be acquired any other way.
 				if (shopOpen)
 				{
-					continue;
+					ItemRule shopRule = rules.forName(unlockService.keyFor(itemId));
+					if (shopRule == null || shopRule.getItemClass() != ItemClass.SHOP_ONLY)
+					{
+						continue;
+					}
 				}
 				if (unlockService.markObtained(itemId))
 				{
@@ -400,8 +439,12 @@ public class LeadmanPlugin extends Plugin
 		}
 
 		pushPopup("Item unlocked", unlockService.displayFor(itemId), itemId);
-		chat("Unlocked: " + unlockService.displayFor(itemId));
+		chatUnlock("Obtain unlock: " + unlockService.displayFor(itemId));
 		panel.refresh();
+		if (catalog.isVisible())
+		{
+			catalog.refresh();
+		}
 	}
 
 	// ------------------------------------------------------------ enforcement
@@ -416,16 +459,39 @@ public class LeadmanPlugin extends Plugin
 
 		String option = Text.removeTags(event.getMenuOption()).toLowerCase().trim();
 		String target = Text.removeTags(event.getMenuTarget()).trim();
+
+		if ("examine".equals(option))
+		{
+			String key = resolveMenuItemKey(event, target);
+			if (!key.isEmpty())
+			{
+				ItemRule rule = rules.forName(key);
+				CustomRule custom = unlockService.getCustomRule(key);
+				String locked = RuleDisplayUtil.lockedActionsSummary(
+					unlockService, key, rule, custom);
+				if (locked != null)
+				{
+					explainAttempt(displayName(key, target) + ": " + locked + " locked.");
+				}
+			}
+			return;
+		}
+
 		if (isShopBuy(event, option))
 		{
 			String key = resolveMenuItemKey(event, target);
 			if (!key.isEmpty() && !unlockService.canShopKey(key))
 			{
 				event.consume();
-				explainOnce("shop:" + key, "Locked: " + displayName(key, target)
+				explainAttempt("Locked: " + displayName(key, target)
 					+ " needs " + unlockService.shopReason(key) + " to buy from a shop.");
 				return;
 			}
+		}
+
+		if (blockItemUseOnClick(event, option, target))
+		{
+			return;
 		}
 
 		String spell = resolveSpellName(event);
@@ -435,7 +501,7 @@ public class LeadmanPlugin extends Plugin
 		}
 
 		event.consume();
-		explainOnce("cast:" + spell, "You cannot craft the runes for " + spell
+		explainAttempt("You cannot craft the runes for " + spell
 			+ " yet. Missing " + unlockService.missingRuneFor(spell) + ".");
 	}
 
@@ -452,7 +518,14 @@ public class LeadmanPlugin extends Plugin
 
 		if (config.blockPlayerTrade() && option.startsWith("trade with"))
 		{
-			removeEntry(event);
+			if (!TradePartnerAllowlist.isAllowed(
+				target,
+				config.allowedTradePartners(),
+				config.allowTradeWithParty(),
+				partyService))
+			{
+				removeEntry(event);
+			}
 			return;
 		}
 
@@ -464,18 +537,23 @@ public class LeadmanPlugin extends Plugin
 
 		if (option.startsWith("cast") || "autocast".equals(option))
 		{
-			blockSpellCast(event, target);
+			blockSpellCast(event, option, target);
 			return;
 		}
 
 		if (autocastOpen && !target.isEmpty())
 		{
-			blockSpellCast(event, target);
+			blockSpellCast(event, option, target);
 			return;
 		}
 
 		boolean isShopBuy = isShopBuy(event, option);
 		boolean isGeOp = geOpen && GE_OPS.contains(option);
+		if (isGeOp && config.disableGe())
+		{
+			removeEntry(event);
+			return;
+		}
 		boolean isWieldOp = "wear".equals(option) || "wield".equals(option) || "equip".equals(option);
 		boolean isEatOp = "eat".equals(option);
 		boolean isDrinkOp = "drink".equals(option);
@@ -493,8 +571,6 @@ public class LeadmanPlugin extends Plugin
 					&& !unlockService.canActivateKey(key))
 				{
 					removeEntry(event);
-					explainOnce("charge:" + key, "Locked: using " + unlockService.displayFor(itemId)
-						+ " needs " + unlockService.activateReason(key) + ".");
 				}
 			}
 			return;
@@ -510,8 +586,6 @@ public class LeadmanPlugin extends Plugin
 		if (isShopBuy && !unlockService.canShopKey(key))
 		{
 			removeEntry(event);
-			explainOnce("shop:" + key, "Locked: " + displayName(key, target)
-				+ " needs " + unlockService.shopReason(key) + " to buy from a shop.");
 			return;
 		}
 
@@ -527,12 +601,6 @@ public class LeadmanPlugin extends Plugin
 		if (isGeOp && !unlockService.canTradeKey(key))
 		{
 			removeEntry(event);
-			ItemRule tradeRule = rules.forName(key);
-			String obtainHint = tradeRule != null && tradeRule.hasSkillPath()
-				? "."
-				: ", or obtain one.";
-			explainOnce("trade:" + key, "Not tradeable yet: " + unlockService.displayFor(itemId)
-				+ " needs " + unlockService.lockReason(key) + obtainHint);
 			return;
 		}
 
@@ -545,15 +613,11 @@ public class LeadmanPlugin extends Plugin
 				if (!unlockService.canUseKey(key))
 				{
 					removeEntry(event);
-					explainOnce("use:" + key, "Locked: " + unlockService.displayFor(itemId)
-						+ " needs " + unlockService.lockReason(key) + ".");
 				}
 			}
 			else if (!unlockService.canWieldKey(key))
 			{
 				removeEntry(event);
-				explainOnce("wield:" + key, "Locked: " + unlockService.displayFor(itemId)
-					+ " needs " + unlockService.wieldReason(key) + " to wield.");
 			}
 			return;
 		}
@@ -561,89 +625,220 @@ public class LeadmanPlugin extends Plugin
 		if (isEatOp && !unlockService.canEatKey(key))
 		{
 			removeEntry(event);
-			explainOnce("eat:" + key, "Locked: " + unlockService.displayFor(itemId)
-				+ " needs " + unlockService.lockReason(key) + " to eat.");
 			return;
 		}
 
 		if (isDrinkOp && !unlockService.canDrinkKey(key))
 		{
 			removeEntry(event);
-			explainOnce("drink:" + key, "Locked: " + unlockService.displayFor(itemId)
-				+ " needs " + unlockService.lockReason(key) + " to drink.");
 			return;
 		}
 
 		if (isBuryOp && !unlockService.canBuryKey(key))
 		{
 			removeEntry(event);
-			explainOnce("bury:" + key, "Locked: " + unlockService.displayFor(itemId)
-				+ " needs " + unlockService.lockReason(key) + " to bury.");
 			return;
 		}
 
 		if (isUseOp && !unlockService.canUseKey(key))
 		{
 			removeEntry(event);
-			explainOnce("use:" + key, "Locked: " + unlockService.displayFor(itemId)
-				+ " needs " + unlockService.lockReason(key) + ".");
 		}
 	}
 
-	private void blockSpellCast(MenuEntryAdded event, String target)
+	private void blockSpellCast(MenuEntryAdded event, String option, String target)
 	{
-		String spell = normaliseSpellName(target);
+		String spell = resolveSpellFromMenu(option, target);
 		if (spell == null || unlockService.canCast(spell))
 		{
 			return;
 		}
 		removeEntry(event);
-		explainOnce("cast:" + spell, "You cannot craft the runes for " + spell
-			+ " yet. Missing " + unlockService.missingRuneFor(spell) + ".");
+	}
+
+	/**
+	 * Blocks and explains item gates only when the player actually clicks (including left-click).
+	 * MenuEntryAdded only hides options silently.
+	 */
+	private boolean blockItemUseOnClick(MenuOptionClicked event, String option, String target)
+	{
+		boolean isGeOp = geOpen && GE_OPS.contains(option);
+		boolean isWieldOp = "wear".equals(option) || "wield".equals(option) || "equip".equals(option);
+		boolean isEatOp = "eat".equals(option);
+		boolean isDrinkOp = "drink".equals(option);
+		boolean isBuryOp = "bury".equals(option);
+		boolean isUseOp = "use".equals(option);
+
+		if (!isGeOp && !isWieldOp && !isEatOp && !isDrinkOp && !isBuryOp && !isUseOp)
+		{
+			return false;
+		}
+
+		String key = resolveMenuItemKey(event, target);
+		if (key.isEmpty())
+		{
+			return false;
+		}
+
+		int itemId = resolveClickedItemId(event);
+		String display = itemId > 0 ? unlockService.displayFor(itemId) : displayName(key, target);
+
+		if (isGeOp && config.disableGe())
+		{
+			event.consume();
+			explainAttempt("Grand Exchange is disabled in Leadman conduct settings.");
+			return true;
+		}
+
+		if (isGeOp && !unlockService.canTradeKey(key))
+		{
+			event.consume();
+			ItemRule tradeRule = rules.forName(key);
+			String obtainHint = tradeRule != null && tradeRule.hasSkillPath()
+				? "."
+				: ", or obtain one.";
+			explainAttempt("Not tradeable yet: " + display
+				+ " needs " + unlockService.lockReason(key) + obtainHint);
+			return true;
+		}
+
+		if (isWieldOp)
+		{
+			ItemRule rule = rules.forName(key);
+			ConsumeClass consume = rule == null ? ConsumeClass.NONE : rule.getConsume();
+			if (consume == ConsumeClass.JEWELLERY)
+			{
+				if (!unlockService.canUseKey(key))
+				{
+					event.consume();
+					explainAttempt("Locked: " + display
+						+ " needs " + unlockService.lockReason(key) + ".");
+					return true;
+				}
+			}
+			else if (!unlockService.canWieldKey(key))
+			{
+				event.consume();
+				explainAttempt("Locked: " + display
+					+ " needs " + unlockService.wieldReason(key) + " to wield.");
+				return true;
+			}
+			return false;
+		}
+
+		if (isEatOp && !unlockService.canEatKey(key))
+		{
+			event.consume();
+			explainAttempt("Locked: " + display
+				+ " needs " + unlockService.lockReason(key) + " to eat.");
+			return true;
+		}
+
+		if (isDrinkOp && !unlockService.canDrinkKey(key))
+		{
+			event.consume();
+			explainAttempt("Locked: " + display
+				+ " needs " + unlockService.lockReason(key) + " to drink.");
+			return true;
+		}
+
+		if (isBuryOp && !unlockService.canBuryKey(key))
+		{
+			event.consume();
+			explainAttempt("Locked: " + display
+				+ " needs " + unlockService.lockReason(key) + " to bury.");
+			return true;
+		}
+
+		if (isUseOp && !unlockService.canUseKey(key))
+		{
+			event.consume();
+			explainAttempt("Locked: " + display
+				+ " needs " + unlockService.lockReason(key) + ".");
+			return true;
+		}
+
+		return false;
 	}
 
 	private String resolveSpellName(MenuOptionClicked event)
 	{
 		String option = Text.removeTags(event.getMenuOption()).trim();
 		String target = Text.removeTags(event.getMenuTarget()).trim();
-
-		String fromTarget = normaliseSpellName(target);
-		if (fromTarget != null)
-		{
-			return fromTarget;
-		}
-
-		String fromOption = normaliseSpellName(option);
-		if (fromOption != null)
-		{
-			return fromOption;
-		}
-
-		if (option.toLowerCase().startsWith("cast") && !target.isEmpty())
-		{
-			return normaliseSpellName(target);
-		}
+		String optionLower = option.toLowerCase();
 
 		Widget widget = event.getWidget();
-		if (widget != null && isSpellWidget(widget.getId()))
+		boolean spellWidget = widget != null && isSpellWidget(widget.getId());
+
+		if (spellWidget)
 		{
 			String fromWidget = normaliseSpellName(Text.removeTags(widget.getName()));
 			if (fromWidget != null)
 			{
 				return fromWidget;
 			}
-			if (!target.isEmpty())
+		}
+
+		if (optionLower.startsWith("cast"))
+		{
+			String fromTarget = spellFromMenuTarget(target);
+			if (fromTarget != null)
 			{
-				return normaliseSpellName(target);
+				return fromTarget;
+			}
+			if (option.length() > 4)
+			{
+				String fromOption = normaliseSpellName(option.substring(4).trim());
+				if (fromOption != null)
+				{
+					return fromOption;
+				}
 			}
 		}
 
-		if (autocastOpen && !target.isEmpty())
+		if (spellWidget || "autocast".equals(optionLower))
 		{
-			return normaliseSpellName(target);
+			String fromOption = normaliseSpellName(option);
+			if (fromOption != null)
+			{
+				return fromOption;
+			}
+			return spellFromMenuTarget(target);
 		}
 
 		return null;
+	}
+
+	/** Spell name from a menu option/target pair (handles {@code Wind Wave -> Goblin}). */
+	private String resolveSpellFromMenu(String option, String target)
+	{
+		String fromTarget = spellFromMenuTarget(target);
+		if (fromTarget != null)
+		{
+			return fromTarget;
+		}
+
+		if (option != null && option.toLowerCase().startsWith("cast") && option.length() > 4)
+		{
+			String fromOption = normaliseSpellName(option.substring(4).trim());
+			if (fromOption != null)
+			{
+				return fromOption;
+			}
+		}
+
+		return normaliseSpellName(option);
+	}
+
+	private String spellFromMenuTarget(String target)
+	{
+		if (target == null || target.isEmpty())
+		{
+			return null;
+		}
+		int arrow = target.indexOf(" -> ");
+		String head = arrow >= 0 ? target.substring(0, arrow).trim() : target;
+		return normaliseSpellName(head);
 	}
 
 	private String normaliseSpellName(String raw)
@@ -676,6 +871,15 @@ public class LeadmanPlugin extends Plugin
 	{
 		if (!profileLoaded)
 		{
+			return;
+		}
+
+		if (config.disableGe())
+		{
+			event.consume();
+			client.setGeSearchResultIndex(0);
+			client.setGeSearchResultCount(0);
+			client.setGeSearchResultIds(new short[0]);
 			return;
 		}
 
@@ -979,7 +1183,7 @@ public class LeadmanPlugin extends Plugin
 			}
 
 			itemId = entry.getIdentifier();
-			if (isKnownItemId(itemId))
+			if (isGroundItemMenuAction(event.getMenuAction()) && isKnownItemId(itemId))
 			{
 				return itemId;
 			}
@@ -992,7 +1196,7 @@ public class LeadmanPlugin extends Plugin
 		}
 
 		itemId = event.getId();
-		if (isKnownItemId(itemId))
+		if (isGroundItemMenuAction(event.getMenuAction()) && isKnownItemId(itemId))
 		{
 			return itemId;
 		}
@@ -1082,20 +1286,29 @@ public class LeadmanPlugin extends Plugin
 
 		int widgetId = event.getActionParam1();
 		int index = event.getActionParam0();
+		MenuAction action = MenuAction.of(event.getType());
 
 		// Packed widget ids are (group << 16 | child), so anything smaller belongs to an
 		// NPC, object or ground item rather than an item slot.
 		if (widgetId < 1 << 16)
 		{
-			int fromIdentifier = event.getIdentifier();
-			return isKnownItemId(fromIdentifier) ? fromIdentifier : -1;
+			if (isGroundItemMenuAction(action))
+			{
+				int fromIdentifier = event.getIdentifier();
+				return isKnownItemId(fromIdentifier) ? fromIdentifier : -1;
+			}
+			return -1;
 		}
 
 		Widget widget = client.getWidget(widgetId);
 		if (widget == null)
 		{
-			int fromIdentifier = event.getIdentifier();
-			return isKnownItemId(fromIdentifier) ? fromIdentifier : -1;
+			if (isGroundItemMenuAction(action))
+			{
+				int fromIdentifier = event.getIdentifier();
+				return isKnownItemId(fromIdentifier) ? fromIdentifier : -1;
+			}
+			return -1;
 		}
 
 		Widget[] children = widget.getChildren();
@@ -1114,13 +1327,37 @@ public class LeadmanPlugin extends Plugin
 			return id;
 		}
 
-		id = event.getIdentifier();
-		if (isKnownItemId(id))
+		if (isGroundItemMenuAction(action))
 		{
-			return id;
+			id = event.getIdentifier();
+			if (isKnownItemId(id))
+			{
+				return id;
+			}
 		}
 
 		return itemIdFromWidgetChain(widget);
+	}
+
+	private static boolean isGroundItemMenuAction(MenuAction action)
+	{
+		if (action == null)
+		{
+			return false;
+		}
+		switch (action)
+		{
+			case GROUND_ITEM_FIRST_OPTION:
+			case GROUND_ITEM_SECOND_OPTION:
+			case GROUND_ITEM_THIRD_OPTION:
+			case GROUND_ITEM_FOURTH_OPTION:
+			case GROUND_ITEM_FIFTH_OPTION:
+			case EXAMINE_ITEM_GROUND:
+			case WIDGET_TARGET_ON_GROUND_ITEM:
+				return true;
+			default:
+				return false;
+		}
 	}
 
 	private boolean isKnownItemId(int itemId)
@@ -1158,28 +1395,41 @@ public class LeadmanPlugin extends Plugin
 		overlay.push(new UnlockNotification(title, subtitle, itemId));
 	}
 
-	private void chat(String message)
+	private void chatUnlock(String message)
+	{
+		chatColored(COL_GOOD, message);
+	}
+
+	private void chatColored(String color, String message)
 	{
 		if (!config.popupChat())
 		{
 			return;
 		}
-		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "[Leadman Mode] " + message, null);
+		client.addChatMessage(
+			ChatMessageType.GAMEMESSAGE,
+			"",
+			COL_TAG + "[Leadman]" + COL_END + " " + color + message + COL_END,
+			null);
 	}
 
-	private final Set<String> explained = new HashSet<>();
-
-	/**
-	 * Menu entries are rebuilt every frame, so a naive message would spam the chatbox.
-	 * Each distinct reason is explained once per session.
-	 */
-	private void explainOnce(String key, String message)
+	private void chat(String message)
 	{
-		if (!config.explainBlocks() || !explained.add(key))
+		chatUnlock(message);
+	}
+
+	/** Chat feedback when the player examines or attempts a blocked action. */
+	private void explainAttempt(String message)
+	{
+		if (!config.explainBlocks())
 		{
 			return;
 		}
-		client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "[Leadman Mode] " + message, null);
+		client.addChatMessage(
+			ChatMessageType.GAMEMESSAGE,
+			"",
+			COL_TAG + "[Leadman]" + COL_END + " " + COL_WARN + message + COL_END,
+			null);
 	}
 
 	private static String pretty(Skill skill)

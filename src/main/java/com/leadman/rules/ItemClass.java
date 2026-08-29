@@ -11,6 +11,8 @@ public enum ItemClass
 	DROP_ONLY,
 	/** Quest, diary, minigame or activity reward. */
 	REWARD_ONLY,
+	/** Only sold in NPC shops — buying counts as obtain; use allowed once held. */
+	SHOP_ONLY,
 	/** No level attached to it at all. Open on both gates by default. */
 	FREE
 }

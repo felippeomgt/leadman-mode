@@ -5,7 +5,9 @@
     "Quest reward items need ACTIVITY paths keyed to quest completion flags.",
     "Barrows, God Wars ornament kits and boss uniques without recipes stay DROP_ONLY (obtain to trade).",
     "Enchanted bolts and special crossbows (armadyl, dragon hunter, etc.) are not yet mapped.",
-    "Review Construction lectern tiers if Jagex adds new standard spellbook tablets."
+    "Review Construction lectern tiers if Jagex adds new standard spellbook tablets.",
+    "Add more SHOP_ONLY items (shop is the only source; buying grants obtain) via overrides.json.",
+    "Add more packOf entries (bulk shop pack unlocks after obtaining the single item once)."
   ],
   "items": [],
   "spells": []

@@ -17,7 +17,7 @@
  * name that does not match a real tradeable item. Requires network access.
  */
 
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, readFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -49,6 +49,7 @@ function rule(display, itemClass, consume, reqs, source, opts = {}) {
   // Untradeable items still carry a USE gate; they just cannot be checked against
   // the tradeable-item mapping.
   if (opts.tradeable === false) entry.tradeable = false;
+  if (opts.packOf) entry.packOf = opts.packOf;
   items.push(entry);
 }
 
@@ -509,6 +510,33 @@ for (const [staff, level] of ELEMENTAL_STAVES) {
   rule(staff, "FREE", "ELEMENTAL_STAFF", [["RUNECRAFT", level, "WIELD"]], "Runecrafting");
 }
 
+// Gem shops sell uncut and cut stones. Gate at the Crafting level to cut each gem.
+const GEM_CUTTING = [
+  ["Uncut opal", "Opal", 1],
+  ["Uncut jade", "Jade", 13],
+  ["Uncut red topaz", "Red topaz", 16],
+  ["Uncut sapphire", "Sapphire", 20],
+  ["Uncut emerald", "Emerald", 27],
+  ["Uncut ruby", "Ruby", 34],
+  ["Uncut diamond", "Diamond", 43],
+  ["Uncut dragonstone", "Dragonstone", 55],
+  ["Uncut onyx", "Onyx", 67],
+  ["Uncut zenyte", "Zenyte", 89],
+];
+for (const [uncut, cut, level] of GEM_CUTTING) {
+  rule(uncut, "FABRICABLE", "NONE", [["CRAFTING", level]], "Crafting");
+  rule(cut, "FABRICABLE", "NONE", [["CRAFTING", level]], "Crafting");
+}
+
+// Herblore/Fletching shop supplies with no recipe — obtain singles before bulk packs.
+rule("Eye of newt", "DROP_ONLY", "NONE", [], "Shop/Drop");
+rule("Feather", "DROP_ONLY", "NONE", [], "Shop/Drop");
+rule("Eye of newt pack", "FREE", "NONE", [], "Shop pack", { packOf: "eye of newt", tradeable: false });
+rule("Feather pack", "FREE", "NONE", [], "Shop pack", { packOf: "feather", tradeable: false });
+
+// NPC-shop-only items: buying counts as obtain so use is not deadlocked.
+rule("Teleport card", "SHOP_ONLY", "NONE", [], "Shop");
+
 // ------------------------------------------------------------------------- free
 
 // No fabrication route and no natural level. Open on both gates by default, and the
@@ -519,7 +547,7 @@ const FREE = [
   "Dragon bones", "Wyvern bones", "Dagannoth bones", "Ourg bones",
   "Superior dragon bones", "Lava dragon bones", "Fayrg bones", "Raurg bones",
   "Fiendish ashes", "Vile ashes", "Malicious ashes", "Abyssal ashes", "Infernal ashes",
-  "Coins", "Feather", "Bucket", "Jug", "Pot", "Vial", "Bowl", "Cake tin",
+  "Coins", "Bucket", "Jug", "Pot", "Vial", "Bowl", "Cake tin",
 ];
 for (const name of FREE) {
   rule(name, "FREE", "NONE", [], null);
@@ -595,6 +623,25 @@ spell("String Jewellery", ["astral rune", "earth rune", "water rune"], true);
 spell("Vengeance", ["astral rune", "death rune", "earth rune"], true);
 
 // ------------------------------------------------------------------------ output
+
+// ------------------------------------------------------------------ GE catalog
+
+// Every GE tradeable gets a rule entry so the catalog and custom editor can find it.
+// Items without a fabrication ladder are FREE (no skill gate unless overridden).
+const GE_KEYS = JSON.parse(
+  readFileSync(resolve(HERE, "../src/main/resources/com/leadman/ge-tradeables.json"), "utf8"),
+);
+const covered = new Set(items.map((i) => normalise(i.name)));
+for (const key of GE_KEYS) {
+  if (covered.has(key)) {
+    continue;
+  }
+  const display = key.charAt(0).toUpperCase() + key.slice(1);
+  rule(display, "FREE", "NONE", [], null);
+  covered.add(key);
+}
+
+// ------------------------------------------------------------------ output
 
 const seen = new Set();
 const deduped = [];

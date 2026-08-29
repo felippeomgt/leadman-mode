@@ -31,8 +31,12 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
+import net.runelite.api.GameState;
+import net.runelite.api.Item;
 import net.runelite.api.ItemComposition;
+import net.runelite.api.ItemContainer;
 import net.runelite.api.Skill;
+import net.runelite.api.gameval.InventoryID;
 import net.runelite.client.RuneLite;
 import net.runelite.client.game.ItemManager;
 
@@ -206,6 +210,35 @@ public class UnlockService
 		reloadCustomRules();
 	}
 
+	public void clearAllCustomRules()
+	{
+		setCustomRules(Collections.emptyList());
+	}
+
+	private static final int MAX_RECENT_UNLOCKS = 20;
+
+	/** Records a unlock for the sidebar recent list (obtain or fabrication). */
+	public void recordRecentUnlock(String key)
+	{
+		if (key == null || key.isEmpty())
+		{
+			return;
+		}
+		List<String> recent = state.getRecentUnlocked();
+		recent.remove(key);
+		recent.add(0, key);
+		while (recent.size() > MAX_RECENT_UNLOCKS)
+		{
+			recent.remove(recent.size() - 1);
+		}
+		dirty = true;
+	}
+
+	public List<String> getRecentUnlockedKeys()
+	{
+		return Collections.unmodifiableList(new ArrayList<>(state.getRecentUnlocked()));
+	}
+
 	// ------------------------------------------------------------------ lookup
 
 	/** Canonical rule key for an item id, unnoting and collapsing variants first. */
@@ -256,6 +289,15 @@ public class UnlockService
 			return true;
 		}
 
+		if (rule != null && !rule.hasSkillPath())
+		{
+			if (tradeableIndex.isGeTradeableKey(key))
+			{
+				return false;
+			}
+			return satisfies(rule);
+		}
+
 		if (rule == null)
 		{
 			return unmappedGeAllowed(key);
@@ -282,6 +324,16 @@ public class UnlockService
 		}
 
 		ItemRule rule = rules.forName(key);
+		if (rule != null && rule.getPackOf() != null && !rule.getPackOf().isEmpty())
+		{
+			return state.getObtained().contains(rule.getPackOf());
+		}
+
+		if (rule != null && rule.getItemClass() == com.leadman.rules.ItemClass.SHOP_ONLY)
+		{
+			return true;
+		}
+
 		if (rule != null && rule.hasSkillPath())
 		{
 			return satisfies(rule);
@@ -294,6 +346,15 @@ public class UnlockService
 				return true;
 			}
 			return state.getObtained().contains(key);
+		}
+
+		if (rule != null && !rule.hasSkillPath())
+		{
+			if (tradeableIndex.isGeTradeableKey(key))
+			{
+				return state.getObtained().contains(key);
+			}
+			return true;
 		}
 
 		if (rule == null)
@@ -494,6 +555,14 @@ public class UnlockService
 
 		if (!rule.hasSkillPath())
 		{
+			if (rule.getItemClass() == com.leadman.rules.ItemClass.SHOP_ONLY)
+			{
+				return state.getObtained().contains(key) || hasItemHeld(key);
+			}
+			if (tradeableIndex.isGeTradeableKey(key) && !state.getObtained().contains(key))
+			{
+				return false;
+			}
 			return true;
 		}
 
@@ -661,8 +730,6 @@ public class UnlockService
 				return config.gateEquipment();
 			case ELEMENTAL_STAFF:
 				return runeGateOn();
-			case TOOL:
-				return config.gateTools();
 			default:
 				return false;
 		}
@@ -774,7 +841,8 @@ public class UnlockService
 	private static boolean isObtainOnlyClass(com.leadman.rules.ItemClass itemClass)
 	{
 		return itemClass == com.leadman.rules.ItemClass.DROP_ONLY
-			|| itemClass == com.leadman.rules.ItemClass.REWARD_ONLY;
+			|| itemClass == com.leadman.rules.ItemClass.REWARD_ONLY
+			|| itemClass == com.leadman.rules.ItemClass.SHOP_ONLY;
 	}
 
 	/**
@@ -784,10 +852,6 @@ public class UnlockService
 	private boolean unmappedGeAllowed(String key)
 	{
 		if (!tradeableIndex.isGeTradeableKey(key))
-		{
-			return true;
-		}
-		if (tradeableIndex.isEquippableKey(key))
 		{
 			return true;
 		}
@@ -1071,6 +1135,14 @@ public class UnlockService
 	/** Shop block message -- uses shop override reqs when present. */
 	public String shopReason(String key)
 	{
+		ItemRule rule = rules.forName(key);
+		if (rule != null && rule.getPackOf() != null && !rule.getPackOf().isEmpty())
+		{
+			ItemRule component = rules.forName(rule.getPackOf());
+			String name = component != null ? component.getDisplay() : rule.getPackOf();
+			return "obtain " + name + " first";
+		}
+
 		List<Requirement> reqs = displayShopRequirements(key);
 		if (!reqs.isEmpty())
 		{
@@ -1097,6 +1169,7 @@ public class UnlockService
 		}
 		if (state.getObtained().add(key))
 		{
+			recordRecentUnlock(key);
 			dirty = true;
 			return true;
 		}
@@ -1114,6 +1187,37 @@ public class UnlockService
 		{
 			dirty = true;
 		}
+	}
+
+	/** True when the item is anywhere in inventory, equipment or bank. */
+	private boolean hasItemHeld(String key)
+	{
+		if (client.getGameState() != GameState.LOGGED_IN || key.isEmpty())
+		{
+			return false;
+		}
+
+		int[] containers = {
+			InventoryID.INV,
+			InventoryID.WORN,
+			InventoryID.BANK,
+		};
+		for (int containerId : containers)
+		{
+			ItemContainer container = client.getItemContainer(containerId);
+			if (container == null)
+			{
+				continue;
+			}
+			for (Item item : container.getItems())
+			{
+				if (item.getId() > 0 && key.equals(keyFor(item.getId())))
+				{
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	public boolean markSeen(String key)

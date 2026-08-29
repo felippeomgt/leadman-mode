@@ -248,20 +248,17 @@ public class GateRulesTest
 	}
 
 	@Test
-	public void equipmentAndToolGatesApplyWhenToggledOn()
+	public void equipmentGateAppliesWhenToggledOn()
 	{
 		config.equipment = true;
-		config.tools = true;
 		level(Skill.ATTACK, 40);
-		level(Skill.WOODCUTTING, 41);
+		level(Skill.DEFENCE, 40);
 
 		level(Skill.SMITHING, 85);
-		assertFalse("rune scimitar is 90 Smithing to use under equipment gate", service.canUseKey("rune scimitar"));
-		assertFalse("rune axe is 86 Smithing to use under tool gate", service.canUseKey("rune axe"));
-
-		level(Skill.SMITHING, 86);
-		assertTrue("the axe unlocks first", service.canUseKey("rune axe"));
-		assertFalse(service.canUseKey("rune scimitar"));
+		assertFalse("rune scimitar needs 90 Smithing to use when equipment gate is on",
+			service.canUseKey("rune scimitar"));
+		assertTrue("wield still follows Attack, not Smithing, unless gate adds wear reqs",
+			service.canWieldKey("rune scimitar"));
 
 		level(Skill.SMITHING, 90);
 		assertTrue(service.canUseKey("rune scimitar"));
@@ -349,32 +346,68 @@ public class GateRulesTest
 		assertTrue(service.canShopKey("chaos rune pack"));
 	}
 
+	@Test
+	public void uncutSapphireShopRequiresCrafting20()
+	{
+		level(Skill.CRAFTING, 19);
+		assertFalse(service.canShopKey("uncut sapphire"));
+		assertFalse(service.canShopKey("sapphire"));
+
+		level(Skill.CRAFTING, 20);
+		assertTrue(service.canShopKey("uncut sapphire"));
+		assertTrue(service.canShopKey("sapphire"));
+	}
+
+	@Test
+	public void bulkShopPackRequiresObtainingSingleFirst()
+	{
+		assertFalse(service.canShopKey("eye of newt pack"));
+		assertFalse(service.canShopKey("feather pack"));
+
+		service.getState().getObtained().add("eye of newt");
+		service.getState().getObtained().add("feather");
+		assertTrue(service.canShopKey("eye of newt pack"));
+		assertTrue(service.canShopKey("feather pack"));
+	}
+
+	@Test
+	public void shopOnlyItemCanUseWhenHeldEvenBeforeObtainFlag()
+	{
+		when(tradeables.isGeTradeableKey("teleport card")).thenReturn(true);
+		assertFalse(service.canUseKey("teleport card"));
+
+		service.getState().getObtained().add("teleport card");
+		assertTrue(service.canUseKey("teleport card"));
+	}
+
 	// ------------------------------------------------------------- unmapped & custom
 
 	@Test
-	public void unmappedEquippableGeItemsTradeFreely()
+	public void unmappedGeItemsNeedObtainIncludingEquippable()
 	{
 		when(tradeables.isEquippableKey("abyssal whip")).thenReturn(true);
-		assertTrue("equippable unmapped GE gear trades without obtain",
-			service.canTradeKey("abyssal whip"));
-		assertTrue("shop matches trade", service.canShopKey("abyssal whip"));
-		assertTrue("use stays open on equippable drops", service.canUseKey("abyssal whip"));
+		when(tradeables.isGeTradeableKey("abyssal whip")).thenReturn(true);
+
+		assertFalse(service.canTradeKey("abyssal whip"));
+		service.getState().getObtained().add("abyssal whip");
+		assertTrue(service.canTradeKey("abyssal whip"));
 	}
 
 	@Test
 	public void unmappedNonEquippableGeItemsNeedObtain()
 	{
-		when(tradeables.isEquippableKey("bucket of sand")).thenReturn(false);
-		when(tradeables.isGeTradeableKey("bucket of sand")).thenReturn(true);
+		String key = "zzzz unmapped test item";
+		when(tradeables.isEquippableKey(key)).thenReturn(false);
+		when(tradeables.isGeTradeableKey(key)).thenReturn(true);
 
-		assertFalse(service.canTradeKey("bucket of sand"));
-		assertFalse(service.canShopKey("bucket of sand"));
-		assertFalse(service.canUseKey("bucket of sand"));
+		assertFalse(service.canTradeKey(key));
+		assertFalse(service.canShopKey(key));
+		assertFalse(service.canUseKey(key));
 
-		service.getState().getObtained().add("bucket of sand");
-		assertTrue(service.canTradeKey("bucket of sand"));
-		assertTrue(service.canShopKey("bucket of sand"));
-		assertTrue(service.canUseKey("bucket of sand"));
+		service.getState().getObtained().add(key);
+		assertTrue(service.canTradeKey(key));
+		assertTrue(service.canShopKey(key));
+		assertTrue(service.canUseKey(key));
 	}
 
 	@Test
@@ -451,7 +484,6 @@ public class GateRulesTest
 		private Boolean ammo;
 		private Boolean runes;
 		private Boolean equipment;
-		private Boolean tools;
 		private String custom = "[]";
 
 		@Override
@@ -494,12 +526,6 @@ public class GateRulesTest
 		public boolean gateEquipment()
 		{
 			return equipment != null ? equipment : LeadmanConfig.super.gateEquipment();
-		}
-
-		@Override
-		public boolean gateTools()
-		{
-			return tools != null ? tools : LeadmanConfig.super.gateTools();
 		}
 
 		@Override

@@ -113,23 +113,11 @@ public interface LeadmanConfig extends Config
 	@ConfigItem(
 		keyName = "gateEquipment",
 		name = "Smithing gates equipment",
-		description = "Off by default: a rune scimitar is trade-locked until 90 Smithing but wieldable at 40 Attack.",
+		description = "Off by default: armour and weapons keep normal Attack/Defence wield reqs only. On, wearing them also needs the Smithing level to smith them.",
 		position = 6,
 		section = gates
 	)
 	default boolean gateEquipment()
-	{
-		return false;
-	}
-
-	@ConfigItem(
-		keyName = "gateTools",
-		name = "Smithing gates tools",
-		description = "Off by default. Turning this on can deadlock gathering skills: a rune axe needs 86 Smithing.",
-		position = 7,
-		section = gates
-	)
-	default boolean gateTools()
 	{
 		return false;
 	}
@@ -158,6 +146,42 @@ public interface LeadmanConfig extends Config
 	default boolean blockPlayerTrade()
 	{
 		return true;
+	}
+
+	@ConfigItem(
+		keyName = "allowedTradePartners",
+		name = "Allow trade with",
+		description = "Comma-separated player names that may still receive trades while player trading is blocked (e.g. your duo partner)",
+		position = 2,
+		section = conduct
+	)
+	default String allowedTradePartners()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+		keyName = "allowTradeWithParty",
+		name = "Allow trade with party members",
+		description = "Also allow trading with members of your RuneLite party. Join the same party via the Party plugin on both clients",
+		position = 3,
+		section = conduct
+	)
+	default boolean allowTradeWithParty()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+		keyName = "disableGe",
+		name = "Disable Grand Exchange",
+		description = "Block every GE action regardless of unlock progress",
+		position = 4,
+		section = conduct
+	)
+	default boolean disableGe()
+	{
+		return false;
 	}
 
 	// ---------------------------------------------------------- notifications
@@ -215,7 +239,7 @@ public interface LeadmanConfig extends Config
 	@ConfigItem(
 		keyName = "explainBlocks",
 		name = "Explain blocked actions",
-		description = "Print why an action was blocked. A silently dead menu entry reads as a bug.",
+		description = "Print why an action was blocked when you Examine an item or try to use, eat, cast, trade, etc.",
 		position = 4,
 		section = notifications
 	)
