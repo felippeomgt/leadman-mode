@@ -94,7 +94,7 @@ degrade, ornament, and poison variants. See `ItemNames` and its mirror in the ge
 The hub does not host jars — it builds from your public repository at a pinned commit.
 
 1. **Repository must be public** — [`felippeomgt/leadman-mode`](https://github.com/felippeomgt/leadman-mode)
-2. **`icon.png`** at the repository root (128×128) for the listing
+2. **`icon.png`** at the repository root (48×72) for the Plugin Hub listing
 3. **Commit and note the full 40-character SHA** you want published
 4. **Fork [`runelite/plugin-hub`](https://github.com/runelite/plugin-hub)** and add
    `plugins/leadman`:
