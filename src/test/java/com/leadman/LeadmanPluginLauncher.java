@@ -19,6 +19,9 @@ import net.runelite.client.externalplugins.ExternalPluginManager;
  */
 public class LeadmanPluginLauncher
 {
+	// loadBuiltin takes a generic varargs array, which javac cannot prove safe at the
+	// call site. One element, one known type, so it is.
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws Exception
 	{
 		ExternalPluginManager.loadBuiltin(LeadmanPlugin.class);

@@ -84,22 +84,23 @@ plugin registered as a built-in. `LeadmanPluginLauncher` does exactly that, and 
 in the test source set so it never ships inside the jar.
 
 ```sh
-gradle run
+./run-dev.sh      # Git Bash / WSL
+run-dev.cmd       # cmd or PowerShell
+./gradlew run     # if JDK 11 is already on your PATH
 ```
 
-That needs a display, so run it on your desktop rather than in the container. From an IDE,
-run `com.leadman.LeadmanPluginLauncher` directly — IntelliJ picks it up with no extra
-configuration. Log in, and Leadman appears in the plugin list and as a padlock icon in the
-sidebar.
+The scripts pick up a portable JDK from `.tools/` if one is there, so no system-wide Java
+install is needed. This needs a display, so it will not run in the container.
 
-Worth checking by hand, since none of it is unit-testable:
+A successful start prints the plugin loading its ruleset:
 
-- Search the GE for an item you cannot make yet — it should not appear in the results.
-- Try to eat a shark below 80 Cooking; the `Eat` option should be gone and the chatbox
-  should say why.
-- Wear an amulet of glory below 80 Crafting, then rub one below 68 Magic.
-- Buy something from a shop, then search for it on the GE — it must still be locked.
-- Drop an item as another player and try to take it.
+```
+INFO com.leadman.rules.RuleRepository - Leadman: loaded 422 item rules and 62 spell rules
+```
+
+[`docs/DEVELOPING.md`](docs/DEVELOPING.md) covers the rest: getting the portable JDK, the
+Jagex-account login caveat, resetting a profile, and the by-hand checks for everything the
+unit tests cannot reach.
 
 ## Regenerating the ruleset
 
