@@ -303,22 +303,78 @@ public class GateRulesTest
 	{
 		level(Skill.RUNECRAFT, 1);
 		assertFalse(service.canShopKey("chaos rune"));
+		assertFalse(service.canShopKey("chaos rune pack"));
 
 		level(Skill.RUNECRAFT, 35);
 		assertTrue(service.canShopKey("chaos rune"));
+		assertTrue(service.canShopKey("chaos rune pack"));
+	}
+
+	@Test
+	public void runeArmourSetShopRequiresPlatebodySmithing()
+	{
+		when(tradeables.isGeTradeableKey("rune armour set (lg)")).thenReturn(true);
+		level(Skill.SMITHING, 98);
+		assertFalse(service.canShopKey("rune armour set (lg)"));
+		assertFalse(service.canTradeKey("rune armour set (lg)"));
+
+		level(Skill.SMITHING, 99);
+		assertTrue(service.canShopKey("rune armour set (lg)"));
+		assertTrue(service.canTradeKey("rune armour set (lg)"));
+	}
+
+	@Test
+	public void mithrilCannonballSplitsSmithingTradeAndSailingUse()
+	{
+		level(Skill.SMITHING, 54);
+		level(Skill.SAILING, 54);
+		assertFalse(service.canShopKey("mithril cannonball"));
+
+		level(Skill.SMITHING, 55);
+		assertTrue(service.canShopKey("mithril cannonball"));
+		assertFalse(service.canUseKey("mithril cannonball"));
+
+		level(Skill.SAILING, 55);
+		assertTrue(service.canUseKey("mithril cannonball"));
+	}
+
+	@Test
+	public void runePackShopRequiresSameRunecraftingAsRune()
+	{
+		level(Skill.RUNECRAFT, 1);
+		assertTrue(service.canShopKey("air rune pack"));
+		assertFalse(service.canShopKey("chaos rune pack"));
+
+		level(Skill.RUNECRAFT, 35);
+		assertTrue(service.canShopKey("chaos rune pack"));
 	}
 
 	// ------------------------------------------------------------- unmapped & custom
 
 	@Test
-	public void unmappedGeTradeablesBlockedUntilObtained()
+	public void unmappedEquippableGeItemsTradeFreely()
 	{
-		assertFalse("unmapped GE items are blocked until obtained",
+		when(tradeables.isEquippableKey("abyssal whip")).thenReturn(true);
+		assertTrue("equippable unmapped GE gear trades without obtain",
 			service.canTradeKey("abyssal whip"));
-		assertTrue("use stays open on unmapped drops", service.canUseKey("abyssal whip"));
+		assertTrue("shop matches trade", service.canShopKey("abyssal whip"));
+		assertTrue("use stays open on equippable drops", service.canUseKey("abyssal whip"));
+	}
 
-		service.getState().getObtained().add("abyssal whip");
-		assertTrue(service.canTradeKey("abyssal whip"));
+	@Test
+	public void unmappedNonEquippableGeItemsNeedObtain()
+	{
+		when(tradeables.isEquippableKey("bucket of sand")).thenReturn(false);
+		when(tradeables.isGeTradeableKey("bucket of sand")).thenReturn(true);
+
+		assertFalse(service.canTradeKey("bucket of sand"));
+		assertFalse(service.canShopKey("bucket of sand"));
+		assertFalse(service.canUseKey("bucket of sand"));
+
+		service.getState().getObtained().add("bucket of sand");
+		assertTrue(service.canTradeKey("bucket of sand"));
+		assertTrue(service.canShopKey("bucket of sand"));
+		assertTrue(service.canUseKey("bucket of sand"));
 	}
 
 	@Test

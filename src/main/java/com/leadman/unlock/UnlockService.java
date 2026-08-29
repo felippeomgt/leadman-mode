@@ -41,11 +41,13 @@ import net.runelite.client.game.ItemManager;
  *
  * <p>Two independent gates, per docs/DESIGN.md section 1:
  * <pre>
- * tradeUnlocked = fabricable OR (everObtained AND no skill path)
+ * tradeUnlocked = fabricable OR (everObtained AND unmapped non-equippable GE)
+ *                 OR (unmapped equippable GE)
  * useUnlocked   = fabricable OR no skill path (per gate toggles)
+ *                 OR (unmapped equippable GE) OR (everObtained AND unmapped non-equippable GE)
  * </pre>
- * {@code everObtained} only bypasses trade for drop-only items. Looting a smithable
- * plate does not unlock the Grand Exchange; it never grants the right to use it either.
+ * {@code everObtained} bypasses trade for drop-only items and unmapped GE supplies. Looting
+ * a smithable plate does not unlock the Grand Exchange; it never grants the right to use it.
  */
 @Slf4j
 @Singleton
@@ -256,11 +258,7 @@ public class UnlockService
 
 		if (rule == null)
 		{
-			if (!tradeableIndex.isGeTradeableKey(key))
-			{
-				return true;
-			}
-			return false;
+			return unmappedGeAllowed(key);
 		}
 		return satisfies(rule);
 	}
@@ -289,13 +287,22 @@ public class UnlockService
 			return satisfies(rule);
 		}
 
+		if (rule != null && isObtainOnlyClass(rule.getItemClass()))
+		{
+			if (!tradeableIndex.isGeTradeableKey(key))
+			{
+				return true;
+			}
+			return state.getObtained().contains(key);
+		}
+
 		if (rule == null)
 		{
 			if (!tradeableIndex.isGeTradeableKey(key))
 			{
 				return true;
 			}
-			return false;
+			return unmappedGeAllowed(key);
 		}
 		return true;
 	}
@@ -457,7 +464,11 @@ public class UnlockService
 		ItemRule rule = rules.forName(key);
 		if (rule == null)
 		{
-			return true;
+			if (!tradeableIndex.isGeTradeableKey(key))
+			{
+				return true;
+			}
+			return unmappedGeAllowed(key);
 		}
 
 		ConsumeClass consume = rule.getConsume();
@@ -758,6 +769,29 @@ public class UnlockService
 			}
 		}
 		return collected;
+	}
+
+	private static boolean isObtainOnlyClass(com.leadman.rules.ItemClass itemClass)
+	{
+		return itemClass == com.leadman.rules.ItemClass.DROP_ONLY
+			|| itemClass == com.leadman.rules.ItemClass.REWARD_ONLY;
+	}
+
+	/**
+	 * Unmapped GE items with no fabrication rule: equippable gear trades freely; everything
+	 * else needs one genuine obtain before trade, shop or use opens up.
+	 */
+	private boolean unmappedGeAllowed(String key)
+	{
+		if (!tradeableIndex.isGeTradeableKey(key))
+		{
+			return true;
+		}
+		if (tradeableIndex.isEquippableKey(key))
+		{
+			return true;
+		}
+		return state.getObtained().contains(key);
 	}
 
 	private static boolean matchesFilter(Requirement req, ReqFilter filter)

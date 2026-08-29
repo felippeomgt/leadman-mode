@@ -101,9 +101,67 @@ for (const [bar, level] of Object.entries(BARS)) {
   rule(bar, "FABRICABLE", "NONE", [["SMITHING", level]], "Smelting");
 }
 
-// Cannonballs are tiered by metal now. Only the steel level is certain, so the other
-// tiers are left unmapped rather than guessed -- overrides.json tracks them as a TODO.
-rule("Steel cannonball", "FABRICABLE", "AMMO", [["SMITHING", 35]], "Smithing");
+// Cannonballs: trade/shop gates on Smithing; tiers above steel also need Sailing to fire
+// from a boat cannon. Dragon cannonballs are not smithed (DROP_ONLY).
+function cannonball(display, smithing, sailing = null) {
+  const reqs = [["SMITHING", smithing, "TRADE"]];
+  if (sailing != null) {
+    reqs.push(["SAILING", sailing, "USE"]);
+  }
+  rule(display, "FABRICABLE", "AMMO", reqs, "Smithing");
+}
+
+const CANNONBALLS = [
+  ["Bronze cannonball", 5], ["Iron cannonball", 20], ["Steel cannonball", 35],
+  ["Mithril cannonball", 55, 55], ["Adamant cannonball", 75, 75],
+  ["Rune cannonball", 90, 90],
+];
+for (const entry of CANNONBALLS) {
+  const [base, smith, sail] = entry;
+  cannonball(base, smith, sail ?? null);
+  for (const variant of ["chainshot", "incendiary"]) {
+    const name = base.replace(" cannonball", ` ${variant} cannonball`);
+    cannonball(name, smith, sail ?? null);
+  }
+}
+rule("Dragon cannonball", "DROP_ONLY", "AMMO", [["SAILING", 90, "USE"]], "Sailing");
+for (const variant of ["chainshot", "incendiary"]) {
+  rule(`Dragon ${variant} cannonball`, "DROP_ONLY", "AMMO", [["SAILING", 90, "USE"]], "Sailing");
+}
+
+// GE armour sets bundle plate items -- gate at platebody Smithing for that metal.
+const SET_VARIANTS = [
+  "set (lg)", "set (sk)",
+  "trimmed set (lg)", "trimmed set (sk)",
+  "gold-trimmed set (lg)", "gold-trimmed set (sk)",
+];
+
+function armourSet(display, smithing) {
+  rule(display, "FABRICABLE", "EQUIPMENT", [["SMITHING", smithing]], "Smithing");
+}
+
+for (const [metal, base] of Object.entries(METALS)) {
+  const smithing = Math.min(base + SHAPES.platebody, 99);
+  for (const variant of SET_VARIANTS) {
+    armourSet(`${metal} ${variant}`, smithing);
+  }
+  armourSet(`${metal} armour set (lg)`, smithing);
+  armourSet(`${metal} armour set (sk)`, smithing);
+}
+
+const GWD_SETS = ["Bandos", "Armadyl", "Ancient", "Guthix", "Saradomin", "Zamorak"];
+const RUNE_PLATE = Math.min(METALS.Rune + SHAPES.platebody, 99);
+for (const god of GWD_SETS) {
+  armourSet(`${god} rune armour set (lg)`, RUNE_PLATE);
+  armourSet(`${god} rune armour set (sk)`, RUNE_PLATE);
+}
+armourSet("Gilded armour set (lg)", RUNE_PLATE);
+armourSet("Gilded armour set (sk)", RUNE_PLATE);
+
+// Black armour is not player-smithable (Treasure Trails); sets stay unrestricted.
+for (const variant of SET_VARIANTS) {
+  rule(`Black ${variant}`, "FREE", "EQUIPMENT", [], null);
+}
 
 // ----------------------------------------------------------------------- mining
 
@@ -220,6 +278,20 @@ for (const [rune, level] of Object.entries(RUNES)) {
   rule(rune, "FABRICABLE", "RUNE", [["RUNECRAFT", level]], "Runecrafting");
 }
 
+// Magic shops sell 100-rune packs that are not GE-tradeable. Without explicit rules
+// they bypass shop gates (canShopKey treats unmapped non-GE items as free).
+const RUNE_PACKS = {
+  "Air rune pack": 1,
+  "Mind rune pack": 2,
+  "Water rune pack": 5,
+  "Earth rune pack": 9,
+  "Fire rune pack": 14,
+  "Chaos rune pack": 35,
+};
+for (const [pack, level] of Object.entries(RUNE_PACKS)) {
+  rule(pack, "FABRICABLE", "RUNE", [["RUNECRAFT", level]], "Runecrafting", { tradeable: false });
+}
+
 // --------------------------------------------------------------------- fletching
 
 const AMMO_LADDERS = [
@@ -251,6 +323,110 @@ const BOWS = {
 };
 for (const [bow, level] of Object.entries(BOWS)) {
   rule(bow, "FABRICABLE", "EQUIPMENT", [["FLETCHING", level]], "Fletching");
+}
+
+// Crossbows: Fletching only (limbs are usually dropped, not smithed).
+const CROSSBOWS = {
+  Crossbow: 9, "Crossbow string": 10,
+  "Bronze crossbow": 9, "Bronze crossbow (u)": 9,
+  "Iron crossbow": 39, "Iron crossbow (u)": 39,
+  "Steel crossbow": 46, "Steel crossbow (u)": 46,
+  "Mithril crossbow": 54, "Mithril crossbow (u)": 54,
+  "Adamant crossbow": 61, "Adamant crossbow (u)": 61,
+  "Rune crossbow": 69, "Runite crossbow (u)": 69,
+  "Dragon crossbow": 78, "Dragon crossbow (u)": 78,
+};
+for (const [crossbow, level] of Object.entries(CROSSBOWS)) {
+  rule(crossbow, "FABRICABLE", "EQUIPMENT", [["FLETCHING", level]], "Fletching");
+}
+
+// Bolt tips: gate at the highest skill involved (usually Smithing for metal, Fletching for gems).
+function boltTip(display, skill, level) {
+  rule(display, "FABRICABLE", "AMMO", [[skill, level]], "Fletching");
+}
+
+const METAL_BOLT_TIPS = {
+  "Bronze bolt tips": 5,
+  "Iron bolt tips": 15,
+  "Steel bolt tips": 30,
+  "Mithril bolt tips": 50,
+  "Adamant bolt tips": 70,
+  "Runite bolt tips": 85,
+};
+for (const [tip, level] of Object.entries(METAL_BOLT_TIPS)) {
+  boltTip(tip, "SMITHING", level);
+}
+
+const GEM_BOLT_TIPS = {
+  "Opal bolt tips": 11, "Jade bolt tips": 26, "Pearl bolt tips": 41,
+  "Topaz bolt tips": 48, "Sapphire bolt tips": 56, "Emerald bolt tips": 58,
+  "Ruby bolt tips": 63, "Diamond bolt tips": 65, "Dragonstone bolt tips": 71,
+  "Onyx bolt tips": 73, "Amethyst bolt tips": 82,
+};
+for (const [tip, level] of Object.entries(GEM_BOLT_TIPS)) {
+  boltTip(tip, "FLETCHING", level);
+}
+
+// ------------------------------------------------------------------ construction / magic tablets
+
+function standardTablet(display, construction) {
+  rule(display, "FABRICABLE", "CHARGED", [
+    ["CONSTRUCTION", construction, "TRADE"],
+    ["CONSTRUCTION", construction, "ACTIVATE"],
+  ], "Construction");
+}
+
+function magicTablet(display, magic) {
+  rule(display, "FABRICABLE", "CHARGED", [
+    ["MAGIC", magic, "TRADE"],
+    ["MAGIC", magic, "ACTIVATE"],
+  ], "Magic");
+}
+
+const STANDARD_TABLETS = {
+  "Varrock teleport (tablet)": 40,
+  "Lumbridge teleport (tablet)": 47,
+  "Falador teleport (tablet)": 47,
+  "Camelot teleport (tablet)": 57,
+  "Ardougne teleport (tablet)": 57,
+  "Kourend castle teleport (tablet)": 57,
+  "Watchtower teleport (tablet)": 67,
+};
+for (const [tablet, construction] of Object.entries(STANDARD_TABLETS)) {
+  standardTablet(tablet, construction);
+}
+
+const MAGIC_TABLETS = {
+  "Paddewwa teleport (tablet)": 54,
+  "Senntisten teleport (tablet)": 60,
+  "Kharyrll teleport (tablet)": 66,
+  "Lassar teleport (tablet)": 72,
+  "Dareeyak teleport (tablet)": 78,
+  "Carrallanger teleport (tablet)": 84,
+  "Annakarl teleport (tablet)": 90,
+  "Ghorrock teleport (tablet)": 96,
+  "Ape atoll teleport (tablet)": 64,
+  "Arceuus library teleport (tablet)": 6,
+  "Draynor manor teleport (tablet)": 17,
+  "Battlefront teleport (tablet)": 23,
+  "Mind altar teleport (tablet)": 28,
+  "Salve graveyard teleport (tablet)": 40,
+  "Fenkenstrain's castle teleport (tablet)": 48,
+  "West ardougne teleport (tablet)": 58,
+  "Harmony island teleport (tablet)": 65,
+  "Cemetery teleport (tablet)": 71,
+  "Barrows teleport (tablet)": 83,
+  "Moonclan teleport (tablet)": 69,
+  "Ourania teleport (tablet)": 71,
+  "Waterbirth teleport (tablet)": 72,
+  "Barbarian teleport (tablet)": 75,
+  "Khazard teleport (tablet)": 80,
+  "Fishing guild teleport (tablet)": 85,
+  "Catherby teleport (tablet)": 87,
+  "Ice plateau teleport (tablet)": 89,
+};
+for (const [tablet, magic] of Object.entries(MAGIC_TABLETS)) {
+  magicTablet(tablet, magic);
 }
 
 // ------------------------------------------------------------------------ hunter

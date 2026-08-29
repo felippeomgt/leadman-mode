@@ -1,224 +1,99 @@
-# Leadman
+# Leadman Mode
 
-A RuneLite plugin for a self-imposed challenge mode: **Ironman conduct on a normal
-account, with a Grand Exchange that unlocks item-by-item as you reach the skill level
-that could have made the item yourself.**
+A RuneLite plugin for a self-imposed challenge: **Ironman conduct on a normal account,
+with a Grand Exchange that unlocks item-by-item as you reach the skill level that could
+have made each item yourself.**
 
-Lead is softer than bronze. The mode is easier than Bronzeman on acquisition and harder
-on consumption.
+Lead is softer than bronze. The mode is easier than Bronzeman on acquisition and harder on
+consumption.
+
+## The idea in practice
 
 ```
-You can buy a Raw swordfish from a shop, but you cannot sell one on the GE
-until 50 Fishing.  You can only eat a Swordfish once you hit 45 Cooking.
-You can wield a looted Rune scimitar at 40 Attack, but you cannot trade one
-until 90 Smithing.  An Amulet of glory needs 80 Crafting before you can put
-it on, and 68 Magic before its teleports will fire.
+You can buy a raw swordfish from a shop, but you cannot sell one on the GE until 50 Fishing.
+You can only eat a cooked swordfish once you hit 45 Cooking.
+You can wield a looted rune scimitar at 40 Attack, but you cannot trade one until 90 Smithing.
+An amulet of glory needs 80 Crafting before you can wear it, and 68 Magic before its teleports fire.
+An abyssal whip has no Smithing recipe — equippable uniques trade freely once you can wield them.
+Dragon bones need to be obtained once before they unlock on the GE.
 ```
 
-The full rule system, the skill-by-skill gate map and the remaining open question live in
-[`docs/DESIGN.md`](docs/DESIGN.md). Read that first — this file covers building, testing
-and publishing.
+You still play on a normal account. The plugin does not change server behaviour — it removes
+menu options and filters search results so you can hold yourself to the rules without
+rolling an Ironman.
 
-## Two gates
+## Two independent gates
 
-Every item carries two independent booleans.
+Every item carries two separate permissions.
 
-| Gate | Unlocked when | Blocks |
+| Gate | Unlocked when | What it blocks |
 |---|---|---|
-| **TRADE** | you can fabricate it, **or** you have obtained one | GE buy, sell, offers |
-| **USE** | you can fabricate it | `Eat` `Drink` `Wear` `Wield` `Cast`, charge ops |
+| **Trade** | you can fabricate it, or the item falls under an obtain/equip fallback | GE buy, sell, offers; NPC shop buy |
+| **Use** | you can fabricate it, or the same fallback applies | Eat, Drink, Wear, Wield, Cast, charge and teleport ops |
 
-`everObtained` appears in TRADE and not in USE on purpose: looting an item never grants
-the right to use it. Buying from an NPC shop sets neither, so shop stock can never
-launder an item onto the Grand Exchange.
+**Fabrication** means your real skill levels meet at least one mapped recipe for that item.
+Temporary boosts do not count.
 
-**USE applies only where the game provides no requirement of its own.** A rune scimitar
-already asks for 40 Attack, rune arrows already ask for 40 Ranged, and every spell carries
-a Magic level — those requirements are the permission, so a looted item you meet them for
-is fair to use. Nothing at all stands between you and eating a shark, drinking a brew, or
-putting on an amulet, so Leadman supplies the requirement the game left out.
+**Obtaining** an item unlocks trade for drop-only and supply items that have no skill path.
+It never bypasses a fabrication gate — looting a saradomin brew does not let you drink or
+trade it until 81 Herblore.
 
-| Gated by default | Off by default, one toggle each |
+**Equippable unmapped items** (gear with no fabrication rule, like whips and GWD uniques)
+trade and shop freely. **Non-equippable unmapped GE items** (bones, herbs, misc supplies)
+need one genuine obtain before trade, shop, or use opens up. Buying from a shop does not
+count as an obtain.
+
+## What the game already gates vs what Leadman adds
+
+OSRS already enforces Attack, Ranged, Magic, and similar levels on equipment and spells.
+Leadman does not duplicate those — a rune scimitar you meet 40 Attack for is fair to wield
+even below 90 Smithing.
+
+Leadman fills the gaps the game leaves open:
+
+| Gated by default | Optional toggles (off by default) |
 |---|---|
 | Cooking gates food | Fletching gates ammunition |
 | Herblore gates potions | Runecrafting gates runes |
 | Crafting gates wearing jewellery | Smithing gates equipment |
 | Magic gates charges and teleports | Smithing gates tools |
 
-The toggles are per skill, so tightening Fletching does not drag Runecrafting along with
-it. `Strict` mode turns all of them on at once; `Bronzeman+` turns them all off and leaves
-only the trade gates.
+Each toggle is per skill. **Strict** turns all use gates on at once. **Bronzeman+** turns
+them all off and leaves only the trade gates.
 
-Jewellery splits across two toggles because two skills made it: Crafting shaped the
-amulet, Magic put the teleports in it. Turn the Crafting gate off and a glory you may now
-wear still will not teleport you until 68 Magic.
+Jewellery splits across two skills on purpose: Crafting shaped the amulet, Magic put the
+teleports in it. Turning off the Crafting gate does not hand you the teleports.
 
-## Build and test
+## What you get in-game
 
-Requires **JDK 11**. If you do not have one installed, everything below runs in a
-container instead — no local toolchain needed:
+- **Sidebar panel** — browse items, see which gates apply, search by name.
+- **Unlock popup** — when a skill level crosses a fabrication threshold, new GE items appear.
+- **Menu blocking** — blocked actions are removed with a chatbox reason (once per reason per session).
+- **GE filtering** — locked items do not appear in search results.
+- **Per-item overrides** — edit any item's trade, shop, eat, drink, wield, use, activate, or bury gate from the panel.
+- **Ironman conduct helpers** — blocks taking other players' drops and player trades.
 
-```sh
-docker run --rm -v "$PWD:/app" -v leadman-gradle-cache:/home/gradle/.gradle \
-  -w /app gradle:7.6.4-jdk11 gradle --no-daemon build
-```
+## Modes
 
-On Git Bash, prefix that with `MSYS_NO_PATHCONV=1` and use an absolute Windows-style
-path (`-v "D:/workspace/osrs:/app"`) so the mount is not mangled.
+| Mode | Trade gates | Use gates |
+|---|---|---|
+| **Leadman** (default) | On | Default set above |
+| **Strict** | On | All use gates on |
+| **Bronzeman+** | On | All use gates off |
 
-With a local JDK it is just:
+## Limits (honour system)
 
-```sh
-gradle build      # compiles, runs the tests, produces build/libs/leadman-<version>.jar
-gradle test       # tests only
-```
+RuneLite cannot enforce server-side rules. Disabling the plugin bypasses everything — the
+same honour system Bronzeman runs on.
 
-`src/test/java/com/leadman/GateRulesTest.java` exercises the gate engine against the real
-generated ruleset. Every example from the original brief is a test case, so the suite
-fails if the rules or the data drift away from `docs/DESIGN.md`.
+The plugin reliably blocks actions that go through client menu entries. It cannot retroactively
+cancel GE offers placed before the plugin was enabled, or stop actions triggered without a
+menu click.
 
-## Running it in RuneLite
+## More detail
 
-There is no sideloading path for a plugin jar — the client has to be launched with the
-plugin registered as a built-in. `LeadmanPluginLauncher` does exactly that, and it lives
-in the test source set so it never ships inside the jar.
-
-```sh
-./run-dev.sh      # Git Bash / WSL
-run-dev.cmd       # cmd or PowerShell
-./gradlew run     # if JDK 11 is already on your PATH
-```
-
-The scripts pick up a portable JDK from `.tools/` if one is there, so no system-wide Java
-install is needed. This needs a display, so it will not run in the container.
-
-A successful start prints the plugin loading its ruleset:
-
-```
-INFO com.leadman.rules.RuleRepository - Leadman: loaded 422 item rules and 62 spell rules
-```
-
-[`docs/DEVELOPING.md`](docs/DEVELOPING.md) covers the rest: getting the portable JDK, the
-Jagex-account login caveat, resetting a profile, and the by-hand checks for everything the
-unit tests cannot reach.
-
-## Regenerating the ruleset
-
-The bundled ruleset is generated, not hand-written. Most OSRS requirements are ladders —
-smithing is one base level per metal plus a fixed offset per item shape, jewellery is one
-level per gem per slot — so the generator encodes the ladders and expands them.
-
-```sh
-node tools/generate-rules.mjs            # writes src/main/resources/com/leadman/leadman-rules.json
-node tools/generate-rules.mjs --verify   # also checks every name against the live wiki item mapping
-node tools/fetch-ge-tradeables.mjs       # refreshes ge-tradeables.json from the wiki prices API
-node tools/coverage-report.mjs           # GE items without a rule -> docs/ge-unmapped.txt
-```
-
-`--verify` fetches the OSRS Wiki prices API item mapping and reports any generated name
-that does not correspond to a real item. It currently reports zero mismatches across 422
-item rules and 62 spell rules. Run it after every game update — a rename then shows up as
-a mismatch instead of a silent free unlock.
-
-Corrections go in [`src/main/resources/com/leadman/overrides.json`](src/main/resources/com/leadman/overrides.json),
-which is layered on top at runtime and is never regenerated. An override replaces the
-generated rule for that item outright rather than merging with it, so a fix is always
-predictable.
-
-### Rules are keyed by name, not item id
-
-Item ids churn every update and would need a regenerated table each patch. Names are
-stable, and normalising them collapses charge, degrade, ornament and poison variants for
-free — `Amulet of glory(6)`, `Amulet of glory (t4)` and `Amulet of glory` are one rule.
-See `ItemNames` and its mirror in the generator; both sides must normalise identically or
-every dosed potion looks like a missing item.
-
-## Publishing to the Plugin Hub
-
-The hub does not host jars — it builds from your repository at a pinned commit.
-
-1. **The repository must be public.** The hub builds the source rather than trusting an
-   artifact, so it cannot read a private repo. This one lives at
-   [`felippeomgt/leadman-mode`](https://github.com/felippeomgt/leadman-mode).
-2. **`icon.png`** is already at the repository root at 128×128, which is what the hub
-   shows in the listing.
-3. **Commit and note the full 40-character SHA** of the commit you want published. Tagging
-   it (`v1.0.0`) is good practice, but the hub pins the SHA, not the tag.
-4. **Fork [`runelite/plugin-hub`](https://github.com/runelite/plugin-hub)** and add a
-   single file named after your plugin, `plugins/leadman`, containing:
-
-   ```
-   repository=https://github.com/felippeomgt/leadman-mode.git
-   commit=<the full 40-character SHA>
-   ```
-
-5. **Open a pull request** against `runelite/plugin-hub`. Their CI builds the plugin,
-   checks it, and a reviewer looks it over. Every later release is another PR bumping the
-   `commit=` line — and a `version` bump in `build.gradle`, or the hub will not treat it as
-   a new release.
-
-Things the review will care about, and where this plugin stands:
-
-- **No runtime network calls.** The only fetch is in `tools/generate-rules.mjs`, which is a
-  development script and is not on the plugin's classpath. Clean.
-- **No third-party runtime dependencies.** RuneLite and Lombok are `compileOnly`; JUnit and
-  Mockito are test-only. Clean.
-- **Nothing that automates gameplay.** Leadman only removes menu options and filters a
-  search. Restriction plugins of this shape are already on the hub.
-- **`runelite-plugin.properties` must name the plugin class** — it points at
-  `com.leadman.LeadmanPlugin`.
-- **A license file.** BSD 2-Clause, matching RuneLite itself.
-
-## Layout
-
-```
-src/main/java/com/leadman/
-  LeadmanPlugin.java      event wiring, menu blocking, GE filtering, ground items
-  LeadmanConfig.java      the config surface
-  rules/                  the ruleset model, TradeableIndex, loader
-  unlock/UnlockService    the gate engine -- everything resolves through here
-  ui/                     unlock popup and the sidebar panel
-src/test/java/com/leadman/
-  GateRulesTest.java      the design rules, as assertions
-  LeadmanPluginLauncher   starts RuneLite with the plugin loaded
-tools/generate-rules.mjs  ruleset generator
-docs/DESIGN.md            the game design and gate map
-```
-
-Profile state is one file per account at `~/.runelite/leadman/<accountHash>.json`,
-holding obtained items, activity flags and popup de-duplication. What is *fabricable* is
-never persisted — it is recomputed from live skill levels on every login, so it cannot
-drift out of sync with the account or need migrating when the ruleset changes.
-
-## What is enforced, and what is not
-
-RuneLite cannot change server behaviour. Every restriction is client-side and defeatable
-by disabling the plugin — the same honour system Bronzeman runs on.
-
-Enforceable, because the action goes through a menu op the client controls:
-
-- removing `Eat` / `Drink` / `Wear` / `Wield` / `Take` / `Trade with` entries
-- blocking casts by filtering spell menu entries
-- blocking charge and teleport options on jewellery
-- overriding GE search results, and blocking offers on locked ids
-
-Advisory only: anything triggered without a menu click, offers placed before the plugin
-was enabled, and items already held when a rule tightens.
-
-When something is blocked the plugin says why, once per reason per session. A silently
-dead menu entry reads as a bug.
-
-## Status
-
-Implemented and building against RuneLite 1.12.37, with **22** passing tests.
-
-Phases A–D are in place: two-gate engine, GE filtering, menu blocking for trade/shop/use/eat/drink/wield/bury/teleport, elemental staff gates, sidebar browser, per-action custom rule editor.
-
-**Before launch:** verify shop buy in-game (Chaos rune test), expand fabrication coverage where needed. See [`docs/ROADMAP.md`](docs/ROADMAP.md) for the test checklist and Phase E/F tasks.
-
-**Coverage:** ~424 item rules cover fabrication ladders; ~3986 other GE tradeables block until obtained (by design). Run `node tools/coverage-report.mjs` for the full list.
-
-Not yet mapped, tracked in `overrides.json` and DESIGN.md: cannonball tiers above steel, teleport tablets, crossbows and bolt tips, quest `ACTIVITY` paths.
+- Full rule system and skill map: [`docs/DESIGN.md`](docs/DESIGN.md)
+- Build, test, and publish: [`INSTRUCTIONS.md`](INSTRUCTIONS.md)
 
 ## License
 

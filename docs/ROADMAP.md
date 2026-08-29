@@ -17,7 +17,8 @@ Run `run-dev.cmd`, log in, tick through these:
 
 ### Must verify
 
-- [ ] **Shop buy** — Chaos rune at RC 1 from any magic shop → blocked with Runecrafting 35 message
+- [x] **Shop buy** — Chaos rune at RC 1 from magic shop → blocked
+- [x] **Rune packs** — Chaos rune pack at RC 1 → blocked (same RC gate as chaos rune)
 - [ ] **Shop buy** — Item with custom Override on Can shop only
 - [ ] **Editor** — Override checkbox: save one field only, confirm other actions not polluted in profile JSON
 - [ ] **Sidebar** — Card hover + tooltip; long names (Divine super strength potion) open editor on card click
@@ -46,14 +47,15 @@ Current coverage (2026-08-29):
 
 - **424** generated item rules
 - **4410** GE tradeable keys
-- **~3986** GE items intentionally unmapped → blocked until `everObtained` (drops, uniques, etc.)
+- **~3986** GE items intentionally unmapped → equippable gear trades freely; supplies need `everObtained`
 
 ### Next data work (priority order)
 
-1. **Shop-sold fabricables** — items sold in NPC shops that *are* in `leadman-rules.json` (runes, bars, food…) — shop enforcement must work (Phase D fix).
-2. **Missing fabrication ladders** — cannonballs above steel, crossbows, bolt tips, teleport tablets (listed in DESIGN.md §11).
-3. **Wiki recipe import** — optional pipeline: OSRS Wiki Cargo → candidate rules → human review → `overrides.json`.
-4. **Quest allowlist** — `questItemBypass` removed; if quests stall, curate `overrides.json` per quest item.
+1. ~~Shop-sold fabricables~~ — rune packs, armour sets (done)
+2. ~~Cannonballs, crossbows, bolt tips, tablets~~ — see `docs/LADDERS.md` (done, needs wiki review)
+3. **Review pass** — validate levels category by category
+4. **Enchanted bolts / special crossbows** — still open
+5. **Quest ACTIVITY paths** — when quest tracking exists
 
 ### Not needed for v1
 

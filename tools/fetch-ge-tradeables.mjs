@@ -12,6 +12,7 @@ import { fileURLToPath } from "node:url";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT = resolve(HERE, "../src/main/resources/com/leadman/ge-tradeables.json");
+const IDS_OUT = resolve(HERE, "../src/main/resources/com/leadman/ge-item-ids.json");
 
 function normalise(raw) {
   let s = String(raw).trim().toLowerCase();
@@ -41,6 +42,17 @@ const res = await fetch("https://prices.runescape.wiki/api/v1/osrs/mapping", {
 const items = await res.json();
 const keys = [...new Set(items.map((i) => normalise(i.name)))].sort();
 
+/** First GE item id per normalised name — used for equip detection at runtime. */
+const idByKey = {};
+for (const item of items) {
+  const key = normalise(item.name);
+  if (!idByKey[key]) {
+    idByKey[key] = item.id;
+  }
+}
+
 mkdirSync(dirname(OUT), { recursive: true });
 writeFileSync(OUT, JSON.stringify(keys, null, 1) + "\n", "utf8");
+writeFileSync(IDS_OUT, JSON.stringify(idByKey, null, 1) + "\n", "utf8");
 console.log(`wrote ${keys.length} GE tradeable keys -> ${OUT}`);
+console.log(`wrote ${Object.keys(idByKey).length} item ids -> ${IDS_OUT}`);

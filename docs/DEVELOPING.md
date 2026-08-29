@@ -96,7 +96,7 @@ temporarily lower the requirement in `overrides.json`.
 
 ## Regenerating the ruleset
 
-See the README. The short version:
+See [`INSTRUCTIONS.md`](../INSTRUCTIONS.md). The short version:
 
 ```sh
 node tools/generate-rules.mjs --verify

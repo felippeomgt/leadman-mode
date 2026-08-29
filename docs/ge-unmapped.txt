@@ -1,7 +1,8 @@
 # GE tradeables without a generated rule (3986 items)
 # Generated 2026-08-29 by tools/coverage-report.mjs
-# These block GE/trade/shop until the player obtains one.
-# To add fabrication gates, extend generate-rules.mjs or overrides.json.
+# These block GE/trade/shop until the player obtains one (non-equippable unmapped items).
+# Equippable unmapped GE gear trades freely. To add fabrication gates, extend
+# generate-rules.mjs or overrides.json.
 
 3rd age amulet
 3rd age axe
