@@ -29,7 +29,7 @@ const items = [];
 /**
  * @param display   in-game item name
  * @param itemClass FABRICABLE | GATHERABLE | DROP_ONLY | REWARD_ONLY | FREE
- * @param consume   FOOD | POTION | AMMO | RUNE | CHARGED | EQUIPMENT | TOOL | NONE
+ * @param consume   FOOD | POTION | AMMO | RUNE | CHARGED | EQUIPMENT | ELEMENTAL_STAFF | TOOL | NONE
  * @param reqs      [[skill, level], ...] or [[skill, level, "ACTIVATE"]] -- all must be
  *                  met. An ACTIVATE-scoped requirement guards spending the item's charge
  *                  rather than wearing or holding it, so an amulet of glory carries
@@ -58,6 +58,14 @@ function rule(display, itemClass, consume, reqs, source, opts = {}) {
 // scimitar offset of 5 gives the 90 in the brief.
 const METALS = { Bronze: 1, Iron: 15, Steel: 30, Mithril: 50, Adamant: 70, Rune: 85 };
 
+const METAL_ATTACK = { Bronze: 1, Iron: 1, Steel: 5, Mithril: 20, Adamant: 30, Rune: 40 };
+const METAL_DEFENCE = { Bronze: 1, Iron: 1, Steel: 5, Mithril: 20, Adamant: 30, Rune: 40 };
+const TOOL_SKILL = { Bronze: 1, Iron: 1, Steel: 6, Mithril: 21, Adamant: 31, Rune: 41 };
+
+const ARMOUR_SHAPES = new Set([
+  "med helm", "full helm", "chainbody", "platelegs", "plateskirt", "platebody", "kiteshield", "sq shield",
+]);
+
 const SHAPES = {
   dagger: 0, axe: 1, mace: 2, "med helm": 3, sword: 4, scimitar: 5, longsword: 6,
   "full helm": 7, "sq shield": 8, warhammer: 9, battleaxe: 10, chainbody: 11,
@@ -76,7 +84,16 @@ for (const [metal, base] of Object.entries(METALS)) {
     // Rune platebody computes to 103 on the raw ladder; the game caps it at 99.
     const level = Math.min(base + offset, 99);
     const consume = shape === "axe" ? "TOOL" : "EQUIPMENT";
-    rule(`${metal} ${shape}`, "FABRICABLE", consume, [["SMITHING", level]], "Smithing");
+    const reqs = [["SMITHING", level]];
+    if (shape === "axe") {
+      reqs.push(["WOODCUTTING", TOOL_SKILL[metal], "USE"]);
+      reqs.push(["ATTACK", METAL_ATTACK[metal], "WIELD"]);
+    } else if (ARMOUR_SHAPES.has(shape)) {
+      reqs.push(["DEFENCE", METAL_DEFENCE[metal], "WIELD"]);
+    } else {
+      reqs.push(["ATTACK", METAL_ATTACK[metal], "WIELD"]);
+    }
+    rule(`${metal} ${shape}`, "FABRICABLE", consume, reqs, "Smithing");
   }
 }
 
@@ -307,6 +324,15 @@ for (const [staff, crafting, magic] of BATTLESTAVES) {
   rule(staff, "FABRICABLE", "EQUIPMENT", [["CRAFTING", crafting], ["MAGIC", magic]], "Crafting + Charge orb");
 }
 
+// Basic elemental staves supply runes on autocast. Wield gates on RC when runes are gated:
+// Air uses 2 (Wind Strike needs Mind rune), not 1 (Air rune alone).
+const ELEMENTAL_STAVES = [
+  ["Staff of air", 2], ["Staff of water", 5], ["Staff of earth", 9], ["Staff of fire", 14],
+];
+for (const [staff, level] of ELEMENTAL_STAVES) {
+  rule(staff, "FREE", "ELEMENTAL_STAFF", [["RUNECRAFT", level, "WIELD"]], "Runecrafting");
+}
+
 // ------------------------------------------------------------------------- free
 
 // No fabrication route and no natural level. Open on both gates by default, and the
@@ -325,8 +351,8 @@ for (const name of FREE) {
 
 // ------------------------------------------------------------------------ spells
 
-// Gating happens at the cast, not at the rune item: an elemental staff supplies runes
-// you never owned, and gating the item alone would let a staff launder the rule.
+// Cast gating blocks the spellbook; basic elemental staves are gated separately on wield
+// (see ELEMENTAL_STAVES above) because autocast selection bypasses menu hooks.
 const spells = [];
 
 function spell(name, runes, utility = false) {

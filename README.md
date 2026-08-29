@@ -111,6 +111,8 @@ level per gem per slot — so the generator encodes the ladders and expands them
 ```sh
 node tools/generate-rules.mjs            # writes src/main/resources/com/leadman/leadman-rules.json
 node tools/generate-rules.mjs --verify   # also checks every name against the live wiki item mapping
+node tools/fetch-ge-tradeables.mjs       # refreshes ge-tradeables.json from the wiki prices API
+node tools/coverage-report.mjs           # GE items without a rule -> docs/ge-unmapped.txt
 ```
 
 `--verify` fetches the OSRS Wiki prices API item mapping and reports any generated name
@@ -173,8 +175,7 @@ Things the review will care about, and where this plugin stands:
 src/main/java/com/leadman/
   LeadmanPlugin.java      event wiring, menu blocking, GE filtering, ground items
   LeadmanConfig.java      the config surface
-  LeadmanMode.java        Bronzeman+ / Standard / Strict
-  rules/                  the ruleset model and its loader
+  rules/                  the ruleset model, TradeableIndex, loader
   unlock/UnlockService    the gate engine -- everything resolves through here
   ui/                     unlock popup and the sidebar panel
 src/test/java/com/leadman/
@@ -209,22 +210,15 @@ dead menu entry reads as a bug.
 
 ## Status
 
-Implemented and building against RuneLite 1.12.37, with 15 passing tests.
+Implemented and building against RuneLite 1.12.37, with **22** passing tests.
 
-The two-gate engine, the ruleset loader with overrides, GE search filtering, menu blocking
-for use/trade/cast/charge/take/player-trade, ground-item ownership checks, obtain detection
-with the shop carve-out, batched unlock popups, per-account persistence, the sidebar
-browser and the custom rule editor.
+Phases A–D are in place: two-gate engine, GE filtering, menu blocking for trade/shop/use/eat/drink/wield/bury/teleport, elemental staff gates, sidebar browser, per-action custom rule editor.
 
-Not yet mapped, tracked in `overrides.json`: cannonball tiers above steel, teleport
-tablets, crossbows and bolt tips, and quest-completion `ACTIVITY` paths. Barrows, God Wars
-and boss uniques are intentionally absent — with no recipe they fall through to drop
-unlocks, which is the correct behaviour.
+**Before launch:** verify shop buy in-game (Chaos rune test), expand fabrication coverage where needed. See [`docs/ROADMAP.md`](docs/ROADMAP.md) for the test checklist and Phase E/F tasks.
 
-One design question in [`docs/DESIGN.md` §11](docs/DESIGN.md) is still open: the
-quest-item allowlist. `questItemBypass` is on by default but the list behind it is empty,
-so nothing bypasses anything yet — a quest that hands you a gated item and asks you to
-consume it can still stall.
+**Coverage:** ~424 item rules cover fabrication ladders; ~3986 other GE tradeables block until obtained (by design). Run `node tools/coverage-report.mjs` for the full list.
+
+Not yet mapped, tracked in `overrides.json` and DESIGN.md: cannonball tiers above steel, teleport tablets, crossbows and bolt tips, quest `ACTIVITY` paths.
 
 ## License
 

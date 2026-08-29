@@ -1,40 +1,37 @@
 package com.leadman.ui;
 
 import com.leadman.LeadmanConfig;
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import net.runelite.client.game.ItemManager;
-import net.runelite.client.ui.overlay.Overlay;
+import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.OverlayLayer;
+import net.runelite.client.ui.overlay.OverlayPanel;
 import net.runelite.client.ui.overlay.OverlayPosition;
 
 /**
- * The unlock popup, in the shape Bronzeman and the collection log use: item sprite on
- * the left, two lines of text on the right, one at a time from a queue.
- *
- * <p>Level-ups are batched upstream, so this never has to show fourteen popups in a row.
+ * Unlock popup drawn manually so the backdrop always matches the text width at any
+ * client scale (OverlayPanel/SplitComponent sizing was consistently too narrow).
  */
 @Singleton
-public class LeadmanOverlay extends Overlay
+public class LeadmanOverlay extends OverlayPanel
 {
-	private static final int WIDTH = 232;
-	private static final int HEIGHT = 46;
-	private static final int ICON = 32;
-	private static final int PAD = 7;
-
 	private static final Color BACKDROP = new Color(24, 28, 34, 226);
-	private static final Color EDGE = new Color(155, 116, 43);
 	private static final Color TITLE = new Color(226, 174, 74);
 	private static final Color BODY = new Color(219, 224, 232);
+	private static final int H_PAD = 12;
+	private static final int V_PAD = 8;
+	private static final int ICON = 32;
+	private static final int GAP = 10;
+	private static final int MIN_TEXT_WIDTH = 160;
 
 	private final ItemManager itemManager;
 	private final LeadmanConfig config;
@@ -49,7 +46,7 @@ public class LeadmanOverlay extends Overlay
 
 		setPosition(OverlayPosition.TOP_CENTER);
 		setLayer(OverlayLayer.ABOVE_WIDGETS);
-		setPriority(Overlay.PRIORITY_HIGH);
+		setPriority(PRIORITY_HIGH);
 	}
 
 	public void push(UnlockNotification notification)
@@ -68,7 +65,7 @@ public class LeadmanOverlay extends Overlay
 	}
 
 	@Override
-	public Dimension render(Graphics2D g)
+	public Dimension render(Graphics2D graphics)
 	{
 		if (!config.showPopup())
 		{
@@ -89,63 +86,44 @@ public class LeadmanOverlay extends Overlay
 			return null;
 		}
 
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+		Font titleFont = FontManager.getRunescapeBoldFont();
+		Font bodyFont = FontManager.getRunescapeSmallFont();
+		FontMetrics titleFm = graphics.getFontMetrics(titleFont);
+		FontMetrics bodyFm = graphics.getFontMetrics(bodyFont);
 
-		g.setColor(BACKDROP);
-		g.fillRect(0, 0, WIDTH, HEIGHT);
+		int textWidth = Math.max(MIN_TEXT_WIDTH, Math.max(
+			titleFm.stringWidth(current.getTitle()),
+			bodyFm.stringWidth(current.getSubtitle())));
+		int textHeight = titleFm.getHeight() + 3 + bodyFm.getHeight();
+		boolean hasIcon = current.getItemId() > 0;
+		int iconBlock = hasIcon ? ICON + GAP : 0;
+		int totalWidth = H_PAD * 2 + iconBlock + textWidth;
+		int totalHeight = V_PAD * 2 + Math.max(hasIcon ? ICON : 0, textHeight);
 
-		g.setStroke(new BasicStroke(1f));
-		g.setColor(EDGE);
-		g.drawRect(0, 0, WIDTH - 1, HEIGHT - 1);
+		graphics.setColor(BACKDROP);
+		graphics.fillRoundRect(0, 0, totalWidth, totalHeight, 6, 6);
 
-		if (current.getItemId() > 0)
+		int textX = H_PAD + iconBlock;
+		int textY = V_PAD;
+
+		if (hasIcon)
 		{
-			Image sprite = itemManager.getImage(current.getItemId());
-			if (sprite != null)
-			{
-				int y = (HEIGHT - ICON) / 2;
-				g.drawImage(sprite, PAD, y, null);
-			}
+			BufferedImage image = itemManager.getImage(current.getItemId());
+			int iconY = textY + (textHeight - ICON) / 2;
+			graphics.drawImage(image, H_PAD, iconY, ICON, ICON, null);
 		}
 
-		int textX = PAD + ICON + PAD;
+		graphics.setFont(titleFont);
+		graphics.setColor(TITLE);
+		graphics.drawString(current.getTitle(), textX, textY + titleFm.getAscent());
 
-		Font base = g.getFont();
-		g.setFont(base.deriveFont(Font.BOLD, 12f));
-		g.setColor(TITLE);
-		g.drawString(fit(g, current.getTitle(), WIDTH - textX - PAD), textX, 20);
+		graphics.setFont(bodyFont);
+		graphics.setColor(BODY);
+		graphics.drawString(
+			current.getSubtitle(),
+			textX,
+			textY + titleFm.getHeight() + 3 + bodyFm.getAscent());
 
-		g.setFont(base.deriveFont(Font.PLAIN, 12f));
-		g.setColor(BODY);
-		g.drawString(fit(g, current.getSubtitle(), WIDTH - textX - PAD), textX, 35);
-
-		g.setFont(base);
-
-		return new Dimension(WIDTH, HEIGHT);
-	}
-
-	private static String fit(Graphics2D g, String text, int maxWidth)
-	{
-		if (text == null)
-		{
-			return "";
-		}
-		if (g.getFontMetrics().stringWidth(text) <= maxWidth)
-		{
-			return text;
-		}
-		String ellipsis = "...";
-		int limit = maxWidth - g.getFontMetrics().stringWidth(ellipsis);
-		StringBuilder sb = new StringBuilder();
-		for (char c : text.toCharArray())
-		{
-			if (g.getFontMetrics().stringWidth(sb.toString() + c) > limit)
-			{
-				break;
-			}
-			sb.append(c);
-		}
-		return sb + ellipsis;
+		return new Dimension(totalWidth, totalHeight);
 	}
 }

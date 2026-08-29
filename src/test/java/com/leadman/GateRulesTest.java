@@ -2,6 +2,7 @@ package com.leadman;
 
 import com.google.gson.Gson;
 import com.leadman.rules.RuleRepository;
+import com.leadman.rules.TradeableIndex;
 import com.leadman.unlock.CustomRule;
 import com.leadman.unlock.UnlockService;
 import java.util.Collections;
@@ -30,6 +31,7 @@ public class GateRulesTest
 	private final Map<Skill, Integer> levels = new EnumMap<>(Skill.class);
 
 	private TestConfig config;
+	private TradeableIndex tradeables;
 	private UnlockService service;
 
 	@Before
@@ -46,9 +48,13 @@ public class GateRulesTest
 		rules.load();
 
 		config = new TestConfig();
-		// ItemManager is only touched by the id-based lookups; these tests address rules
-		// by their canonical key, so it is never dereferenced.
-		service = new UnlockService(client, null, rules, config, gson);
+		tradeables = mock(TradeableIndex.class);
+		when(tradeables.isGeTradeableKey(any())).thenAnswer(inv -> {
+			String key = inv.getArgument(0);
+			return "abyssal whip".equals(key) || "big bones".equals(key);
+		});
+
+		service = new UnlockService(client, null, rules, tradeables, config, gson);
 		service.reloadCustomRules();
 	}
 
@@ -63,10 +69,11 @@ public class GateRulesTest
 	public void runeScimitarIsTradeGatedButFreelyWielded()
 	{
 		level(Skill.SMITHING, 89);
+		level(Skill.ATTACK, 40);
 		assertFalse("90 Smithing not reached, so it cannot be traded",
 			service.canTradeKey("rune scimitar"));
-		assertTrue("equipment is not use-gated: 40 Attack already allows the wield",
-			service.canUseKey("rune scimitar"));
+		assertTrue("40 Attack satisfies the wield requirement",
+			service.canWieldKey("rune scimitar"));
 
 		level(Skill.SMITHING, 90);
 		assertTrue(service.canTradeKey("rune scimitar"));
@@ -76,10 +83,10 @@ public class GateRulesTest
 	public void cookedSwordfishNeedsCookingToEat()
 	{
 		level(Skill.COOKING, 44);
-		assertFalse(service.canUseKey("swordfish"));
+		assertFalse(service.canEatKey("swordfish"));
 
 		level(Skill.COOKING, 45);
-		assertTrue(service.canUseKey("swordfish"));
+		assertTrue(service.canEatKey("swordfish"));
 	}
 
 	@Test
@@ -94,18 +101,58 @@ public class GateRulesTest
 	}
 
 	@Test
-	public void lootedPotionIsTradeableButNotDrinkable()
+	public void lootedPotionIsNotTradeableOrDrinkableWithoutHerblore()
 	{
 		level(Skill.HERBLORE, 40);
 		service.getState().getObtained().add("saradomin brew");
 
-		assertTrue("obtaining one unlocks the Grand Exchange",
+		assertFalse("obtaining one does not bypass the fabrication gate",
 			service.canTradeKey("saradomin brew"));
-		assertFalse("but obtaining never grants the right to drink it",
-			service.canUseKey("saradomin brew"));
+		assertFalse("obtaining never grants the right to drink it",
+			service.canDrinkKey("saradomin brew"));
 
 		level(Skill.HERBLORE, 81);
-		assertTrue(service.canUseKey("saradomin brew"));
+		assertTrue(service.canTradeKey("saradomin brew"));
+		assertTrue(service.canDrinkKey("saradomin brew"));
+	}
+
+	@Test
+	public void equippedPlateskirtDoesNotBypassSmithingTradeGate()
+	{
+		level(Skill.DEFENCE, 40);
+		level(Skill.SMITHING, 50);
+		service.getState().getObtained().add("rune plateskirt");
+
+		assertFalse("99 Smithing is required to trade even when worn",
+			service.canTradeKey("rune plateskirt"));
+		assertTrue("40 Defence satisfies the wield requirement",
+			service.canWieldKey("rune plateskirt"));
+
+		level(Skill.SMITHING, 99);
+		assertTrue(service.canTradeKey("rune plateskirt"));
+	}
+
+	@Test
+	public void elementalStaffRequiresRunecraftingToWieldWhenRuneGateOn()
+	{
+		config.runes = true;
+		level(Skill.RUNECRAFT, 1);
+		assertFalse(service.canWieldKey("staff of air"));
+
+		service.getState().getObtained().add("staff of air");
+		assertTrue("obtain-one unlocks GE trade on a FREE staff", service.canTradeKey("staff of air"));
+		assertFalse("but wield still needs Runecrafting 2", service.canWieldKey("staff of air"));
+
+		level(Skill.RUNECRAFT, 2);
+		assertTrue(service.canWieldKey("staff of air"));
+	}
+
+	@Test
+	public void elementalStaffWieldIsFreeWhenRuneGateOff()
+	{
+		config.runes = false;
+		level(Skill.RUNECRAFT, 1);
+		assertTrue(service.canWieldKey("staff of air"));
 	}
 
 	@Test
@@ -185,28 +232,32 @@ public class GateRulesTest
 		assertFalse("the Magic gate still holds", service.canActivateKey("amulet of glory"));
 	}
 
-	// ------------------------------------------------------------------- the modes
-
 	@Test
-	public void bronzemanPlusDropsEveryUseGate()
+	public void allUseGatesOffAllowsEatingAndWearingWithoutSkill()
 	{
-		config.mode = LeadmanMode.BRONZEMAN_PLUS;
+		config.food = false;
+		config.potions = false;
+		config.jewel = false;
+		config.charged = false;
 		level(Skill.COOKING, 1);
 		level(Skill.CRAFTING, 1);
 
-		assertTrue(service.canUseKey("swordfish"));
+		assertTrue(service.canEatKey("swordfish"));
 		assertTrue(service.canUseKey("amulet of glory"));
 		assertFalse("trade is still gated", service.canTradeKey("swordfish"));
 	}
 
 	@Test
-	public void strictModeGatesEquipmentAndTools()
+	public void equipmentAndToolGatesApplyWhenToggledOn()
 	{
-		config.mode = LeadmanMode.STRICT;
+		config.equipment = true;
+		config.tools = true;
+		level(Skill.ATTACK, 40);
+		level(Skill.WOODCUTTING, 41);
 
 		level(Skill.SMITHING, 85);
-		assertFalse("rune scimitar is 90 Smithing", service.canUseKey("rune scimitar"));
-		assertFalse("rune axe is 86 Smithing", service.canUseKey("rune axe"));
+		assertFalse("rune scimitar is 90 Smithing to use under equipment gate", service.canUseKey("rune scimitar"));
+		assertFalse("rune axe is 86 Smithing to use under tool gate", service.canUseKey("rune axe"));
 
 		level(Skill.SMITHING, 86);
 		assertTrue("the axe unlocks first", service.canUseKey("rune axe"));
@@ -216,15 +267,75 @@ public class GateRulesTest
 		assertTrue(service.canUseKey("rune scimitar"));
 	}
 
+	@Test
+	public void mithrilAxeSeparatesTradeUseAndWield()
+	{
+		level(Skill.SMITHING, 50);
+		level(Skill.ATTACK, 20);
+		level(Skill.WOODCUTTING, 21);
+
+		assertFalse(service.canTradeKey("mithril axe"));
+		assertTrue(service.canWieldKey("mithril axe"));
+		assertTrue(service.canUseKey("mithril axe"));
+
+		level(Skill.WOODCUTTING, 20);
+		assertFalse("Woodcutting 21 is required to use the axe", service.canUseKey("mithril axe"));
+
+		level(Skill.SMITHING, 51);
+		assertTrue(service.canTradeKey("mithril axe"));
+	}
+
+	@Test
+	public void shopRequiresFabricationWithoutObtainBypass()
+	{
+		level(Skill.SMITHING, 89);
+		service.getState().getObtained().add("rune scimitar");
+		assertFalse(service.canShopKey("rune scimitar"));
+		assertFalse("obtain-one does not bypass fabrication for trade either", service.canTradeKey("rune scimitar"));
+
+		level(Skill.SMITHING, 90);
+		assertTrue(service.canShopKey("rune scimitar"));
+		assertTrue(service.canTradeKey("rune scimitar"));
+	}
+
+	@Test
+	public void chaosRuneShopRequiresRunecrafting35()
+	{
+		level(Skill.RUNECRAFT, 1);
+		assertFalse(service.canShopKey("chaos rune"));
+
+		level(Skill.RUNECRAFT, 35);
+		assertTrue(service.canShopKey("chaos rune"));
+	}
+
 	// ------------------------------------------------------------- unmapped & custom
 
 	@Test
-	public void unmappedItemsAreOpenOnBothGates()
+	public void unmappedGeTradeablesBlockedUntilObtained()
 	{
+		assertFalse("unmapped GE items are blocked until obtained",
+			service.canTradeKey("abyssal whip"));
+		assertTrue("use stays open on unmapped drops", service.canUseKey("abyssal whip"));
+
+		service.getState().getObtained().add("abyssal whip");
 		assertTrue(service.canTradeKey("abyssal whip"));
-		assertTrue(service.canUseKey("abyssal whip"));
-		assertTrue(service.canTradeKey("big bones"));
-		assertTrue(service.canUseKey("big bones"));
+	}
+
+	@Test
+	public void customRuleCanGateBurySeparately()
+	{
+		level(Skill.PRAYER, 29);
+		assertTrue(service.canBuryKey("big bones"));
+
+		CustomRule rule = new CustomRule();
+		rule.setItem("Big bones");
+		rule.setGateBury(true);
+		rule.setBuryReqs(Collections.singletonList(new com.leadman.rules.Requirement(Skill.PRAYER, 30)));
+		service.setCustomRules(Collections.singletonList(rule));
+
+		assertFalse(service.canBuryKey("big bones"));
+		level(Skill.PRAYER, 30);
+		assertTrue(service.canBuryKey("big bones"));
 	}
 
 	@Test
@@ -277,7 +388,6 @@ public class GateRulesTest
 	 */
 	private static final class TestConfig implements LeadmanConfig
 	{
-		private LeadmanMode mode = LeadmanMode.STANDARD;
 		private Boolean food;
 		private Boolean potions;
 		private Boolean jewel;
@@ -287,12 +397,6 @@ public class GateRulesTest
 		private Boolean equipment;
 		private Boolean tools;
 		private String custom = "[]";
-
-		@Override
-		public LeadmanMode mode()
-		{
-			return mode;
-		}
 
 		@Override
 		public boolean gateFood()

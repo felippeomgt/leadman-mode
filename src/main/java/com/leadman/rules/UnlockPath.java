@@ -1,5 +1,6 @@
 package com.leadman.rules;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,14 +51,28 @@ public class UnlockPath
 	/** Human readable requirement line, e.g. "Crafting 80 + Magic 68". */
 	public String describe()
 	{
+		return describeTrade();
+	}
+
+	/** Trade and shop requirements only. */
+	public String describeTrade()
+	{
 		if (getType() == PathType.ACTIVITY)
 		{
 			return source != null ? source : String.valueOf(activity);
 		}
-		if (getReqs().isEmpty())
+		List<Requirement> tradeReqs = new ArrayList<>();
+		for (Requirement req : getReqs())
 		{
-			return "no requirement";
+			if (req.isTradeOnly() || req.isActivateOnly())
+			{
+				tradeReqs.add(req);
+			}
 		}
-		return getReqs().stream().map(Requirement::toString).collect(Collectors.joining(" + "));
+		if (tradeReqs.isEmpty())
+		{
+			return "";
+		}
+		return tradeReqs.stream().map(Requirement::toString).collect(Collectors.joining(" + "));
 	}
 }

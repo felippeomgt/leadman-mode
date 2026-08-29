@@ -5,6 +5,7 @@
     "Cannonballs are tiered by metal (bronze/iron/steel/mithril/adamant/rune/dragon) plus chainshot and incendiary variants. Only the steel level (35 Smithing) is confirmed; add the rest here once verified against the wiki.",
     "Teleport tablets need the spell's Magic level plus the lectern's Construction level. Not yet mapped.",
     "Crossbows, bolt tips and enchanted bolts are not yet mapped.",
+    "Basic elemental staves (Staff of air/water/earth/fire) are mapped in leadman-rules.json with Runecrafting WIELD gates when runes are gated.",
     "Quest reward items need ACTIVITY paths keyed to quest completion flags.",
     "Barrows, God Wars and boss uniques are intentionally absent: with no recipe they fall through to DROP_ONLY, which unlocks on obtain."
   ],

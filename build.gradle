@@ -45,10 +45,18 @@ application {
 
 tasks.named('run', JavaExec) {
     classpath = sourceSets.test.runtimeClasspath
+    jvmArgs '-ea'
 }
 
 tasks.named('test', Test) {
     testLogging {
         events 'passed', 'failed', 'skipped'
     }
+}
+
+tasks.register('coverageReport', Exec) {
+    group = 'leadman'
+    description = 'Lists GE tradeables without a generated item rule (docs/ge-unmapped.txt)'
+    commandLine 'node', 'tools/coverage-report.mjs'
+    workingDir = projectDir
 }

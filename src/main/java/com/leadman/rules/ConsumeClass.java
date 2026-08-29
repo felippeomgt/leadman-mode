@@ -27,6 +27,11 @@ public enum ConsumeClass
 	CHARGED,
 	/** Permanent weapons, armour and shields. Wielding costs nothing. */
 	EQUIPMENT,
+	/**
+	 * Basic elemental staves. Wielding supplies runes, so the RC level for that element
+	 * gates wield when {@link com.leadman.LeadmanConfig#gateRunes()} is on.
+	 */
+	ELEMENTAL_STAFF,
 	/** Axes, pickaxes, harpoons, knives, needles, hammers. */
 	TOOL,
 	/** Materials and everything else. Never USE-gated. */

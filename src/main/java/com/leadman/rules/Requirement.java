@@ -51,6 +51,43 @@ public class Requirement
 		return "ACTIVATE".equalsIgnoreCase(scope);
 	}
 
+	/** True when this requirement guards using a tool (e.g. Woodcutting to chop). */
+	public boolean isUseOnly()
+	{
+		return "USE".equalsIgnoreCase(scope);
+	}
+
+	/** True when this requirement guards wielding equipment (e.g. Attack to wield). */
+	public boolean isWieldOnly()
+	{
+		return "WIELD".equalsIgnoreCase(scope);
+	}
+
+	/** True when this requirement guards eating food. */
+	public boolean isEatOnly()
+	{
+		return "EAT".equalsIgnoreCase(scope);
+	}
+
+	/** True when this requirement guards drinking a potion. */
+	public boolean isDrinkOnly()
+	{
+		return "DRINK".equalsIgnoreCase(scope);
+	}
+
+	/** True when this requirement guards burying bones or ashes. */
+	public boolean isBuryOnly()
+	{
+		return "BURY".equalsIgnoreCase(scope);
+	}
+
+	/** True when this requirement is part of the fabrication / trade recipe. */
+	public boolean isTradeOnly()
+	{
+		return scope == null || scope.isEmpty()
+			|| "TRADE".equalsIgnoreCase(scope);
+	}
+
 	/**
 	 * @return the resolved skill, or null if the rules file names a skill this client
 	 * does not know about (new skill, typo, or a renamed enum constant).

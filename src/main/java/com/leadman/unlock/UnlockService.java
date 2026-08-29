@@ -11,6 +11,7 @@ import com.leadman.rules.PathType;
 import com.leadman.rules.Requirement;
 import com.leadman.rules.RuleRepository;
 import com.leadman.rules.SpellRule;
+import com.leadman.rules.TradeableIndex;
 import com.leadman.rules.UnlockPath;
 import java.io.File;
 import java.io.IOException;
@@ -40,11 +41,11 @@ import net.runelite.client.game.ItemManager;
  *
  * <p>Two independent gates, per docs/DESIGN.md section 1:
  * <pre>
- * tradeUnlocked = fabricable OR everObtained OR unmapped
- * useUnlocked   = fabricable OR no skill path
+ * tradeUnlocked = fabricable OR (everObtained AND no skill path)
+ * useUnlocked   = fabricable OR no skill path (per gate toggles)
  * </pre>
- * {@code everObtained} appears in the first and not the second on purpose: looting an
- * item never grants the right to use it.
+ * {@code everObtained} only bypasses trade for drop-only items. Looting a smithable
+ * plate does not unlock the Grand Exchange; it never grants the right to use it either.
  */
 @Slf4j
 @Singleton
@@ -54,18 +55,10 @@ public class UnlockService
 	{
 	}.getType();
 
-	private static final String[] STARTER_ITEMS = {
-		"bronze dagger", "bronze axe", "bronze pickaxe", "bronze sword", "bronze scimitar",
-		"bronze med helm", "bronze full helm", "bronze platebody", "bronze platelegs",
-		"bronze kiteshield", "bronze arrow", "shortbow", "iron dagger", "iron axe",
-		"iron pickaxe", "iron scimitar", "iron arrow", "shrimps", "anchovies", "bread",
-		"air rune", "mind rune", "water rune", "earth rune", "fire rune", "body rune",
-		"staff of air", "staff of water", "staff of earth", "staff of fire"
-	};
-
 	private final Client client;
 	private final ItemManager itemManager;
 	private final RuleRepository rules;
+	private final TradeableIndex tradeableIndex;
 	private final LeadmanConfig config;
 	private final Gson gson;
 
@@ -78,16 +71,14 @@ public class UnlockService
 	/** Rule keys currently fabricable. Diffed on level-up to find new unlocks. */
 	private Set<String> satisfied = new HashSet<>();
 
-	/** Items the active quest bypass currently permits, keyed by normalised name. */
-	private Set<String> questBypass = new HashSet<>();
-
 	@Inject
 	public UnlockService(Client client, ItemManager itemManager, RuleRepository rules,
-						 LeadmanConfig config, Gson gson)
+						 TradeableIndex tradeableIndex, LeadmanConfig config, Gson gson)
 	{
 		this.client = client;
 		this.itemManager = itemManager;
 		this.rules = rules;
+		this.tradeableIndex = tradeableIndex;
 		this.config = config;
 		this.gson = gson;
 	}
@@ -120,11 +111,6 @@ public class UnlockService
 			{
 				log.warn("Leadman: could not read {}, starting a fresh profile", stateFile, e);
 			}
-		}
-
-		if (config.starterKit() && !state.isSeeded())
-		{
-			Collections.addAll(state.getObtained(), STARTER_ITEMS);
 		}
 
 		reloadCustomRules();
@@ -187,6 +173,31 @@ public class UnlockService
 		return new ArrayList<>(customRules.values());
 	}
 
+	public CustomRule getCustomRule(String key)
+	{
+		return customRules.get(key);
+	}
+
+	public void upsertCustomRule(CustomRule rule)
+	{
+		if (!rule.hasAnyGate())
+		{
+			removeCustomRule(rule.getKey());
+			return;
+		}
+		List<CustomRule> all = new ArrayList<>(customRules.values());
+		all.removeIf(r -> r.getKey().equals(rule.getKey()));
+		all.add(rule);
+		setCustomRules(all);
+	}
+
+	public void removeCustomRule(String key)
+	{
+		List<CustomRule> all = new ArrayList<>(customRules.values());
+		all.removeIf(r -> r.getKey().equals(key));
+		setCustomRules(all);
+	}
+
 	public void setCustomRules(List<CustomRule> list)
 	{
 		config.setCustomRules(gson.toJson(list));
@@ -229,7 +240,13 @@ public class UnlockService
 		{
 			// A custom rule is a deliberate hard lock. Obtaining the item does not
 			// satisfy it, or "bones require 30 Prayer" would be defeated by one drop.
-			return meets(custom.getReqs());
+			return meets(custom.getTradeReqs());
+		}
+
+		ItemRule rule = rules.forName(key);
+		if (rule != null && rule.hasSkillPath())
+		{
+			return satisfies(rule);
 		}
 
 		if (state.getObtained().contains(key))
@@ -237,12 +254,186 @@ public class UnlockService
 			return true;
 		}
 
+		if (rule == null)
+		{
+			if (!tradeableIndex.isGeTradeableKey(key))
+			{
+				return true;
+			}
+			return false;
+		}
+		return satisfies(rule);
+	}
+
+	public boolean canShopKey(String key)
+	{
+		if (key.isEmpty())
+		{
+			return true;
+		}
+
+		CustomRule custom = customRules.get(key);
+		if (custom != null && custom.isGateShop())
+		{
+			return meets(custom.getShopReqs());
+		}
+
+		if (custom != null && custom.isGateTrade())
+		{
+			return meets(custom.getTradeReqs());
+		}
+
+		ItemRule rule = rules.forName(key);
+		if (rule != null && rule.hasSkillPath())
+		{
+			return satisfies(rule);
+		}
+
+		if (rule == null)
+		{
+			if (!tradeableIndex.isGeTradeableKey(key))
+			{
+				return true;
+			}
+			return false;
+		}
+		return true;
+	}
+
+	public boolean canWield(int itemId)
+	{
+		return canWieldKey(keyFor(itemId));
+	}
+
+	public boolean canWieldKey(String key)
+	{
+		if (key.isEmpty())
+		{
+			return true;
+		}
+
+		CustomRule custom = customRules.get(key);
+		if (custom != null && custom.isGateWield())
+		{
+			return meets(custom.getWieldReqs());
+		}
+
 		ItemRule rule = rules.forName(key);
 		if (rule == null)
 		{
 			return true;
 		}
-		return satisfies(rule);
+
+		List<Requirement> wieldReqs = wieldRequirements(rule);
+		if (!wieldReqs.isEmpty() && wieldGateApplies(rule))
+		{
+			return meets(wieldReqs);
+		}
+
+		ConsumeClass consume = rule.getConsume();
+		if (!wearGateApplies(consume) || consume == ConsumeClass.FOOD || consume == ConsumeClass.POTION)
+		{
+			return true;
+		}
+
+		if (!rule.hasSkillPath())
+		{
+			return true;
+		}
+
+		return satisfies(rule, ReqFilter.WEAR);
+	}
+
+	public boolean canEat(int itemId)
+	{
+		return canEatKey(keyFor(itemId));
+	}
+
+	public boolean canEatKey(String key)
+	{
+		if (key.isEmpty())
+		{
+			return true;
+		}
+
+		CustomRule custom = customRules.get(key);
+		if (custom != null && custom.isGateEat())
+		{
+			return meets(custom.getEatReqs());
+		}
+
+		ItemRule rule = rules.forName(key);
+		if (rule == null || rule.getConsume() != ConsumeClass.FOOD)
+		{
+			return true;
+		}
+
+		if (!config.gateFood() || !rule.hasSkillPath())
+		{
+			return true;
+		}
+
+		return satisfies(rule, ReqFilter.WEAR);
+	}
+
+	public boolean canDrink(int itemId)
+	{
+		return canDrinkKey(keyFor(itemId));
+	}
+
+	public boolean canDrinkKey(String key)
+	{
+		if (key.isEmpty())
+		{
+			return true;
+		}
+
+		CustomRule custom = customRules.get(key);
+		if (custom != null && custom.isGateDrink())
+		{
+			return meets(custom.getDrinkReqs());
+		}
+
+		ItemRule rule = rules.forName(key);
+		if (rule == null || rule.getConsume() != ConsumeClass.POTION)
+		{
+			return true;
+		}
+
+		if (!config.gatePotions() || !rule.hasSkillPath())
+		{
+			return true;
+		}
+
+		return satisfies(rule, ReqFilter.WEAR);
+	}
+
+	public boolean canBury(int itemId)
+	{
+		return canBuryKey(keyFor(itemId));
+	}
+
+	public boolean canBuryKey(String key)
+	{
+		if (key.isEmpty())
+		{
+			return true;
+		}
+
+		CustomRule custom = customRules.get(key);
+		if (custom != null && custom.isGateBury())
+		{
+			return meets(custom.getBuryReqs());
+		}
+
+		ItemRule rule = rules.forName(key);
+		if (rule == null)
+		{
+			return true;
+		}
+
+		List<Requirement> buryReqs = buryRequirements(rule);
+		return buryReqs.isEmpty() || meets(buryReqs);
 	}
 
 	public boolean canUse(int itemId)
@@ -257,24 +448,44 @@ public class UnlockService
 			return true;
 		}
 
-		if (config.questItemBypass() && questBypass.contains(key))
-		{
-			return true;
-		}
-
 		CustomRule custom = customRules.get(key);
 		if (custom != null && custom.isGateUse())
 		{
-			return meets(custom.getReqs());
+			return meets(custom.getUseReqs());
 		}
 
 		ItemRule rule = rules.forName(key);
-		if (rule == null || !rule.hasSkillPath())
+		if (rule == null)
 		{
 			return true;
 		}
 
 		ConsumeClass consume = rule.getConsume();
+		if (consume == ConsumeClass.FOOD || consume == ConsumeClass.POTION)
+		{
+			List<Requirement> useReqs = useRequirements(rule);
+			return useReqs.isEmpty() || meets(useReqs, ReqFilter.USE);
+		}
+
+		List<Requirement> useReqs = useRequirements(rule);
+		if (!useReqs.isEmpty())
+		{
+			if (!meets(useReqs, ReqFilter.USE))
+			{
+				return false;
+			}
+			if (wearGateApplies(consume))
+			{
+				return satisfies(rule, ReqFilter.WEAR);
+			}
+			return true;
+		}
+
+		if (!rule.hasSkillPath())
+		{
+			return true;
+		}
+
 		if (!wearGateApplies(consume))
 		{
 			return true;
@@ -298,15 +509,21 @@ public class UnlockService
 
 	public boolean canActivateKey(String key)
 	{
+		if (key.isEmpty())
+		{
+			return true;
+		}
+
+		CustomRule custom = customRules.get(key);
+		if (custom != null && custom.isGateActivate())
+		{
+			return meets(custom.getActivateReqs());
+		}
+
 		// You cannot spend a charge on something you are not allowed to hold or wear.
 		if (!canUseKey(key))
 		{
 			return false;
-		}
-
-		if (key.isEmpty() || (config.questItemBypass() && questBypass.contains(key)))
-		{
-			return true;
 		}
 
 		ItemRule rule = rules.forName(key);
@@ -342,7 +559,7 @@ public class UnlockService
 	 */
 	public boolean canCast(String spellName)
 	{
-		if (!runeGateOn() || config.staffLaundering())
+		if (!runeGateOn())
 		{
 			return true;
 		}
@@ -369,15 +586,7 @@ public class UnlockService
 	/** Runes are only use-gated when the player opts in; spells carry Magic levels already. */
 	private boolean runeGateOn()
 	{
-		switch (config.mode())
-		{
-			case BRONZEMAN_PLUS:
-				return false;
-			case STRICT:
-				return true;
-			default:
-				return config.gateRunes();
-		}
+		return config.gateRunes();
 	}
 
 	/** The first rune of this spell the player cannot craft, for the block message. */
@@ -401,23 +610,26 @@ public class UnlockService
 
 	// ------------------------------------------------------------ gate policy
 
+	/** WIELD-scoped reqs on equipment always apply; elemental staves only when runes are gated. */
+	private boolean wieldGateApplies(ItemRule rule)
+	{
+		if (wieldRequirements(rule).isEmpty())
+		{
+			return false;
+		}
+		if (rule.getConsume() == ConsumeClass.ELEMENTAL_STAFF)
+		{
+			return runeGateOn();
+		}
+		return true;
+	}
+
 	/** Applies to eat, drink, wear and wield. */
 	private boolean wearGateApplies(ConsumeClass consume)
 	{
 		if (consume == ConsumeClass.NONE)
 		{
 			return false;
-		}
-
-		switch (config.mode())
-		{
-			case BRONZEMAN_PLUS:
-				return false;
-			case STRICT:
-				return true;
-			case STANDARD:
-			default:
-				break;
 		}
 
 		switch (consume)
@@ -436,6 +648,8 @@ public class UnlockService
 				return config.gateCharged();
 			case EQUIPMENT:
 				return config.gateEquipment();
+			case ELEMENTAL_STAFF:
+				return runeGateOn();
 			case TOOL:
 				return config.gateTools();
 			default:
@@ -446,16 +660,6 @@ public class UnlockService
 	/** Applies to rubbing, teleporting and anything else that spends a charge. */
 	private boolean activateGateApplies(ConsumeClass consume)
 	{
-		switch (config.mode())
-		{
-			case BRONZEMAN_PLUS:
-				return false;
-			case STRICT:
-				return true;
-			default:
-				break;
-		}
-
 		if (consume == ConsumeClass.JEWELLERY || consume == ConsumeClass.CHARGED)
 		{
 			return config.gateCharged();
@@ -474,15 +678,107 @@ public class UnlockService
 	 */
 	private enum ReqFilter
 	{
-		ALL,
+		/** Trade and shop: every requirement except USE and WIELD. */
+		TRADE,
+		/** Eat, drink, wear jewellery: fabrication reqs without ACTIVATE/USE/WIELD. */
 		WEAR,
-		ACTIVATE
+		/** Tool use: USE-scoped reqs only. */
+		USE,
+		/** Wield weapons and armour: WIELD-scoped reqs only. */
+		WIELD,
+		/** Charge spend: ACTIVATE-scoped reqs only. */
+		ACTIVATE,
+		/** Bury bones or ashes. */
+		BURY
 	}
 
-	/** Trade needs every requirement: you must be able to make the whole item. */
+	/** Trade needs every fabrication requirement: you must be able to make the whole item. */
 	private boolean satisfies(ItemRule rule)
 	{
-		return satisfies(rule, ReqFilter.ALL);
+		return satisfies(rule, ReqFilter.TRADE);
+	}
+
+	private List<Requirement> tradeRequirements(ItemRule rule)
+	{
+		return collectRequirements(rule, ReqFilter.TRADE);
+	}
+
+	private List<Requirement> useRequirements(ItemRule rule)
+	{
+		return collectRequirements(rule, ReqFilter.USE);
+	}
+
+	private List<Requirement> wieldRequirements(ItemRule rule)
+	{
+		return collectRequirements(rule, ReqFilter.WIELD);
+	}
+
+	private List<Requirement> buryRequirements(ItemRule rule)
+	{
+		return collectRequirements(rule, ReqFilter.BURY);
+	}
+
+	private List<Requirement> eatRequirements(ItemRule rule)
+	{
+		if (rule.getConsume() != ConsumeClass.FOOD)
+		{
+			return Collections.emptyList();
+		}
+		return tradeRequirements(rule);
+	}
+
+	private List<Requirement> drinkRequirements(ItemRule rule)
+	{
+		if (rule.getConsume() != ConsumeClass.POTION)
+		{
+			return Collections.emptyList();
+		}
+		return tradeRequirements(rule);
+	}
+
+	private List<Requirement> collectRequirements(ItemRule rule, ReqFilter filter)
+	{
+		List<Requirement> collected = new ArrayList<>();
+		for (UnlockPath path : rule.getPaths())
+		{
+			if (path.getType() != PathType.SKILL)
+			{
+				continue;
+			}
+			for (Requirement req : path.getReqs())
+			{
+				if (matchesFilter(req, filter))
+				{
+					collected.add(req);
+				}
+			}
+			if (!collected.isEmpty())
+			{
+				return collected;
+			}
+		}
+		return collected;
+	}
+
+	private static boolean matchesFilter(Requirement req, ReqFilter filter)
+	{
+		switch (filter)
+		{
+			case TRADE:
+				return req.isTradeOnly() || req.isActivateOnly();
+			case WEAR:
+				return req.isTradeOnly();
+			case USE:
+				return req.isUseOnly();
+			case WIELD:
+				return req.isWieldOnly();
+			case ACTIVATE:
+				return req.isActivateOnly();
+			case BURY:
+				return req.isBuryOnly();
+			default:
+				return false;
+		}
 	}
 
 	private boolean satisfies(ItemRule rule, ReqFilter filter)
@@ -515,25 +811,12 @@ public class UnlockService
 
 	private boolean meets(List<Requirement> reqs)
 	{
-		return meets(reqs, ReqFilter.ALL);
-	}
-
-	private boolean meets(List<Requirement> reqs, ReqFilter filter)
-	{
 		if (reqs.isEmpty())
 		{
 			return true;
 		}
 		for (Requirement req : reqs)
 		{
-			if (filter == ReqFilter.WEAR && req.isActivateOnly())
-			{
-				continue;
-			}
-			if (filter == ReqFilter.ACTIVATE && !req.isActivateOnly())
-			{
-				continue;
-			}
 			Skill skill = req.getSkill();
 			if (skill == null)
 			{
@@ -545,6 +828,164 @@ public class UnlockService
 			}
 		}
 		return true;
+	}
+
+	private boolean meets(List<Requirement> reqs, ReqFilter filter)
+	{
+		boolean matched = false;
+		for (Requirement req : reqs)
+		{
+			if (!matchesFilter(req, filter))
+			{
+				continue;
+			}
+			matched = true;
+			Skill skill = req.getSkill();
+			if (skill == null)
+			{
+				return false;
+			}
+			if (client.getRealSkillLevel(skill) < req.getLevel())
+			{
+				return false;
+			}
+		}
+		return matched;
+	}
+
+	public List<Requirement> displayTradeRequirements(String key)
+	{
+		CustomRule custom = customRules.get(key);
+		if (custom != null && custom.isGateTrade())
+		{
+			return custom.getTradeReqs();
+		}
+		ItemRule rule = rules.forName(key);
+		return rule == null ? Collections.emptyList() : tradeRequirements(rule);
+	}
+
+	public List<Requirement> displayShopRequirements(String key)
+	{
+		CustomRule custom = customRules.get(key);
+		if (custom != null && custom.isGateShop())
+		{
+			return custom.getShopReqs();
+		}
+		if (custom != null && custom.isGateTrade())
+		{
+			return custom.getTradeReqs();
+		}
+		return displayTradeRequirements(key);
+	}
+
+	public List<Requirement> displayEatRequirements(String key)
+	{
+		CustomRule custom = customRules.get(key);
+		if (custom != null && custom.isGateEat())
+		{
+			return custom.getEatReqs();
+		}
+		ItemRule rule = rules.forName(key);
+		return rule == null || !config.gateFood() ? Collections.emptyList() : eatRequirements(rule);
+	}
+
+	public List<Requirement> displayDrinkRequirements(String key)
+	{
+		CustomRule custom = customRules.get(key);
+		if (custom != null && custom.isGateDrink())
+		{
+			return custom.getDrinkReqs();
+		}
+		ItemRule rule = rules.forName(key);
+		return rule == null || !config.gatePotions() ? Collections.emptyList() : drinkRequirements(rule);
+	}
+
+	public List<Requirement> displayActivateRequirements(String key)
+	{
+		CustomRule custom = customRules.get(key);
+		if (custom != null && custom.isGateActivate())
+		{
+			return custom.getActivateReqs();
+		}
+		ItemRule rule = rules.forName(key);
+		if (rule == null || !activateGateApplies(rule.getConsume()))
+		{
+			return Collections.emptyList();
+		}
+		return collectRequirements(rule, ReqFilter.ACTIVATE);
+	}
+
+	public List<Requirement> displayBuryRequirements(String key)
+	{
+		CustomRule custom = customRules.get(key);
+		if (custom != null && custom.isGateBury())
+		{
+			return custom.getBuryReqs();
+		}
+		ItemRule rule = rules.forName(key);
+		return rule == null ? Collections.emptyList() : buryRequirements(rule);
+	}
+
+	public List<Requirement> displayUseRequirements(String key)
+	{
+		CustomRule custom = customRules.get(key);
+		if (custom != null && custom.isGateUse())
+		{
+			return custom.getUseReqs();
+		}
+		ItemRule rule = rules.forName(key);
+		return rule == null ? Collections.emptyList() : useRequirements(rule);
+	}
+
+	public List<Requirement> displayWieldRequirements(String key)
+	{
+		CustomRule custom = customRules.get(key);
+		if (custom != null && custom.isGateWield())
+		{
+			return custom.getWieldReqs();
+		}
+		ItemRule rule = rules.forName(key);
+		return rule == null ? Collections.emptyList() : wieldRequirements(rule);
+	}
+
+	public boolean meetsTradeRequirements(String key)
+	{
+		return canTradeKey(key);
+	}
+
+	public boolean meetsShopRequirements(String key)
+	{
+		return canShopKey(key);
+	}
+
+	public boolean meetsUseRequirements(String key)
+	{
+		return canUseKey(key);
+	}
+
+	public boolean meetsEatRequirements(String key)
+	{
+		return canEatKey(key);
+	}
+
+	public boolean meetsDrinkRequirements(String key)
+	{
+		return canDrinkKey(key);
+	}
+
+	public boolean meetsWieldRequirements(String key)
+	{
+		return canWieldKey(key);
+	}
+
+	public boolean meetsActivateRequirements(String key)
+	{
+		return canActivateKey(key);
+	}
+
+	public boolean meetsBuryRequirements(String key)
+	{
+		return canBuryKey(key);
 	}
 
 	/** Why a charge cannot be spent -- the enchant level, not the whole recipe. */
@@ -570,6 +1011,17 @@ public class UnlockService
 		return parts.isEmpty() ? rule.describeRequirements() : String.join(" + ", parts);
 	}
 
+	/** Why an item cannot be wielded, phrased for the chatbox. */
+	public String wieldReason(String key)
+	{
+		List<Requirement> reqs = displayWieldRequirements(key);
+		if (!reqs.isEmpty())
+		{
+			return reqs.stream().map(Requirement::toString).collect(java.util.stream.Collectors.joining(" + "));
+		}
+		return lockReason(key);
+	}
+
 	/** Why an item is locked, phrased for the chatbox. */
 	public String lockReason(String key)
 	{
@@ -580,6 +1032,17 @@ public class UnlockService
 		}
 		ItemRule rule = rules.forName(key);
 		return rule == null ? "unknown" : rule.describeRequirements();
+	}
+
+	/** Shop block message -- uses shop override reqs when present. */
+	public String shopReason(String key)
+	{
+		List<Requirement> reqs = displayShopRequirements(key);
+		if (!reqs.isEmpty())
+		{
+			return reqs.stream().map(Requirement::toString).collect(java.util.stream.Collectors.joining(" + "));
+		}
+		return lockReason(key);
 	}
 
 	// ------------------------------------------------------------- unlocking
@@ -627,11 +1090,6 @@ public class UnlockService
 			return true;
 		}
 		return false;
-	}
-
-	public void setQuestBypass(Set<String> keys)
-	{
-		questBypass = keys == null ? new HashSet<>() : keys;
 	}
 
 	/**

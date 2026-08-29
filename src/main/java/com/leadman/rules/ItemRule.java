@@ -62,17 +62,21 @@ public class ItemRule
 
 	public boolean hasSkillPath()
 	{
-		return getPaths().stream().anyMatch(p -> p.getType() == PathType.SKILL && !p.getReqs().isEmpty());
+		return getPaths().stream().anyMatch(p -> p.getType() == PathType.SKILL
+			&& p.getReqs().stream().anyMatch(r -> r.isTradeOnly() || r.isActivateOnly()));
 	}
 
-	/** "Crafting 80 + Magic 68, or Smithing 90" -- every path, joined. */
+	/** "Crafting 80 + Magic 68, or Smithing 90" -- trade/fabrication reqs only. */
 	public String describeRequirements()
 	{
 		if (getPaths().isEmpty())
 		{
 			return "obtain one";
 		}
-		return getPaths().stream().map(UnlockPath::describe).collect(Collectors.joining(", or "));
+		return getPaths().stream()
+			.map(UnlockPath::describeTrade)
+			.filter(s -> !s.isEmpty())
+			.collect(Collectors.joining(", or "));
 	}
 
 	void setName(String name)

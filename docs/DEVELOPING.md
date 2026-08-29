@@ -70,6 +70,8 @@ popup, ground-item ownership. Those need a real login.
 | `Eat` a shark below 80 Cooking | No `Eat` option; chatbox explains why |
 | `Wear` an amulet of glory below 80 Crafting | No `Wear` option |
 | Rub a glory at 80 Crafting but below 68 Magic | Wears fine, teleport options blocked |
+| Buy from an NPC shop below fabrication level | No `Buy` option (or click consumed); chatbox explains why |
+| Buy Chaos rune at RC 1 | Blocked — needs Runecrafting 35 |
 | Buy from an NPC shop, then GE-search that item | Still locked — shops do not unlock trade |
 | Take an item another player dropped | No `Take` option |
 | Level up a gating skill | Unlock popup, batched if it crosses several items |
@@ -102,6 +104,10 @@ node tools/generate-rules.mjs --verify
 
 Run it after every game update. A renamed item then surfaces as a verification mismatch
 instead of a silent free unlock.
+
+```sh
+node tools/coverage-report.mjs --sample   # how many GE items lack fabrication rules
+```
 
 ## Building without a local JDK
 
