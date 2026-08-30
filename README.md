@@ -6,6 +6,8 @@ Leadman is a RuneLite plugin for a self-imposed challenge. You play on a regular
 
 Lead is softer than bronze. Easier to **get** items than Bronzeman. Harder to **use** them without the levels.
 
+**New to the mode?** Read the [**FAQ**](docs/FAQ.md) — it explains shop locks, obtain vs buy, GE behaviour, and other situations that often confuse people at first.
+
 <!-- Screenshots: panel, unlock popup, and catalog — add here when ready -->
 
 ## How restrictions work
@@ -91,6 +93,8 @@ Everything is client-side, like Bronzeman. Disabling the plugin removes the rest
 ## For developers
 
 Build, test, and Plugin Hub publishing: [`INSTRUCTIONS.md`](INSTRUCTIONS.md)
+
+Player FAQ (shops, obtain, GE, duo trade): [`docs/FAQ.md`](docs/FAQ.md)
 
 Full design (including backlog features): [`docs/DESIGN.md`](docs/DESIGN.md)
 

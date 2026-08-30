@@ -11,6 +11,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - Item catalog (⚙), inventory overlay, trade partner allowlist, and `setup-windows.cmd`.
 - `SHOP_ONLY` and `packOf` rule types for shop-only items and bulk packs.
 - GE rules audit script: `node tools/audit-ge-rules.mjs`.
+- Player FAQ: [`docs/FAQ.md`](docs/FAQ.md) (shops, obtain paths, GE vs use).
 
 ### Changed
 - Block explanations only on Examine or when the player attempts a blocked action.
