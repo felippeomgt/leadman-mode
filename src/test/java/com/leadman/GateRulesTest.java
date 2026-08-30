@@ -371,6 +371,19 @@ public class GateRulesTest
 	}
 
 	@Test
+	public void teleportTabletRequiresObtainBeforeGeTrade()
+	{
+		when(tradeables.isGeTradeableKey("varrock teleport (tablet)")).thenReturn(true);
+
+		assertFalse(service.canTradeKey("varrock teleport (tablet)"));
+		assertFalse(service.canShopKey("varrock teleport (tablet)"));
+
+		service.getState().getObtained().add("varrock teleport (tablet)");
+		assertTrue(service.canTradeKey("varrock teleport (tablet)"));
+		assertTrue(service.canShopKey("varrock teleport (tablet)"));
+	}
+
+	@Test
 	public void shopOnlyItemCanUseWhenHeldEvenBeforeObtainFlag()
 	{
 		when(tradeables.isGeTradeableKey("teleport card")).thenReturn(true);

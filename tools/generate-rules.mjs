@@ -368,66 +368,52 @@ for (const [tip, level] of Object.entries(GEM_BOLT_TIPS)) {
   boltTip(tip, "FLETCHING", level);
 }
 
-// ------------------------------------------------------------------ construction / magic tablets
+// ------------------------------------------------------------------ teleport tablets
 
-function standardTablet(display, construction) {
-  rule(display, "FABRICABLE", "CHARGED", [
-    ["CONSTRUCTION", construction, "TRADE"],
-    ["CONSTRUCTION", construction, "ACTIVATE"],
-  ], "Construction");
+// Obtain one to unlock GE, shop and use — no Construction/Magic level ladder.
+function teleportTablet(display) {
+  rule(display, "DROP_ONLY", "CHARGED", [], "Obtain");
 }
 
-function magicTablet(display, magic) {
-  rule(display, "FABRICABLE", "CHARGED", [
-    ["MAGIC", magic, "TRADE"],
-    ["MAGIC", magic, "ACTIVATE"],
-  ], "Magic");
-}
-
-const STANDARD_TABLETS = {
-  "Varrock teleport (tablet)": 40,
-  "Lumbridge teleport (tablet)": 47,
-  "Falador teleport (tablet)": 47,
-  "Camelot teleport (tablet)": 57,
-  "Ardougne teleport (tablet)": 57,
-  "Kourend castle teleport (tablet)": 57,
-  "Watchtower teleport (tablet)": 67,
-};
-for (const [tablet, construction] of Object.entries(STANDARD_TABLETS)) {
-  standardTablet(tablet, construction);
-}
-
-const MAGIC_TABLETS = {
-  "Paddewwa teleport (tablet)": 54,
-  "Senntisten teleport (tablet)": 60,
-  "Kharyrll teleport (tablet)": 66,
-  "Lassar teleport (tablet)": 72,
-  "Dareeyak teleport (tablet)": 78,
-  "Carrallanger teleport (tablet)": 84,
-  "Annakarl teleport (tablet)": 90,
-  "Ghorrock teleport (tablet)": 96,
-  "Ape atoll teleport (tablet)": 64,
-  "Arceuus library teleport (tablet)": 6,
-  "Draynor manor teleport (tablet)": 17,
-  "Battlefront teleport (tablet)": 23,
-  "Mind altar teleport (tablet)": 28,
-  "Salve graveyard teleport (tablet)": 40,
-  "Fenkenstrain's castle teleport (tablet)": 48,
-  "West ardougne teleport (tablet)": 58,
-  "Harmony island teleport (tablet)": 65,
-  "Cemetery teleport (tablet)": 71,
-  "Barrows teleport (tablet)": 83,
-  "Moonclan teleport (tablet)": 69,
-  "Ourania teleport (tablet)": 71,
-  "Waterbirth teleport (tablet)": 72,
-  "Barbarian teleport (tablet)": 75,
-  "Khazard teleport (tablet)": 80,
-  "Fishing guild teleport (tablet)": 85,
-  "Catherby teleport (tablet)": 87,
-  "Ice plateau teleport (tablet)": 89,
-};
-for (const [tablet, magic] of Object.entries(MAGIC_TABLETS)) {
-  magicTablet(tablet, magic);
+const TELEPORT_TABLETS = [
+  "Varrock teleport (tablet)",
+  "Lumbridge teleport (tablet)",
+  "Falador teleport (tablet)",
+  "Camelot teleport (tablet)",
+  "Ardougne teleport (tablet)",
+  "Kourend castle teleport (tablet)",
+  "Watchtower teleport (tablet)",
+  "Teleport to house (tablet)",
+  "Paddewwa teleport (tablet)",
+  "Senntisten teleport (tablet)",
+  "Kharyrll teleport (tablet)",
+  "Lassar teleport (tablet)",
+  "Dareeyak teleport (tablet)",
+  "Carrallanger teleport (tablet)",
+  "Annakarl teleport (tablet)",
+  "Ghorrock teleport (tablet)",
+  "Ape atoll teleport (tablet)",
+  "Arceuus library teleport (tablet)",
+  "Draynor manor teleport (tablet)",
+  "Battlefront teleport (tablet)",
+  "Mind altar teleport (tablet)",
+  "Salve graveyard teleport (tablet)",
+  "Fenkenstrain's castle teleport (tablet)",
+  "West ardougne teleport (tablet)",
+  "Harmony island teleport (tablet)",
+  "Cemetery teleport (tablet)",
+  "Barrows teleport (tablet)",
+  "Moonclan teleport (tablet)",
+  "Ourania teleport (tablet)",
+  "Waterbirth teleport (tablet)",
+  "Barbarian teleport (tablet)",
+  "Khazard teleport (tablet)",
+  "Fishing guild teleport (tablet)",
+  "Catherby teleport (tablet)",
+  "Ice plateau teleport (tablet)",
+];
+for (const tablet of TELEPORT_TABLETS) {
+  teleportTablet(tablet);
 }
 
 // ------------------------------------------------------------------------ hunter

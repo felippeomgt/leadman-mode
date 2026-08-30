@@ -183,7 +183,7 @@ Notable implemented ladders beyond core metal/food/jewellery:
 - Rune packs (shop) aligned with rune RC levels
 - Armour sets at platebody smithing tier
 - Cannonballs (smithing trade; sailing USE for mithril+)
-- Crossbows (fletching), bolt tips (smithing/fletching), teleport tablets
+- Crossbows (fletching), bolt tips (smithing/fletching), teleport tablets (obtain one to unlock GE)
 - Black armour sets → FREE (not smithable)
 
 Thieving / Sailing alternate obtain routes → **backlog** (§12).

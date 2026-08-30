@@ -284,9 +284,22 @@ public class UnlockService
 			return satisfies(rule);
 		}
 
-		if (state.getObtained().contains(key))
+		if (rule != null && isObtainOnlyClass(rule.getItemClass()))
 		{
-			return true;
+			if (!tradeableIndex.isGeTradeableKey(key))
+			{
+				return true;
+			}
+			return state.getObtained().contains(key);
+		}
+
+		if (rule != null && rule.getItemClass() == com.leadman.rules.ItemClass.FREE)
+		{
+			if (!tradeableIndex.isGeTradeableKey(key))
+			{
+				return true;
+			}
+			return state.getObtained().contains(key);
 		}
 
 		if (rule != null && !rule.hasSkillPath())
