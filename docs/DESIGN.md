@@ -183,7 +183,7 @@ Notable implemented ladders beyond core metal/food/jewellery:
 - Rune packs (shop) aligned with rune RC levels
 - Armour sets at platebody smithing tier
 - Cannonballs (smithing trade; sailing USE for mithril+)
-- Crossbows (fletching), bolt tips (smithing/fletching), teleport tablets
+- Crossbows (fletching), bolt tips (smithing/fletching), teleport tablets (obtain one to unlock GE)
 - Black armour sets → FREE (not smithable)
 
 Thieving / Sailing alternate obtain routes → **backlog** (§12).
@@ -217,8 +217,8 @@ Starter unlock seed at profile creation not implemented.
 
 | Key | Default |
 | --- | --- |
-| `gateFood` / `gatePotions` / `gateJewel` / `gateCharged` | on |
-| `gateAmmo` / `gateRunes` / `gateEquipment` | off |
+| `gateFood` / `gatePotions` / `gateJewel` / `gateCharged` / `gateAmmo` / `gateRunes` | on |
+| `gateEquipment` | off |
 | `blockOtherPlayerDrops` / `blockPlayerTrade` | on |
 | `allowedTradePartners` | `""` (comma-separated display names) |
 | `allowTradeWithParty` | off (RuneLite Party plugin, same party) |

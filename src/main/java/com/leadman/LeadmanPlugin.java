@@ -94,6 +94,18 @@ public class LeadmanPlugin extends Plugin
 		"bank", "collect", "poll booth", "ring", "quick-withdraw", "quick-deposit"
 	));
 
+	private static boolean isInertOp(String option)
+	{
+		if (INERT_OPS.contains(option))
+		{
+			return true;
+		}
+		return option.startsWith("deposit")
+			|| option.startsWith("withdraw")
+			|| option.startsWith("quick-deposit")
+			|| option.startsWith("quick-withdraw");
+	}
+
 	@Inject
 	private Client client;
 
@@ -566,7 +578,7 @@ public class LeadmanPlugin extends Plugin
 			if (itemId > 0)
 			{
 				String key = unlockService.keyFor(itemId);
-				boolean maybeActivate = !INERT_OPS.contains(option);
+				boolean maybeActivate = !isInertOp(option);
 				if (maybeActivate && !key.isEmpty() && unlockService.isActivatable(key)
 					&& !unlockService.canActivateKey(key))
 				{

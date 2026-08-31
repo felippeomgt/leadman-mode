@@ -1,0 +1,11 @@
+# GE rules audit (2026-08-30)
+
+GE tradeables total:     3974
+Mapped in rules:         3973
+Unmapped (obtain gate):  1
+
+Skill-gated (fabrication): 491
+Obtain-gated (no trade skill path): 3482
+Would open GE with no obtain + lvl 1: 0
+Misclassified fabrication: 0
+

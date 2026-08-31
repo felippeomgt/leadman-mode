@@ -218,14 +218,33 @@ for (const [raw, fishing, cooked, cooking] of FISH) {
 
 const OTHER_FOOD = {
   Bread: 1, "Redberry pie": 10, "Meat pie": 20, Stew: 25, "Apple pie": 30,
-  "Jug of wine": 35, Cake: 40, "Chocolate cake": 50, Curry: 60,
-  "Tuna potato": 68, "Summer pie": 95,
+  "Garden pie": 34, "Fish pie": 47, "Jug of wine": 35, Cake: 40, "Chocolate cake": 50,
+  "Mushroom pie": 60, Curry: 60, "Admiral pie": 70, "Tuna potato": 68, "Wild pie": 85,
+  "Summer pie": 95,
 };
 for (const [food, level] of Object.entries(OTHER_FOOD)) {
   rule(food, "FABRICABLE", "FOOD", [["COOKING", level]], "Cooking");
 }
 
-// ------------------------------------------------------------ farming, herblore
+// Pub ales and brews (Cooking/Brewing). Shop blocked until the brewing level is met.
+const BREWING = {
+  Beer: 1, "Asgarnian ale": 24, "Greenman's ale": 29, "Dragon bitter": 39,
+  "Axeman's folly": 49, "Chef's delight": 54, "Slayer's respite": 59,
+  Cider: 14, "Dwarven stout": 19, "Wizard's mind bomb": 34,
+};
+for (const [drink, level] of Object.entries(BREWING)) {
+  rule(drink, "FABRICABLE", "FOOD", [["COOKING", level]], "Brewing");
+}
+
+// Dyes from Aggie / ingredients — obtain elsewhere before shop or GE.
+const DYES = [
+  "Red dye", "Blue dye", "Yellow dye", "Orange dye", "Green dye", "Purple dye", "Pink dye",
+];
+for (const dye of DYES) {
+  rule(dye, "DROP_ONLY", "NONE", [], "Obtain");
+}
+
+// ---------------------------------------------------------------- farming, herblore
 
 // [herb, farming level to grow, herblore level to clean]
 const HERBS = [
@@ -316,6 +335,22 @@ for (const [bolt, level] of Object.entries(BOLTS)) {
 }
 rule("Broad arrows", "FABRICABLE", "AMMO", [["FLETCHING", 52]], "Fletching", { tradeable: false });
 
+const BRUTAL_ARROWS = {
+  "Black brutal": 38, "Iron brutal": 39, "Steel brutal": 49,
+  "Mithril brutal": 56, "Adamant brutal": 63, "Rune brutal": 77,
+};
+for (const [ammo, level] of Object.entries(BRUTAL_ARROWS)) {
+  rule(ammo, "FABRICABLE", "AMMO", [["FLETCHING", level]], "Fletching");
+}
+
+const CROSSBOW_LIMBS = {
+  "Bronze limbs": 1, "Iron limbs": 15, "Steel limbs": 31,
+  "Mithril limbs": 56, "Adamantite limbs": 76, "Runite limbs": 91,
+};
+for (const [limbs, level] of Object.entries(CROSSBOW_LIMBS)) {
+  rule(limbs, "FABRICABLE", "NONE", [["SMITHING", level]], "Smithing");
+}
+
 const BOWS = {
   Shortbow: 5, Longbow: 10, "Oak shortbow": 20, "Oak longbow": 25,
   "Willow shortbow": 35, "Willow longbow": 40, "Maple shortbow": 50,
@@ -368,66 +403,52 @@ for (const [tip, level] of Object.entries(GEM_BOLT_TIPS)) {
   boltTip(tip, "FLETCHING", level);
 }
 
-// ------------------------------------------------------------------ construction / magic tablets
+// ------------------------------------------------------------------ teleport tablets
 
-function standardTablet(display, construction) {
-  rule(display, "FABRICABLE", "CHARGED", [
-    ["CONSTRUCTION", construction, "TRADE"],
-    ["CONSTRUCTION", construction, "ACTIVATE"],
-  ], "Construction");
+// Obtain one to unlock GE, shop and use — no Construction/Magic level ladder.
+function teleportTablet(display) {
+  rule(display, "DROP_ONLY", "CHARGED", [], "Obtain");
 }
 
-function magicTablet(display, magic) {
-  rule(display, "FABRICABLE", "CHARGED", [
-    ["MAGIC", magic, "TRADE"],
-    ["MAGIC", magic, "ACTIVATE"],
-  ], "Magic");
-}
-
-const STANDARD_TABLETS = {
-  "Varrock teleport (tablet)": 40,
-  "Lumbridge teleport (tablet)": 47,
-  "Falador teleport (tablet)": 47,
-  "Camelot teleport (tablet)": 57,
-  "Ardougne teleport (tablet)": 57,
-  "Kourend castle teleport (tablet)": 57,
-  "Watchtower teleport (tablet)": 67,
-};
-for (const [tablet, construction] of Object.entries(STANDARD_TABLETS)) {
-  standardTablet(tablet, construction);
-}
-
-const MAGIC_TABLETS = {
-  "Paddewwa teleport (tablet)": 54,
-  "Senntisten teleport (tablet)": 60,
-  "Kharyrll teleport (tablet)": 66,
-  "Lassar teleport (tablet)": 72,
-  "Dareeyak teleport (tablet)": 78,
-  "Carrallanger teleport (tablet)": 84,
-  "Annakarl teleport (tablet)": 90,
-  "Ghorrock teleport (tablet)": 96,
-  "Ape atoll teleport (tablet)": 64,
-  "Arceuus library teleport (tablet)": 6,
-  "Draynor manor teleport (tablet)": 17,
-  "Battlefront teleport (tablet)": 23,
-  "Mind altar teleport (tablet)": 28,
-  "Salve graveyard teleport (tablet)": 40,
-  "Fenkenstrain's castle teleport (tablet)": 48,
-  "West ardougne teleport (tablet)": 58,
-  "Harmony island teleport (tablet)": 65,
-  "Cemetery teleport (tablet)": 71,
-  "Barrows teleport (tablet)": 83,
-  "Moonclan teleport (tablet)": 69,
-  "Ourania teleport (tablet)": 71,
-  "Waterbirth teleport (tablet)": 72,
-  "Barbarian teleport (tablet)": 75,
-  "Khazard teleport (tablet)": 80,
-  "Fishing guild teleport (tablet)": 85,
-  "Catherby teleport (tablet)": 87,
-  "Ice plateau teleport (tablet)": 89,
-};
-for (const [tablet, magic] of Object.entries(MAGIC_TABLETS)) {
-  magicTablet(tablet, magic);
+const TELEPORT_TABLETS = [
+  "Varrock teleport (tablet)",
+  "Lumbridge teleport (tablet)",
+  "Falador teleport (tablet)",
+  "Camelot teleport (tablet)",
+  "Ardougne teleport (tablet)",
+  "Kourend castle teleport (tablet)",
+  "Watchtower teleport (tablet)",
+  "Teleport to house (tablet)",
+  "Paddewwa teleport (tablet)",
+  "Senntisten teleport (tablet)",
+  "Kharyrll teleport (tablet)",
+  "Lassar teleport (tablet)",
+  "Dareeyak teleport (tablet)",
+  "Carrallanger teleport (tablet)",
+  "Annakarl teleport (tablet)",
+  "Ghorrock teleport (tablet)",
+  "Ape atoll teleport (tablet)",
+  "Arceuus library teleport (tablet)",
+  "Draynor manor teleport (tablet)",
+  "Battlefront teleport (tablet)",
+  "Mind altar teleport (tablet)",
+  "Salve graveyard teleport (tablet)",
+  "Fenkenstrain's castle teleport (tablet)",
+  "West ardougne teleport (tablet)",
+  "Harmony island teleport (tablet)",
+  "Cemetery teleport (tablet)",
+  "Barrows teleport (tablet)",
+  "Moonclan teleport (tablet)",
+  "Ourania teleport (tablet)",
+  "Waterbirth teleport (tablet)",
+  "Barbarian teleport (tablet)",
+  "Khazard teleport (tablet)",
+  "Fishing guild teleport (tablet)",
+  "Catherby teleport (tablet)",
+  "Ice plateau teleport (tablet)",
+];
+for (const tablet of TELEPORT_TABLETS) {
+  teleportTablet(tablet);
 }
 
 // ------------------------------------------------------------------------ hunter
@@ -535,7 +556,38 @@ rule("Eye of newt pack", "FREE", "NONE", [], "Shop pack", { packOf: "eye of newt
 rule("Feather pack", "FREE", "NONE", [], "Shop pack", { packOf: "feather", tradeable: false });
 
 // NPC-shop-only items: buying counts as obtain so use is not deadlocked.
-rule("Teleport card", "SHOP_ONLY", "NONE", [], "Shop");
+function shopOnly(display, note = "Shop") {
+  rule(display, "SHOP_ONLY", "NONE", [], note);
+}
+
+shopOnly("Teleport card");
+shopOnly("Ale yeast");
+shopOnly("Anti-dragon shield");
+
+const SLAYER_EQUIPMENT_SHOP = [
+  "Bag of salt", "Facemask", "Earmuffs", "Nose peg", "Spiny helmet", "Mirror shield",
+  "Insulated boots", "Boots of stone", "Rock hammer", "Rock thrownhammer", "Slayer bell",
+  "Slayer's staff", "Unlit bug lantern", "Leaf-bladed sword", "Leaf-bladed spear",
+  "Witchwood icon", "Fishing explosive", "Ice cooler", "Fungicide spray", "Reinforced goggles",
+  "Slayer gloves", "Enchanted gem", "Butterfly jar",
+];
+for (const item of SLAYER_EQUIPMENT_SHOP) {
+  shopOnly(item, "Slayer Equipment");
+}
+
+const ALI_DESERT_SHOP = [
+  "Fake beard", "Fez", "Kharidian headpiece",
+  "Desert boots", "Desert legs", "Desert robes", "Desert top", "Desert top (overcoat)",
+  "Maple blackjack", "Maple blackjack(d)", "Maple blackjack(o)",
+  "Oak blackjack(d)", "Oak blackjack(o)",
+  "Willow blackjack(d)", "Willow blackjack(o)",
+];
+for (const item of ALI_DESERT_SHOP) {
+  shopOnly(item, "Ali's Discount Wares");
+}
+
+rule("Broad arrowhead pack", "FREE", "NONE", [], "Slayer pack", { packOf: "broad arrowhead", tradeable: false });
+rule("Unfinished broad bolt pack", "FREE", "NONE", [], "Slayer pack", { packOf: "unfinished broad bolt", tradeable: false });
 
 // ------------------------------------------------------------------------- free
 
@@ -639,6 +691,16 @@ for (const key of GE_KEYS) {
   const display = key.charAt(0).toUpperCase() + key.slice(1);
   rule(display, "FREE", "NONE", [], null);
   covered.add(key);
+}
+
+// Construction bagged plants/hedges — shop is the only obtain path.
+for (const item of items) {
+  const name = item.name;
+  if (/^bagged /i.test(name) || /\(bagged\)$/i.test(name)) {
+    item.itemClass = "SHOP_ONLY";
+    item.consume = "NONE";
+    item.paths = [];
+  }
 }
 
 // ------------------------------------------------------------------ output

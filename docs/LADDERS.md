@@ -44,18 +44,9 @@ Fletching only (9 / 39 / 46 / 54 / 61 / 69 / 78), including `(u)` variants, cros
 
 ## Teleport tablets
 
-**Standard spellbook** — Construction (lectern tier):
+All GE teleport tablets are **DROP_ONLY**: obtain one (drop, shop, clue, etc.) to unlock GE, shop buy, and use. No Construction or Magic level ladder — you cannot buy on the GE until you have held that tablet once.
 
-| Tablet | Construction |
-|--------|-------------|
-| Varrock | 40 (Oak) |
-| Lumbridge, Falador | 47 (Eagle) |
-| Camelot, Ardougne, Kourend castle | 57 (Teak eagle) |
-| Watchtower | 67 (Mahogany eagle) |
-
-**Other books** — Magic level to cast (no quest gate yet):
-
-Ancient, Lunar, Arceuus, and niche tablets each use the spell's Magic requirement for trade and activate.
+Covers standard, Ancient, Lunar, Arceuus, and niche teleports including **Teleport to house (tablet)**.
 
 ## Engine fix
 

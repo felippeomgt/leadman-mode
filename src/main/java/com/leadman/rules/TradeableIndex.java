@@ -38,6 +38,7 @@ public class TradeableIndex
 	private final ItemManager itemManager;
 	private Set<String> geTradeableKeys = Collections.emptySet();
 	private Map<String, Integer> geItemIds = Collections.emptyMap();
+	private Map<Integer, String> geIdToKey = Collections.emptyMap();
 
 	@Inject
 	TradeableIndex(ItemManager itemManager, Gson gson)
@@ -82,6 +83,12 @@ public class TradeableIndex
 			if (loaded != null)
 			{
 				geItemIds = new HashMap<>(loaded);
+				Map<Integer, String> reverse = new HashMap<>();
+				for (Map.Entry<String, Integer> entry : geItemIds.entrySet())
+				{
+					reverse.putIfAbsent(entry.getValue(), entry.getKey());
+				}
+				geIdToKey = Collections.unmodifiableMap(reverse);
 			}
 		}
 		catch (Exception e)
@@ -105,8 +112,27 @@ public class TradeableIndex
 		{
 			return false;
 		}
-		ItemComposition comp = itemManager.getItemComposition(itemManager.canonicalize(itemId));
+		int canonical = itemManager.canonicalize(itemId);
+		if (geIdToKey.containsKey(canonical))
+		{
+			return true;
+		}
+		ItemComposition comp = itemManager.getItemComposition(canonical);
 		return comp != null && comp.isGeTradeable();
+	}
+
+	/**
+	 * Canonical rules/GE key for a tradeable item id, from the bundled wiki mapping.
+	 * Prefer this over normalising the client display name — in-game names can omit
+	 * suffixes such as {@code (tablet)} that the ruleset uses.
+	 */
+	public String geKeyForItemId(int itemId)
+	{
+		if (itemId <= 0)
+		{
+			return null;
+		}
+		return geIdToKey.get(itemManager.canonicalize(itemId));
 	}
 
 	/**

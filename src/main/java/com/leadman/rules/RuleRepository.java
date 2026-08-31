@@ -120,7 +120,25 @@ public class RuleRepository
 	 */
 	public ItemRule forName(String itemName)
 	{
-		return byName.get(ItemNames.normalise(itemName));
+		if (itemName == null)
+		{
+			return null;
+		}
+
+		String key = ItemNames.normalise(itemName);
+		ItemRule rule = byName.get(key);
+		if (rule != null)
+		{
+			return rule;
+		}
+
+		// Client names often drop the "(tablet)" suffix used in the ruleset / GE catalog.
+		if (!key.endsWith("(tablet)"))
+		{
+			return byName.get(key + " (tablet)");
+		}
+
+		return null;
 	}
 
 	public SpellRule forSpell(String spellName)

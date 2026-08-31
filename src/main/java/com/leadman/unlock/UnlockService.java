@@ -245,6 +245,12 @@ public class UnlockService
 	public String keyFor(int itemId)
 	{
 		int canonical = itemManager.canonicalize(itemId);
+		String geKey = tradeableIndex.geKeyForItemId(canonical);
+		if (geKey != null && !geKey.isEmpty())
+		{
+			return geKey;
+		}
+
 		ItemComposition comp = itemManager.getItemComposition(canonical);
 		return comp == null ? "" : ItemNames.normalise(comp.getName());
 	}
@@ -260,7 +266,12 @@ public class UnlockService
 
 	public boolean canTrade(int itemId)
 	{
-		return canTradeKey(keyFor(itemId));
+		String key = keyFor(itemId);
+		if (key.isEmpty())
+		{
+			return !tradeableIndex.isGeTradeableId(itemId);
+		}
+		return canTradeKey(key);
 	}
 
 	public boolean canTradeKey(String key)
@@ -284,9 +295,22 @@ public class UnlockService
 			return satisfies(rule);
 		}
 
-		if (state.getObtained().contains(key))
+		if (rule != null && isObtainOnlyClass(rule.getItemClass()))
 		{
-			return true;
+			if (!tradeableIndex.isGeTradeableKey(key))
+			{
+				return true;
+			}
+			return state.getObtained().contains(key);
+		}
+
+		if (rule != null && rule.getItemClass() == com.leadman.rules.ItemClass.FREE)
+		{
+			if (!tradeableIndex.isGeTradeableKey(key))
+			{
+				return true;
+			}
+			return state.getObtained().contains(key);
 		}
 
 		if (rule != null && !rule.hasSkillPath())
@@ -395,7 +419,10 @@ public class UnlockService
 		List<Requirement> wieldReqs = wieldRequirements(rule);
 		if (!wieldReqs.isEmpty() && wieldGateApplies(rule))
 		{
-			return meets(wieldReqs);
+			if (!meets(wieldReqs))
+			{
+				return false;
+			}
 		}
 
 		ConsumeClass consume = rule.getConsume();
@@ -617,7 +644,19 @@ public class UnlockService
 			return true;
 		}
 
-		return satisfies(rule, ReqFilter.ACTIVATE);
+		List<Requirement> activateReqs = collectRequirements(rule, ReqFilter.ACTIVATE);
+		if (activateReqs.isEmpty())
+		{
+			// Plain jewellery (gold necklace, etc.) has no charge to spend.
+			return true;
+		}
+
+		return meets(activateReqs);
+	}
+
+	private boolean hasActivateRequirements(ItemRule rule)
+	{
+		return !collectRequirements(rule, ReqFilter.ACTIVATE).isEmpty();
 	}
 
 	/** True when this item has a charge worth gating separately. */
@@ -629,7 +668,15 @@ public class UnlockService
 			return false;
 		}
 		ConsumeClass consume = rule.getConsume();
-		return consume == ConsumeClass.JEWELLERY || consume == ConsumeClass.CHARGED;
+		if (consume == ConsumeClass.CHARGED)
+		{
+			return true;
+		}
+		if (consume == ConsumeClass.JEWELLERY)
+		{
+			return hasActivateRequirements(rule);
+		}
+		return false;
 	}
 
 	/**
