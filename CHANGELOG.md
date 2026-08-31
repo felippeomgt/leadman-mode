@@ -26,7 +26,9 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - Bank booth menus no longer misidentified as locked items (object id vs item id).
 - Tightened GE trade: `obtained` alone no longer bypasses skill gates for non obtain-only items.
 - **Use gate defaults:** Fletching (ammo) and Runecrafting (runes) on by default.
-- Expanded shop rules: brutal arrows, crossbow limbs, pies, brews, dyes, slayer shop `SHOP_ONLY`, bagged plants, Ali's disguise items.
+- Expanded shop rules: brutal arrows, crossbow limbs, pies, brews, dyes, slayer shop `SHOP_ONLY`, bagged plants, Ali's disguise items, **Fine Fashions** coloured robes.
+- Sidebar unlock list shows full history (obtained + fabrication), not capped at 20.
+- Plugin Hub build: `build=standard` in `runelite-plugin.properties` (review feedback).
 - README and DESIGN.md aligned with current gate defaults.
 
 ### Fixed
