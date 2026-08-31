@@ -50,6 +50,7 @@ function rule(display, itemClass, consume, reqs, source, opts = {}) {
   // the tradeable-item mapping.
   if (opts.tradeable === false) entry.tradeable = false;
   if (opts.packOf) entry.packOf = opts.packOf;
+  if (opts.shopAlwaysOpen) entry.shopAlwaysOpen = true;
   items.push(entry);
 }
 
@@ -282,6 +283,35 @@ for (const [potion, level] of Object.entries(POTIONS)) {
   rule(potion, "FABRICABLE", "POTION", [["HERBLORE", level]], "Herblore");
 }
 
+// Farming produce and hops — shop needs obtain once plus the farming level to grow.
+const FARM_PRODUCE = {
+  Potato: 1, Onion: 5, Cabbage: 7, Tomato: 12, Sweetcorn: 20, Strawberry: 31, Watermelon: 47,
+};
+for (const [crop, level] of Object.entries(FARM_PRODUCE)) {
+  rule(crop, "GATHERABLE", "FOOD", [["FARMING", level]], "Farming");
+}
+
+const HOPS = {
+  Barley: 3, "Hammerstone hops": 4, "Asgarnian hops": 8, "Yanillian hops": 16,
+  "Krandorian hops": 21, "Wildblood hops": 28, "Jute fibre": 13,
+};
+for (const [hop, level] of Object.entries(HOPS)) {
+  rule(hop, "GATHERABLE", "NONE", [["FARMING", level]], "Farming");
+}
+
+rule("Grain", "DROP_ONLY", "NONE", [], "Ground spawn");
+
+const FARMING_SEEDS = {
+  "Potato seed": 1, "Onion seed": 5, "Cabbage seed": 7, "Tomato seed": 12,
+  "Sweetcorn seed": 20, "Strawberry seed": 31, "Watermelon seed": 47,
+  "Barley seed": 3, "Hammerstone seed": 4, "Asgarnian seed": 8, "Jute seed": 13,
+  "Yanillian seed": 16, "Krandorian seed": 21, "Wildblood seed": 28,
+  "Marigold seed": 2, "Rosemary seed": 11,
+};
+for (const [seed, level] of Object.entries(FARMING_SEEDS)) {
+  rule(seed, "GATHERABLE", "NONE", [["FARMING", level]], "Farming");
+}
+
 // ----------------------------------------------------------------- runecrafting
 
 const RUNES = {
@@ -393,6 +423,22 @@ for (const [tip, level] of Object.entries(METAL_BOLT_TIPS)) {
   boltTip(tip, "SMITHING", level);
 }
 
+const METAL_ARROW_TIPS = {
+  "Bronze arrowtips": 5, "Iron arrowtips": 15, "Steel arrowtips": 30,
+  "Mithril arrowtips": 50, "Adamant arrowtips": 70, "Rune arrowtips": 85,
+};
+for (const [tip, level] of Object.entries(METAL_ARROW_TIPS)) {
+  rule(tip, "FABRICABLE", "AMMO", [["SMITHING", level]], "Smithing");
+}
+
+const METAL_KNIVES = {
+  "Bronze knife": 1, "Iron knife": 17, "Steel knife": 32,
+  "Mithril knife": 47, "Black knife": 47, "Adamant knife": 62, "Rune knife": 77,
+};
+for (const [knife, level] of Object.entries(METAL_KNIVES)) {
+  rule(knife, "FABRICABLE", "TOOL", [["FLETCHING", level]], "Fletching");
+}
+
 const GEM_BOLT_TIPS = {
   "Opal bolt tips": 11, "Jade bolt tips": 26, "Pearl bolt tips": 41,
   "Topaz bolt tips": 48, "Sapphire bolt tips": 56, "Emerald bolt tips": 58,
@@ -473,6 +519,10 @@ const JEWELLERY = {
 for (const [piece, level] of Object.entries(JEWELLERY)) {
   rule(piece, "FABRICABLE", "JEWELLERY", [["CRAFTING", level]], "Crafting");
 }
+
+rule("Unstrung symbol", "FABRICABLE", "JEWELLERY", [["CRAFTING", 16]], "Crafting");
+rule("Basket", "FABRICABLE", "NONE", [["CRAFTING", 36]], "Crafting");
+rule("Sack", "FABRICABLE", "NONE", [["CRAFTING", 21]], "Crafting");
 
 // Enchanted jewellery needs the crafting level for the base and the magic level for
 // the enchant. Amulet of glory is the worked example from the brief: 80 + 68.
@@ -597,6 +647,52 @@ for (const item of FINE_FASHIONS_SHOP) {
   shopOnly(item, "Fine Fashions");
 }
 
+const AGMUNDI_CLOTHES = [
+  "Shirt (lilac)", "Shirt (yellow)", "Shorts (blue)", "Shorts (yellow)",
+  "Skirt (blue)", "Skirt (lilac)", "Trousers (blue)", "Trousers (lilac)",
+  "Woven top (blue)", "Woven top (yellow)",
+];
+for (const item of AGMUNDI_CLOTHES) {
+  shopOnly(item, "Agmundi Quality Clothes");
+}
+
+shopOnly("Red hot sauce", "Quest shop");
+shopOnly("Desert shirt", "Desert clothes");
+
+const MENAPHITE_CLOTHES = [
+  "Menaphite purple hat", "Menaphite purple kilt", "Menaphite purple robe", "Menaphite purple top",
+  "Menaphite red hat", "Menaphite red kilt", "Menaphite red robe", "Menaphite red top",
+];
+for (const item of MENAPHITE_CLOTHES) {
+  shopOnly(item, "Menaphite clothes");
+}
+
+function shopPack(display, single) {
+  rule(display, "FREE", "NONE", [], "Shop pack", { packOf: single, tradeable: false });
+}
+
+shopPack("Water-filled vial pack", "Vial of water");
+shopPack("Basket pack", "Basket");
+shopPack("Empty bucket pack", "Bucket");
+shopPack("Empty jug pack", "Jug");
+shopPack("Compost pack", "Compost");
+shopPack("Plant pot pack", "Plant pot");
+shopPack("Sack pack", "Sack");
+
+function ticketShop(display, note = "Ticket shop") {
+  rule(display, "FREE", "NONE", [], note, { shopAlwaysOpen: true });
+}
+
+const AGILITY_ARENA_SHOP = [
+  "Pirate's hook", "Amylase pack",
+  "Graceful hood", "Graceful top", "Graceful legs", "Graceful gloves", "Graceful boots", "Graceful cape",
+];
+for (const item of AGILITY_ARENA_SHOP) {
+  ticketShop(item, "Agility Arena Store");
+}
+// Clean herbs sold for marks — keep herblore rules, only exempt shop buy.
+const AGILITY_ARENA_HERBS = ["Snapdragon", "Toadflax"];
+
 rule("Broad arrowhead pack", "FREE", "NONE", [], "Slayer pack", { packOf: "broad arrowhead", tradeable: false });
 rule("Unfinished broad bolt pack", "FREE", "NONE", [], "Slayer pack", { packOf: "unfinished broad bolt", tradeable: false });
 
@@ -711,6 +807,9 @@ for (const item of items) {
     item.itemClass = "SHOP_ONLY";
     item.consume = "NONE";
     item.paths = [];
+  }
+  if (AGILITY_ARENA_HERBS.includes(name)) {
+    item.shopAlwaysOpen = true;
   }
 }
 

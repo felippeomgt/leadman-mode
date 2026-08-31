@@ -23,6 +23,9 @@ const writePath = process.argv.includes("--write")
   ? process.argv[process.argv.indexOf("--write") + 1]
   : null;
 
+/** Shops at or before this name were reviewed and dropped from the output. */
+const REVIEW_START_AFTER = "Arnold's Eclectic Supplies.";
+
 function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
@@ -76,6 +79,7 @@ function hasSkillPath(rule) {
 
 function shopBuyBlocked(rule, geKeys) {
   if (!rule) return "unmapped";
+  if (rule.shopAlwaysOpen) return "open";
   if (rule.itemClass === "SHOP_ONLY") return "open";
   if (rule.packOf) return "needs-pack-single";
   if (hasSkillPath(rule)) return "skill-gated";
@@ -105,6 +109,7 @@ for (const row of storeRows) {
 }
 
 const shops = [...byShop.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+const uniqueItems = new Set(storeRows.map((r) => r.sold_item).filter(Boolean));
 
 const lines = [];
 lines.push("# Shop-by-shop review");
@@ -115,6 +120,12 @@ lines.push(
   "Walk through each shop and note items that should **not** require obtain/skill before buying.",
 );
 lines.push("");
+lines.push(
+  `Review resumes after **[${REVIEW_START_AFTER}](${wikiShopUrl(REVIEW_START_AFTER)})** — earlier shops verified and omitted.`,
+);
+lines.push("");
+lines.push("**Rules are per item**, not per shop. The same item in two shops shares one rule.");
+lines.push("");
 lines.push("**Shop buy status legend:**");
 lines.push("- `open` — buy allowed without prior obtain");
 lines.push("- `SHOP_ONLY` — buy allowed; purchase counts as obtain");
@@ -122,11 +133,20 @@ lines.push("- `needs-obtain` — GE item with no skill path; must obtain once el
 lines.push("- `skill-gated` — needs fabrication level (Cooking, Smithing, etc.) to buy");
 lines.push("- `needs-pack-single` — bulk pack; obtain the single item first");
 lines.push("");
-lines.push(`Total shops: **${shops.length}**`);
+lines.push(`Total shops in this file: **pending** · wiki unique items: **${uniqueItems.size}**`);
 lines.push("");
 
 let blockedShops = 0;
+let includedShops = 0;
+let skipping = true;
 for (const [shop, itemSet] of shops) {
+  if (skipping) {
+    if (shop === REVIEW_START_AFTER) {
+      skipping = false;
+    }
+    continue;
+  }
+  includedShops++;
   const items = [...itemSet].sort((a, b) => a.localeCompare(b));
   const rows = items.map((item) => {
     const rule = byName.get(item.toLowerCase()) || null;
@@ -164,8 +184,15 @@ for (const [shop, itemSet] of shops) {
   lines.push("");
 }
 
-lines.push(`Shops with at least one blocked item: **${blockedShops}**`);
+lines.push(`Shops with at least one blocked item: **${blockedShops}** (of **${includedShops}** listed)`);
+lines.push(`Wiki totals: **${shops.length}** shops, **${uniqueItems.size}** unique items sold`);
 lines.push("");
+
+// Fix header count after loop
+const headerIdx = lines.findIndex((l) => l.startsWith("Total shops in this file:"));
+if (headerIdx >= 0) {
+  lines[headerIdx] = `Total shops in this file: **${includedShops}** · wiki unique items: **${uniqueItems.size}**`;
+}
 
 const report = lines.join("\n");
 if (writePath) {

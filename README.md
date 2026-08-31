@@ -58,14 +58,13 @@ Items with no skill recipe (boss drops, uniques, and misc supplies) unlock for t
 | Your levels / state | Item | Trade (GE + shop buy) | Use (eat, wear, etc.) |
 | --- | --- | --- | --- |
 | 49 Fishing | Raw swordfish | Locked — needs 50 Fishing | N/A (raw fish is not eaten) |
-| 50 Fishing, 44 Cooking | Raw swordfish | Unlocked | N/A |
-| 44 Cooking | Swordfish (cooked) | Locked — needs 45 Cooking | Locked — needs 45 Cooking |
-| 45 Cooking | Swordfish (cooked) | Unlocked | Unlocked — can eat |
-| 40 Attack, 39 Smithing | Rune scimitar | Locked — needs 90 Smithing | Locked — needs 40 Smithing to wield (Mixed default) |
-| 40 Attack, 40 Smithing | Rune scimitar | Locked — needs 90 Smithing | Wield OK — 40 Attack + 40 Smithing |
-| 40 Attack, 89 Smithing | Rune scimitar | Locked — needs 90 Smithing | Wield OK |
-| 40 Defence, 40 Smithing | Rune platebody | Locked — needs 99 Smithing | Wield OK — 40 Defence + 40 Smithing |
-| 40 Herblore + obtained brew | Saradomin brew | Unlocked (you obtained one) | Locked — needs 81 Herblore to drink |
+| 50 Fishing, never caught one | Raw swordfish | Locked — obtain one first | N/A |
+| 50 Fishing + obtained raw | Raw swordfish | Unlocked | N/A |
+| 18 Cooking, never cooked cod | Cod | Locked — obtain one first | Locked — needs 18 Cooking to eat |
+| 45 Cooking, never cooked | Swordfish (cooked) | Locked — obtain one first | Locked — needs 45 Cooking to eat |
+| 45 Cooking + obtained swordfish | Swordfish (cooked) | Unlocked | Unlocked — can eat |
+| 40 Attack, 90 Smithing + obtained | Rune scimitar | Unlocked | Wield OK |
+| 40 Herblore + obtained brew | Saradomin brew | Unlocked at 81 Herblore | Locked — needs 81 Herblore to drink |
 | 70 Attack + obtained whip | Abyssal whip | Unlocked once obtained from a monster drop | Wield OK at 70 Attack |
 
 See [The idea in practice](#the-idea-in-practice) for more grounded early-game examples (wine, bone crossbow, High Alchemy).

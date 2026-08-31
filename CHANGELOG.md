@@ -17,6 +17,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - README: **The idea in practice**, beta notice, and per-item customization examples.
 
 - Shop-by-shop review generator: `tools/generate-shop-review.mjs`, `docs/shop-review-by-store.md`.
+- `shopAlwaysOpen` rule flag for ticket/pearl shops (Agility Arena, etc.).
 
 ### Changed
 - **Smithing gates equipment** is now a three-mode selector: Restrict, Balanced, Mixed (default). Replaces the old on/off toggle.
@@ -26,12 +27,14 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - Bank booth menus no longer misidentified as locked items (object id vs item id).
 - Tightened GE trade: `obtained` alone no longer bypasses skill gates for non obtain-only items.
 - **Use gate defaults:** Fletching (ammo) and Runecrafting (runes) on by default.
-- Expanded shop rules: brutal arrows, crossbow limbs, pies, brews, dyes, slayer shop `SHOP_ONLY`, bagged plants, Ali's disguise items, **Fine Fashions** coloured robes.
+- Expanded shop rules: brutal arrows, crossbow limbs, pies, brews, dyes, slayer shop `SHOP_ONLY`, bagged plants, Ali's disguise items, **Fine Fashions**, **Agmundi** / **Menaphite** clothes, farming produce and seeds, metal knives and arrowtips, general-store **packOf** mappings.
+- Shop review doc trimmed through Arnold's Eclectic Supplies (verified shops omitted).
 - Sidebar unlock list shows full history (obtained + fabrication), not capped at 20.
 - Plugin Hub build: `build=standard` in `runelite-plugin.properties` (review feedback).
 - README and DESIGN.md aligned with current gate defaults.
 
 ### Fixed
+- **GE/shop trade for fabricable items** no longer opens on skill level alone — a legitimate obtain is required first (Cod, Redberry pie, etc.).
 - Spell block messages firing when other players cast nearby (menu rebuild spam).
 - **Gold necklace** (and plain jewellery) bank deposit blocked when charge gate applied incorrectly.
 - **Smithing gates equipment:** three modes (Restrict / Balanced / Mixed); wield respects fabrication Smithing in Restrict mode.

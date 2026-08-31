@@ -1,8 +1,12 @@
 # Shop-by-shop review
 
-Generated: 2026-08-31T19:48:40.836Z
+Generated: 2026-08-31T20:36:30.109Z
 
 Walk through each shop and note items that should **not** require obtain/skill before buying.
+
+Review resumes after **[Arnold's Eclectic Supplies.](https://oldschool.runescape.wiki/w/Arnold's_Eclectic_Supplies.)** — earlier shops verified and omitted.
+
+**Rules are per item**, not per shop. The same item in two shops shares one rule.
 
 **Shop buy status legend:**
 - `open` — buy allowed without prior obtain
@@ -11,894 +15,7 @@ Walk through each shop and note items that should **not** require obtain/skill b
 - `skill-gated` — needs fabrication level (Cooking, Smithing, etc.) to buy
 - `needs-pack-single` — bulk pack; obtain the single item first
 
-Total shops: **589**
-
-## ~ Uglug's stuffsies ~
-
-Wiki: [~ Uglug's stuffsies ~](https://oldschool.runescape.wiki/w/~_Uglug's_stuffsies_~)
-
-Items: **16** · blocked today: **14**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Achey tree logs | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Adamant brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Black brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bow string | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bronze brutal | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Comp ogre bow | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cooked chompy | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Iron brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Mithril brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Ogre coffin key | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Raw chompy | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Relicym's balm(3) | unmapped | unmapped |  |
-| Rune brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Sanfew serum(3) | unmapped | unmapped |  |
-| Steel brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Aaron's Archery Appendages.
-
-Wiki: [Aaron's Archery Appendages.](https://oldschool.runescape.wiki/w/Aaron's_Archery_Appendages.)
-
-Items: **10** · blocked today: **8**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Coif | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Hardleather body | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Leather body | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Leather chaps | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Leather cowl | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Leather vambraces | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Ranging cape | unmapped | unmapped |  |
-| Ranging cape(t) | unmapped | unmapped |  |
-| Studded body | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Studded chaps | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Aemad's Adventuring Supplies.
-
-Wiki: [Aemad's Adventuring Supplies.](https://oldschool.runescape.wiki/w/Aemad's_Adventuring_Supplies.)
-
-Items: **13** · blocked today: **12**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Ball of wool | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bronze arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze pickaxe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cooked meat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Iron axe | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Papyrus | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Raw cave eel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rope | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tinderbox | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Vial of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Water-filled vial pack | unmapped | unmapped |  |
-| Wrath talisman | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Agelus' Farm Shop
-
-Wiki: [Agelus' Farm Shop](https://oldschool.runescape.wiki/w/Agelus'_Farm_Shop)
-
-Items: **24** · blocked today: **19**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Barley | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Basket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Basket pack | unmapped | unmapped |  |
-| Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Compost pack | unmapped | unmapped |  |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty sack | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Filled plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Grain | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Onion | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant cure | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant pot pack | unmapped | unmapped |  |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sack pack | unmapped | unmapped |  |
-| Secateurs | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Seed dibber | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Spade | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sweetcorn | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tomato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watering can | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Agility Arena Store
-
-Wiki: [Agility Arena Store](https://oldschool.runescape.wiki/w/Agility_Arena_Store)
-
-Items: **6** · blocked today: **3**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Agility | unmapped | unmapped |  |
-| Amylase pack | unmapped | unmapped |  |
-| Graceful outfit | unmapped | unmapped |  |
-| Pirate's hook | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Snapdragon | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Toadflax | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Agmundi Quality Clothes
-
-Wiki: [Agmundi Quality Clothes](https://oldschool.runescape.wiki/w/Agmundi_Quality_Clothes)
-
-Items: **10** · blocked today: **10**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Shirt (lilac) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Shirt (yellow) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Shorts (blue) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Shorts (yellow) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Skirt (blue) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Skirt (lilac) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Trousers (blue) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Trousers (lilac) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Woven top (blue) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Woven top (yellow) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Ajjat
-
-Wiki: [Ajjat](https://oldschool.runescape.wiki/w/Ajjat)
-
-Items: **2** · blocked today: **0**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Attack cape | unmapped | unmapped |  |
-| Attack cape(t) | unmapped | unmapped |  |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Ak-Haranu's Exotic Shop.
-
-Wiki: [Ak-Haranu's Exotic Shop.](https://oldschool.runescape.wiki/w/Ak-Haranu's_Exotic_Shop.)
-
-Items: **1** · blocked today: **1**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Bolt rack | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Al Kharid General Store
-
-Wiki: [Al Kharid General Store](https://oldschool.runescape.wiki/w/Al_Kharid_General_Store)
-
-Items: **13** · blocked today: **10**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Bowl | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
-| Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Newcomer map | unmapped | unmapped |  |
-| Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Security book | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Shears | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tinderbox | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Alain
-
-Wiki: [Alain](https://oldschool.runescape.wiki/w/Alain)
-
-Items: **7** · blocked today: **7**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant cure | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Seed dibber | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watering can | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Alan (Farming Guild)
-
-Wiki: [Alan (Farming Guild)](https://oldschool.runescape.wiki/w/Alan_(Farming_Guild))
-
-Items: **7** · blocked today: **7**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant cure | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Seed dibber | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watering can | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Aleck's Hunter Emporium.
-
-Wiki: [Aleck's Hunter Emporium.](https://oldschool.runescape.wiki/w/Aleck's_Hunter_Emporium.)
-
-Items: **12** · blocked today: **8**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Bird snare | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bird snare pack | unmapped | unmapped |  |
-| Box trap | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Box trap pack | unmapped | unmapped |  |
-| Butterfly jar | SHOP_ONLY | open |  |
-| Butterfly net | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Magic box | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Magic imp box pack | unmapped | unmapped |  |
-| Noose wand | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rabbit snare | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Teasing stick | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Unlit torch | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Alexandra
-
-Wiki: [Alexandra](https://oldschool.runescape.wiki/w/Alexandra)
-
-Items: **7** · blocked today: **7**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant cure | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Seed dibber | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watering can | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Ali the Carter
-
-Wiki: [Ali the Carter](https://oldschool.runescape.wiki/w/Ali_the_Carter)
-
-Items: **1** · blocked today: **0**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Waterskin(4) | unmapped | unmapped |  |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Ali the Kebab seller
-
-Wiki: [Ali the Kebab seller](https://oldschool.runescape.wiki/w/Ali_the_Kebab_seller)
-
-Items: **3** · blocked today: **2**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Kebab | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Red hot sauce | unmapped | unmapped |  |
-| Super kebab | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Ali's Discount Wares.
-
-Wiki: [Ali's Discount Wares.](https://oldschool.runescape.wiki/w/Ali's_Discount_Wares.)
-
-Items: **55** · blocked today: **37**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Air rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Air rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Blood rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Body rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze pickaxe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Chaos rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chaos rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Cosmic rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Death rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Desert boots | SHOP_ONLY | open |  |
-| Desert legs | SHOP_ONLY | open |  |
-| Desert robes | SHOP_ONLY | open |  |
-| Desert shirt | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Desert top | SHOP_ONLY | open |  |
-| Desert top (overcoat) | SHOP_ONLY | open |  |
-| Earth rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
-| Fake beard | SHOP_ONLY | open |  |
-| Fez | SHOP_ONLY | open |  |
-| Fire rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Kharidian headpiece | SHOP_ONLY | open |  |
-| Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Law rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Maple blackjack | SHOP_ONLY | open |  |
-| Maple blackjack(d) | SHOP_ONLY | open |  |
-| Maple blackjack(o) | SHOP_ONLY | open |  |
-| Menaphite purple hat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Menaphite purple kilt | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Menaphite purple robe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Menaphite purple top | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Menaphite red hat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Menaphite red kilt | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Menaphite red robe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Menaphite red top | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Mind rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mind rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Nature rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Oak blackjack(d) | SHOP_ONLY | open |  |
-| Oak blackjack(o) | SHOP_ONLY | open |  |
-| Papyrus | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Raw chicken | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Soul rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Tinderbox | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Water rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Waterskin(3) | unmapped | unmapped |  |
-| Willow blackjack | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Willow blackjack(d) | SHOP_ONLY | open |  |
-| Willow blackjack(o) | SHOP_ONLY | open |  |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Alice's Farming shop.
-
-Wiki: [Alice's Farming shop.](https://oldschool.runescape.wiki/w/Alice's_Farming_shop.)
-
-Items: **31** · blocked today: **26**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Asgarnian hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Barley | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Basket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Basket pack | unmapped | unmapped |  |
-| Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Compost pack | unmapped | unmapped |  |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty sack | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Filled plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Hammerstone hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Jute fibre | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Krandorian hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Onion | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant cure | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant pot pack | unmapped | unmapped |  |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sack pack | unmapped | unmapped |  |
-| Secateurs | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Seed dibber | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Spade | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Strawberry | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sweetcorn | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tomato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watering can | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watermelon | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Wildblood hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Yanillian hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Allanna's Farming Shop
-
-Wiki: [Allanna's Farming Shop](https://oldschool.runescape.wiki/w/Allanna's_Farming_Shop)
-
-Items: **18** · blocked today: **13**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Basket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Basket pack | unmapped | unmapped |  |
-| Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Compost pack | unmapped | unmapped |  |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty sack | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Filled plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant cure | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant pot pack | unmapped | unmapped |  |
-| Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sack pack | unmapped | unmapped |  |
-| Secateurs | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Seed dibber | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Spade | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watering can | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Alry the Angler's Angling Accessories
-
-Wiki: [Alry the Angler's Angling Accessories](https://oldschool.runescape.wiki/w/Alry_the_Angler's_Angling_Accessories)
-
-Items: **9** · blocked today: **0**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Angler boots | unmapped | unmapped |  |
-| Angler hat | unmapped | unmapped |  |
-| Angler top | unmapped | unmapped |  |
-| Angler waders | unmapped | unmapped |  |
-| Fish sack | unmapped | unmapped |  |
-| Pearl barbarian rod | unmapped | unmapped |  |
-| Pearl fishing rod | unmapped | unmapped |  |
-| Pearl fly fishing rod | unmapped | unmapped |  |
-| Shark lure pack | unmapped | unmapped |  |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Alwyn
-
-Wiki: [Alwyn](https://oldschool.runescape.wiki/w/Alwyn)
-
-Items: **2** · blocked today: **0**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Construct. cape | unmapped | unmapped |  |
-| Construct. cape(t) | unmapped | unmapped |  |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Amelia's Seed Shop
-
-Wiki: [Amelia's Seed Shop](https://oldschool.runescape.wiki/w/Amelia's_Seed_Shop)
-
-Items: **16** · blocked today: **16**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Asgarnian seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Barley seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cabbage seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Hammerstone seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Jute seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Krandorian seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Marigold seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Onion seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Potato seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rosemary seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Strawberry seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sweetcorn seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tomato seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watermelon seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Wildblood seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Yanillian seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Amlodd's Magical Supplies
-
-Wiki: [Amlodd's Magical Supplies](https://oldschool.runescape.wiki/w/Amlodd's_Magical_Supplies)
-
-Items: **18** · blocked today: **18**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Air rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Air rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Blood rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Body rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chaos rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chaos rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Cosmic rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Death rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Law rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mind rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mind rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Nature rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Aneirin's Armour
-
-Wiki: [Aneirin's Armour](https://oldschool.runescape.wiki/w/Aneirin's_Armour)
-
-Items: **12** · blocked today: **12**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Adamant full helm | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Adamant platebody | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Adamant platelegs | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Adamant plateskirt | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril full helm | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril platebody | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril platelegs | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril plateskirt | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune chainbody | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune full helm | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune platelegs | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune plateskirt | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Anwen
-
-Wiki: [Anwen](https://oldschool.runescape.wiki/w/Anwen)
-
-Items: **1** · blocked today: **1**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Silk | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Arcuani's Archery Supplies
-
-Wiki: [Arcuani's Archery Supplies](https://oldschool.runescape.wiki/w/Arcuani's_Archery_Supplies)
-
-Items: **17** · blocked today: **17**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Adamant arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Iron arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Longbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Maple longbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Maple shortbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Oak longbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Oak shortbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Shortbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Willow longbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Willow shortbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Ardougne Baker's Stall.
-
-Wiki: [Ardougne Baker's Stall.](https://oldschool.runescape.wiki/w/Ardougne_Baker's_Stall.)
-
-Items: **4** · blocked today: **3**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Bread | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Cake | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chocolate bar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Chocolate slice | unmapped | unmapped |  |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Ardougne Fur Stall.
-
-Wiki: [Ardougne Fur Stall.](https://oldschool.runescape.wiki/w/Ardougne_Fur_Stall.)
-
-Items: **12** · blocked today: **12**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Bear fur | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Common kebbit fur | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Desert devil fur | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Feldip weasel fur | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Graahk fur | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Grey wolf fur | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Kyatt fur | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Larupia fur | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Polar kebbit fur | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tatty graahk fur | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tatty kyatt fur | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tatty larupia fur | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Ardougne Gem Stall.
-
-Wiki: [Ardougne Gem Stall.](https://oldschool.runescape.wiki/w/Ardougne_Gem_Stall.)
-
-Items: **4** · blocked today: **4**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Diamond | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Emerald | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Ruby | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Sapphire | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Ardougne Silver Stall.
-
-Wiki: [Ardougne Silver Stall.](https://oldschool.runescape.wiki/w/Ardougne_Silver_Stall.)
-
-Items: **3** · blocked today: **3**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Silver bar | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Silver ore | GATHERABLE | skill-gated | fabrication gate on shop buy |
-| Unstrung symbol | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Ardougne Spice Stall.
-
-Wiki: [Ardougne Spice Stall.](https://oldschool.runescape.wiki/w/Ardougne_Spice_Stall.)
-
-Items: **3** · blocked today: **3**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Garlic | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Spice | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Argo
-
-Wiki: [Argo](https://oldschool.runescape.wiki/w/Argo)
-
-Items: **7** · blocked today: **7**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant cure | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Seed dibber | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watering can | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Arhein's General Goods
-
-Wiki: [Arhein's General Goods](https://oldschool.runescape.wiki/w/Arhein's_General_Goods)
-
-Items: **11** · blocked today: **10**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Bowl | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bronze pickaxe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rope | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tinderbox | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Armour Shop (Jatizso)
-
-Wiki: [Armour Shop (Jatizso)](https://oldschool.runescape.wiki/w/Armour_Shop_(Jatizso))
-
-Items: **8** · blocked today: **8**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Mithril chainbody | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril full helm | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril kiteshield | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril med helm | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril platebody | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril platelegs | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril plateskirt | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril sq shield | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Armour store.
-
-Wiki: [Armour store.](https://oldschool.runescape.wiki/w/Armour_store.)
-
-Items: **24** · blocked today: **24**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Adamant chainbody | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Adamant full helm | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Adamant kiteshield | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Adamant med helm | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Adamant platebody | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Adamant platelegs | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Adamant plateskirt | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Adamant sq shield | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril chainbody | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril full helm | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril kiteshield | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril med helm | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril platebody | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril platelegs | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril plateskirt | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril sq shield | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune chainbody | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune full helm | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune kiteshield | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune med helm | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune platebody | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune platelegs | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune plateskirt | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune sq shield | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Armoury
-
-Wiki: [Armoury](https://oldschool.runescape.wiki/w/Armoury)
-
-Items: **20** · blocked today: **20**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Adamant 2h sword | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Black 2h sword | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bronze 2h sword | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bronze bolts | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Crossbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron 2h sword | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Iron axe | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron battleaxe | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Longbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril 2h sword | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Mithril battleaxe | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Shortbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel 2h sword | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Steel axe | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel battleaxe | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Arnold's Eclectic Supplies.
-
-Wiki: [Arnold's Eclectic Supplies.](https://oldschool.runescape.wiki/w/Arnold's_Eclectic_Supplies.)
-
-Items: **12** · blocked today: **12**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Beer | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bread | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bucket of milk | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Glassblowing pipe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Harpoon | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Monkfish | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Needle | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Raw monkfish | GATHERABLE | skill-gated | fabrication gate on shop buy |
-| Small fishing net | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Thread | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
+Total shops in this file: **553** · wiki unique items: **2084**
 
 ## Artima's Crafting Supplies
 
@@ -1133,9 +250,9 @@ Items: **6** · blocked today: **5**
 | Feather | DROP_ONLY | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Feather pack | FREE | needs-pack-single |  |
 | Iron arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Iron arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Steel arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Steel arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -1204,7 +321,7 @@ Items: **26** · blocked today: **24**
 
 Wiki: [Bandit Bargains](https://oldschool.runescape.wiki/w/Bandit_Bargains)
 
-Items: **14** · blocked today: **9**
+Items: **14** · blocked today: **8**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
@@ -1214,9 +331,9 @@ Items: **14** · blocked today: **9**
 | Bucket of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Desert boots | SHOP_ONLY | open |  |
 | Desert robe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Desert shirt | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Desert shirt | SHOP_ONLY | open |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -1238,7 +355,7 @@ Items: **8** · blocked today: **7**
 | Bronze axe | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Bronze pickaxe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -1617,8 +734,8 @@ Items: **12** · blocked today: **10**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cooked meat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -1702,19 +819,19 @@ Items: **17** · blocked today: **12**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
-| Basket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Basket pack | unmapped | unmapped |  |
+| Basket | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Basket pack | FREE | needs-pack-single |  |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Compost pack | unmapped | unmapped |  |
-| Empty bucket pack | unmapped | unmapped |  |
+| Compost pack | FREE | needs-pack-single |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
 | Empty plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Empty sack | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Filled plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant pot pack | unmapped | unmapped |  |
+| Plant pot pack | FREE | needs-pack-single |  |
 | Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sack pack | unmapped | unmapped |  |
+| Sack pack | FREE | needs-pack-single |  |
 | Secateurs | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Seed dibber | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Spade | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -1840,9 +957,9 @@ Items: **11** · blocked today: **9**
 | --- | --- | --- | --- |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
 | Empty cup | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -1900,8 +1017,8 @@ Items: **18** · blocked today: **16**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Charcoal | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -2108,7 +1225,7 @@ Items: **11** · blocked today: **5**
 | Manta ray | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Message (Theatre of Blood) | unmapped | unmapped |  |
 | Mushroom potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Onion | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Onion | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Prayer potion(4) | unmapped | unmapped |  |
 | Saradomin brew(4) | unmapped | unmapped |  |
 | Sea turtle | FABRICABLE | skill-gated | fabrication gate on shop buy |
@@ -2166,16 +1283,16 @@ Items: **24** · blocked today: **24**
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Banana | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Cabbage | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Cheese | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chocolate bar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Coconut | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cooking apple | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Onion | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Onion | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Orange | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Papaya fruit | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pineapple | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Potato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Raw bass | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Raw beef | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Raw chicken | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -2185,10 +1302,10 @@ Items: **24** · blocked today: **24**
 | Raw swordfish | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Raw tuna | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Redberries | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Strawberry | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sweetcorn | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tomato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watermelon | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Strawberry | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Sweetcorn | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Tomato | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Watermelon | GATHERABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -2274,7 +1391,7 @@ Items: **1** · blocked today: **1**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Cabbage | GATHERABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -2399,9 +1516,9 @@ Items: **41** · blocked today: **29**
 | Dragon gloves | unmapped | unmapped |  |
 | Egg | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Egg whisk | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
 | Empty cup | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Frying pan | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Grapes | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Hardleather gloves | unmapped | unmapped |  |
@@ -2423,7 +1540,7 @@ Items: **41** · blocked today: **29**
 | Spice | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Spork | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Steel gloves | unmapped | unmapped |  |
-| Tomato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Tomato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Wooden spoon | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 
 **Review:** _(items here that should buy freely — list names or "none")_
@@ -2458,8 +1575,8 @@ Items: **9** · blocked today: **7**
 | --- | --- | --- | --- |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -2513,29 +1630,29 @@ Items: **27** · blocked today: **27**
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Adamant arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Adamant arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Adamant arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Adamant brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Arrow shaft | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Black brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Bronze arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Bronze arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Bronze brutal | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Comp ogre bow | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Iron arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Iron arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Iron brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Longbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Mithril arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Mithril arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Mithril brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Oak longbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Oak shortbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Rune arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Rune arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Rune brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Shortbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Steel arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Steel arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Steel brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Willow longbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Willow shortbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
@@ -3173,7 +2290,7 @@ Items: **9** · blocked today: **8**
 | --- | --- | --- | --- |
 | Bowl | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Glassblowing pipe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -3209,22 +2326,22 @@ Items: **16** · blocked today: **16**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
-| Asgarnian seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Barley seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cabbage seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Hammerstone seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Jute seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Krandorian seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Marigold seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Onion seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Potato seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rosemary seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Strawberry seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sweetcorn seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tomato seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watermelon seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Wildblood seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Yanillian seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Asgarnian seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Barley seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Cabbage seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Hammerstone seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Jute seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Krandorian seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Marigold seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Onion seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Potato seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Rosemary seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Strawberry seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Sweetcorn seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Tomato seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Watermelon seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Wildblood seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Yanillian seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -3375,8 +2492,8 @@ Items: **9** · blocked today: **7**
 | --- | --- | --- | --- |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -3433,8 +2550,8 @@ Items: **14** · blocked today: **11**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -3623,7 +2740,7 @@ Items: **8** · blocked today: **5**
 | Pestle and mortar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Water-filled vial pack | unmapped | unmapped |  |
+| Water-filled vial pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -3637,19 +2754,19 @@ Items: **17** · blocked today: **12**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
-| Basket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Basket pack | unmapped | unmapped |  |
+| Basket | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Basket pack | FREE | needs-pack-single |  |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Compost pack | unmapped | unmapped |  |
-| Empty bucket pack | unmapped | unmapped |  |
+| Compost pack | FREE | needs-pack-single |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
 | Empty sack | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Filled plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Plant cure | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant pot pack | unmapped | unmapped |  |
+| Plant pot pack | FREE | needs-pack-single |  |
 | Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sack pack | unmapped | unmapped |  |
+| Sack pack | FREE | needs-pack-single |  |
 | Secateurs | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Seed dibber | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Spade | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -3893,8 +3010,8 @@ Items: **13** · blocked today: **10**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Newcomer map | unmapped | unmapped |  |
@@ -3993,22 +3110,22 @@ Items: **17** · blocked today: **17**
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Banana | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Cabbage | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Coconut | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cooking apple | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Grapes | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Lemon | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Lime | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Onion | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Onion | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Orange | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Papaya fruit | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pineapple | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Potato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Redberries | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Strawberry | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sweetcorn | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tomato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watermelon | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Strawberry | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Sweetcorn | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Tomato | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Watermelon | GATHERABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -4271,15 +3388,15 @@ Items: **11** · blocked today: **11**
 | --- | --- | --- | --- |
 | Banana | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Bread | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Cabbage | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Cheese | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chocolate bar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot of flour | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Potato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Raw beef | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Raw chicken | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Redberries | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tomato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Tomato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -4460,8 +3577,8 @@ Items: **18** · blocked today: **16**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -4535,7 +3652,7 @@ Items: **10** · blocked today: **9**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -4679,12 +3796,12 @@ Items: **12** · blocked today: **11**
 | Chocolate bar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cooking apple | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Empty cup | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pie dish | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot of flour | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Potato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Tinderbox | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 
 **Review:** _(items here that should buy freely — list names or "none")_
@@ -4705,7 +3822,7 @@ Items: **7** · blocked today: **4**
 | Pestle and mortar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Water-filled vial pack | unmapped | unmapped |  |
+| Water-filled vial pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -4989,8 +4106,8 @@ Items: **13** · blocked today: **10**
 | Blood talisman | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -5138,13 +4255,13 @@ Items: **7** · blocked today: **0**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
-| Amylase pack | unmapped | unmapped |  |
-| Graceful boots | unmapped | unmapped |  |
-| Graceful cape | unmapped | unmapped |  |
-| Graceful gloves | unmapped | unmapped |  |
-| Graceful hood | unmapped | unmapped |  |
-| Graceful legs | unmapped | unmapped |  |
-| Graceful top | unmapped | unmapped |  |
+| Amylase pack | FREE | open |  |
+| Graceful boots | FREE | open |  |
+| Graceful cape | FREE | open |  |
+| Graceful gloves | FREE | open |  |
+| Graceful hood | FREE | open |  |
+| Graceful legs | FREE | open |  |
+| Graceful top | FREE | open |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -5160,7 +4277,7 @@ Items: **26** · blocked today: **26**
 | --- | --- | --- | --- |
 | Batta tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Bucket of milk | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Cabbage | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Cheese | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chocolate bar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chocolate dust | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -5175,15 +4292,15 @@ Items: **26** · blocked today: **26**
 | Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Lemon | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Lime | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Onion | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Onion | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Orange | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pineapple | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot of cream | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot of flour | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Potato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Spider on shaft | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Spider on stick | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tomato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Tomato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -5228,11 +4345,11 @@ Items: **5** · blocked today: **5**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Cabbage | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Garlic | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Onion | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tomato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Onion | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Potato | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Tomato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -5252,7 +4369,7 @@ Items: **7** · blocked today: **4**
 | Pestle and mortar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Water-filled vial pack | unmapped | unmapped |  |
+| Water-filled vial pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -5317,21 +4434,21 @@ Items: **21** · blocked today: **21**
 | Black 2h sword | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Bronze 2h sword | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Bronze arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Bronze arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Bronze bolts | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Crossbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Iron 2h sword | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Iron arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Iron axe | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Iron battleaxe | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Longbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Mithril 2h sword | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Mithril arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Mithril battleaxe | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Pearl bolts | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Shortbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Steel 2h sword | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Steel arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Steel axe | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Steel battleaxe | FABRICABLE | skill-gated | fabrication gate on shop buy |
 
@@ -5365,8 +4482,8 @@ Items: **15** · blocked today: **12**
 | Candle | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Charcoal | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Empty vial pack | unmapped | unmapped |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -5674,11 +4791,11 @@ Items: **30** · blocked today: **28**
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Adamant arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Adamant arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Adamant arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Adamant brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Black brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Bronze arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Bronze arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Bronze bolts | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Bronze brutal | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Comp ogre bow | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -5686,20 +4803,20 @@ Items: **30** · blocked today: **28**
 | Fletching cape | unmapped | unmapped |  |
 | Fletching cape(t) | unmapped | unmapped |  |
 | Iron arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Iron arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Iron brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Longbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Mithril arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Mithril arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Mithril brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Oak longbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Oak shortbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Rune arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Rune arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Rune brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Shortbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Steel arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Steel arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Steel brutal | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Studded body | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Studded chaps | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -5832,7 +4949,7 @@ Items: **7** · blocked today: **4**
 | Pestle and mortar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Water-filled vial pack | unmapped | unmapped |  |
+| Water-filled vial pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -5880,8 +4997,8 @@ Items: **8** · blocked today: **6**
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -6081,11 +5198,11 @@ Items: **5** · blocked today: **5**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Cabbage | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Garlic | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Onion | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tomato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Onion | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Potato | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Tomato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -6179,7 +5296,7 @@ Items: **7** · blocked today: **4**
 | Pestle and mortar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Water-filled vial pack | unmapped | unmapped |  |
+| Water-filled vial pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -6198,8 +5315,8 @@ Items: **13** · blocked today: **10**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Field ration | unmapped | unmapped |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -6246,7 +5363,7 @@ Items: **28** · blocked today: **25**
 | Unlit torch | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Water-filled vial pack | unmapped | unmapped |  |
+| Water-filled vial pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -6386,8 +5503,8 @@ Items: **11** · blocked today: **9**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -6436,19 +5553,19 @@ Items: **17** · blocked today: **12**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
-| Basket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Basket pack | unmapped | unmapped |  |
+| Basket | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Basket pack | FREE | needs-pack-single |  |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Compost pack | unmapped | unmapped |  |
-| Empty bucket pack | unmapped | unmapped |  |
+| Compost pack | FREE | needs-pack-single |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
 | Empty sack | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Filled plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Plant cure | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant pot pack | unmapped | unmapped |  |
+| Plant pot pack | FREE | needs-pack-single |  |
 | Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sack pack | unmapped | unmapped |  |
+| Sack pack | FREE | needs-pack-single |  |
 | Secateurs | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Seed dibber | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Spade | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -6472,8 +5589,8 @@ Items: **17** · blocked today: **15**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -6551,14 +5668,14 @@ Items: **10** · blocked today: **10**
 | --- | --- | --- | --- |
 | Banana | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Bread | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Cabbage | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Cheese | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chocolate bar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot of flour | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Potato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Raw beef | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Redberries | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tomato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Tomato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -6577,8 +5694,8 @@ Items: **16** · blocked today: **13**
 | Bronze pickaxe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -6909,8 +6026,8 @@ Items: **10** · blocked today: **8**
 | Bowl | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Bronze nails | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Iron nails | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -6980,7 +6097,7 @@ Items: **11** · blocked today: **9**
 | --- | --- | --- | --- |
 | Cocktail glass | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Compost pack | unmapped | unmapped |  |
+| Compost pack | FREE | needs-pack-single |  |
 | Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Plant cure | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -7027,8 +6144,8 @@ Items: **11** · blocked today: **9**
 | Bronze pickaxe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -7050,8 +6167,8 @@ Items: **18** · blocked today: **15**
 | Bowl | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Machete | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -7063,7 +6180,7 @@ Items: **18** · blocked today: **15**
 | Thread | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Tinderbox | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Water-filled vial pack | unmapped | unmapped |  |
+| Water-filled vial pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -7121,8 +6238,8 @@ Items: **11** · blocked today: **9**
 | --- | --- | --- | --- |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -7204,13 +6321,13 @@ Items: **16** · blocked today: **15**
 | Chocolate bar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cooking apple | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Empty cup | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pie dish | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot of flour | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Potato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Tinderbox | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 
 **Review:** _(items here that should buy freely — list names or "none")_
@@ -7392,8 +6509,8 @@ Items: **15** · blocked today: **12**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -7469,7 +6586,7 @@ Items: **1** · blocked today: **1**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Cabbage | GATHERABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -7729,15 +6846,15 @@ Items: **13** · blocked today: **10**
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Bronze claws | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Bronze knife | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Iron claws | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Iron knife | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Lockpick | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Rope | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Steel claws | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Steel knife | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Stethoscope | unmapped | unmapped |  |
 | Thieving cape | unmapped | unmapped |  |
 | Thieving cape(t) | unmapped | unmapped |  |
@@ -7883,7 +7000,7 @@ Items: **4** · blocked today: **0**
 
 Wiki: [Miscellanian Clothes Shop](https://oldschool.runescape.wiki/w/Miscellanian_Clothes_Shop)
 
-Items: **17** · blocked today: **17**
+Items: **17** · blocked today: **7**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
@@ -7894,16 +7011,16 @@ Items: **17** · blocked today: **17**
 | Fremennik red shirt | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Fremennik robe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Fremennik skirt | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Shirt (lilac) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Shirt (yellow) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Shorts (blue) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Shorts (yellow) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Skirt (blue) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Skirt (lilac) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Trousers (blue) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Trousers (lilac) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Woven top (blue) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Woven top (yellow) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Shirt (lilac) | SHOP_ONLY | open |  |
+| Shirt (yellow) | SHOP_ONLY | open |  |
+| Shorts (blue) | SHOP_ONLY | open |  |
+| Shorts (yellow) | SHOP_ONLY | open |  |
+| Skirt (blue) | SHOP_ONLY | open |  |
+| Skirt (lilac) | SHOP_ONLY | open |  |
+| Trousers (blue) | SHOP_ONLY | open |  |
+| Trousers (lilac) | SHOP_ONLY | open |  |
+| Woven top (blue) | SHOP_ONLY | open |  |
+| Woven top (yellow) | SHOP_ONLY | open |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -7919,12 +7036,12 @@ Items: **8** · blocked today: **8**
 | --- | --- | --- | --- |
 | Bread | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Bucket of milk | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Cabbage | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Cheese | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chocolate bar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Onion | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Onion | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Pot of flour | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Potato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -7942,8 +7059,8 @@ Items: **11** · blocked today: **9**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -8040,8 +7157,8 @@ Items: **12** · blocked today: **10**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -8212,7 +7329,7 @@ Items: **7** · blocked today: **4**
 | Pestle and mortar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Water-filled vial pack | unmapped | unmapped |  |
+| Water-filled vial pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -8248,8 +7365,8 @@ Items: **12** · blocked today: **10**
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cooked meat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -8496,7 +7613,7 @@ Items: **25** · blocked today: **23**
 | Unlit torch | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Water-filled vial pack | unmapped | unmapped |  |
+| Water-filled vial pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -8667,8 +7784,8 @@ Items: **18** · blocked today: **16**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -8890,7 +8007,7 @@ Items: **10** · blocked today: **10**
 
 Wiki: [Pollnivneach general store.](https://oldschool.runescape.wiki/w/Pollnivneach_general_store.)
 
-Items: **17** · blocked today: **11**
+Items: **17** · blocked today: **10**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
@@ -8899,9 +8016,9 @@ Items: **17** · blocked today: **11**
 | Bucket of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cheese | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Desert boots | SHOP_ONLY | open |  |
-| Desert shirt | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Desert shirt | SHOP_ONLY | open |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Fake beard | SHOP_ONLY | open |  |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -8909,7 +8026,7 @@ Items: **17** · blocked today: **11**
 | Lime | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Orange | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tomato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Tomato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Waterskin(3) | unmapped | unmapped |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
@@ -8926,8 +8043,8 @@ Items: **9** · blocked today: **7**
 | --- | --- | --- | --- |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -9038,8 +8155,8 @@ Items: **18** · blocked today: **15**
 | --- | --- | --- | --- |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Empty vial pack | unmapped | unmapped |  |
 | Fishing rod | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -9109,7 +8226,7 @@ Items: **3** · blocked today: **3**
 | --- | --- | --- | --- |
 | Silver bar | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Silver ore | GATHERABLE | skill-gated | fabrication gate on shop buy |
-| Unstrung symbol | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Unstrung symbol | FABRICABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -9139,16 +8256,16 @@ Items: **10** · blocked today: **10**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cabbage seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Onion | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Onion seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Potato seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sweetcorn | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sweetcorn seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tomato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tomato seed | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Cabbage | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Cabbage seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Onion | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Onion seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Potato | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Potato seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Sweetcorn | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Sweetcorn seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Tomato | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Tomato seed | GATHERABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -9186,19 +8303,19 @@ Items: **18** · blocked today: **18**
 | Bass | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Bread | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Bucket of milk | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Cabbage | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Cake | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Cheese | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chocolate bar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cod | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Onion | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Onion | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Pot of flour | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Potato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Raw beef | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Raw chicken | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Redberries | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Stew | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Tomato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Tomato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Trout | FABRICABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
@@ -9234,8 +8351,8 @@ Items: **15** · blocked today: **12**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Empty vial pack | unmapped | unmapped |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -9264,7 +8381,7 @@ Items: **7** · blocked today: **4**
 | Pestle and mortar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Water-filled vial pack | unmapped | unmapped |  |
+| Water-filled vial pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -9280,7 +8397,7 @@ Items: **3** · blocked today: **3**
 | --- | --- | --- | --- |
 | Silver bar | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Silver ore | GATHERABLE | skill-gated | fabrication gate on shop buy |
-| Unstrung symbol | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Unstrung symbol | FABRICABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -9470,7 +8587,7 @@ Items: **14** · blocked today: **13**
 | Bread | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Bronze halberd | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Dragon halberd | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Iron halberd | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Mithril halberd | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -9516,13 +8633,13 @@ Items: **15** · blocked today: **15**
 
 Wiki: [Raetul and Co's Cloth Store.](https://oldschool.runescape.wiki/w/Raetul_and_Co's_Cloth_Store.)
 
-Items: **7** · blocked today: **6**
+Items: **7** · blocked today: **5**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Desert boots | SHOP_ONLY | open |  |
 | Desert robe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Desert shirt | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Desert shirt | SHOP_ONLY | open |  |
 | Linen (Icthlarin's Little Helper) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Needle | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Silk | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -9723,8 +8840,8 @@ Items: **15** · blocked today: **10**
 | --- | --- | --- | --- |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Flamtaer hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -9735,7 +8852,7 @@ Items: **15** · blocked today: **10**
 | Shears | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Tinderbox | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Water-filled vial pack | unmapped | unmapped |  |
+| Water-filled vial pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -9767,7 +8884,7 @@ Items: **20** · blocked today: **18**
 | Vial of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Water rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Water rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water-filled vial pack | unmapped | unmapped |  |
+| Water-filled vial pack | FREE | needs-pack-single |  |
 | Wizard hat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 
 **Review:** _(items here that should buy freely — list names or "none")_
@@ -9854,37 +8971,37 @@ Items: **31** · blocked today: **26**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
-| Asgarnian hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Barley | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Basket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Basket pack | unmapped | unmapped |  |
+| Asgarnian hops | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Barley | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Basket | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Basket pack | FREE | needs-pack-single |  |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Cabbage | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Compost pack | unmapped | unmapped |  |
-| Empty bucket pack | unmapped | unmapped |  |
+| Compost pack | FREE | needs-pack-single |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
 | Empty sack | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Filled plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Hammerstone hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Jute fibre | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Krandorian hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Onion | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Hammerstone hops | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Jute fibre | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Krandorian hops | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Onion | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Plant cure | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant pot pack | unmapped | unmapped |  |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Plant pot pack | FREE | needs-pack-single |  |
+| Potato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sack pack | unmapped | unmapped |  |
+| Sack pack | FREE | needs-pack-single |  |
 | Secateurs | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Seed dibber | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Spade | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Strawberry | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sweetcorn | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tomato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Strawberry | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Sweetcorn | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Tomato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Watering can | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watermelon | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Wildblood hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Yanillian hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Watermelon | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Wildblood hops | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Yanillian hops | GATHERABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -9934,8 +9051,8 @@ Items: **13** · blocked today: **10**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Newcomer map | unmapped | unmapped |  |
@@ -10116,8 +9233,8 @@ Items: **17** · blocked today: **14**
 | Bronze pickaxe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Empty vial pack | unmapped | unmapped |  |
 | Fishing rod | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -10160,37 +9277,37 @@ Items: **31** · blocked today: **26**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
-| Asgarnian hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Barley | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Basket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Basket pack | unmapped | unmapped |  |
+| Asgarnian hops | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Barley | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Basket | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Basket pack | FREE | needs-pack-single |  |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Cabbage | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Compost pack | unmapped | unmapped |  |
-| Empty bucket pack | unmapped | unmapped |  |
+| Compost pack | FREE | needs-pack-single |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
 | Empty sack | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Filled plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Hammerstone hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Jute fibre | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Krandorian hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Onion | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Hammerstone hops | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Jute fibre | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Krandorian hops | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Onion | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Plant cure | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant pot pack | unmapped | unmapped |  |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Plant pot pack | FREE | needs-pack-single |  |
+| Potato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sack pack | unmapped | unmapped |  |
+| Sack pack | FREE | needs-pack-single |  |
 | Secateurs | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Seed dibber | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Spade | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Strawberry | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sweetcorn | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tomato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Strawberry | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Sweetcorn | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Tomato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Watering can | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watermelon | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Wildblood hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Yanillian hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Watermelon | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Wildblood hops | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Yanillian hops | GATHERABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -10328,7 +9445,7 @@ Items: **1** · blocked today: **1**
 
 Wiki: [Shantay Pass Shop](https://oldschool.runescape.wiki/w/Shantay_Pass_Shop)
 
-Items: **20** · blocked today: **14**
+Items: **20** · blocked today: **13**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
@@ -10339,9 +9456,9 @@ Items: **20** · blocked today: **14**
 | Bucket of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Desert boots | SHOP_ONLY | open |  |
 | Desert robe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Desert shirt | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Desert shirt | SHOP_ONLY | open |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Feather | DROP_ONLY | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Feather pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -10464,23 +9581,23 @@ Items: **20** · blocked today: **17**
 | Bread | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Bucket of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Cabbage | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Candle | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cooked meat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Egg | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
 | Empty vial pack | unmapped | unmapped |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pestle and mortar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Potato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Rope | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Spade | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Tinderbox | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Water-filled vial pack | unmapped | unmapped |  |
+| Water-filled vial pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -10524,7 +9641,7 @@ Items: **3** · blocked today: **3**
 | --- | --- | --- | --- |
 | Silver bar | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Silver ore | GATHERABLE | skill-gated | fabrication gate on shop buy |
-| Unstrung symbol | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Unstrung symbol | FABRICABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -10971,8 +10088,8 @@ Items: **14** · blocked today: **12**
 | --- | --- | --- | --- |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Goat horn | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -11384,8 +10501,8 @@ Items: **28** · blocked today: **24**
 | Candle | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Dwarven stout | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Empty vial pack | unmapped | unmapped |  |
 | Gin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Greenman's ale | FABRICABLE | skill-gated | fabrication gate on shop buy |
@@ -11403,7 +10520,7 @@ Items: **28** · blocked today: **24**
 | Vial | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vial of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Vodka | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Water-filled vial pack | unmapped | unmapped |  |
+| Water-filled vial pack | FREE | needs-pack-single |  |
 | Whisky | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Wizard's mind bomb | FABRICABLE | skill-gated | fabrication gate on shop buy |
 
@@ -11898,8 +11015,8 @@ Items: **30** · blocked today: **26**
 | Bucket of slime | unmapped | unmapped |  |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Fishing rod | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Glassblowing pipe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -12300,37 +11417,37 @@ Items: **31** · blocked today: **26**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
-| Asgarnian hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Barley | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Basket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Basket pack | unmapped | unmapped |  |
+| Asgarnian hops | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Barley | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Basket | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Basket pack | FREE | needs-pack-single |  |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cabbage | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Cabbage | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Compost pack | unmapped | unmapped |  |
-| Empty bucket pack | unmapped | unmapped |  |
+| Compost pack | FREE | needs-pack-single |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
 | Empty sack | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Filled plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Hammerstone hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Jute fibre | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Krandorian hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Onion | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Hammerstone hops | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Jute fibre | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Krandorian hops | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Onion | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Plant cure | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant pot pack | unmapped | unmapped |  |
-| Potato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Plant pot pack | FREE | needs-pack-single |  |
+| Potato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sack pack | unmapped | unmapped |  |
+| Sack pack | FREE | needs-pack-single |  |
 | Secateurs | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Seed dibber | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Spade | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Strawberry | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sweetcorn | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tomato | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Strawberry | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Sweetcorn | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Tomato | GATHERABLE | skill-gated | fabrication gate on shop buy |
 | Watering can | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watermelon | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Wildblood hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Yanillian hops | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Watermelon | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Wildblood hops | GATHERABLE | skill-gated | fabrication gate on shop buy |
+| Yanillian hops | GATHERABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -12344,19 +11461,19 @@ Items: **17** · blocked today: **12**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
-| Basket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Basket pack | unmapped | unmapped |  |
+| Basket | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Basket pack | FREE | needs-pack-single |  |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Compost pack | unmapped | unmapped |  |
-| Empty bucket pack | unmapped | unmapped |  |
+| Compost pack | FREE | needs-pack-single |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
 | Empty sack | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Filled plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Plant cure | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant pot pack | unmapped | unmapped |  |
+| Plant pot pack | FREE | needs-pack-single |  |
 | Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Sack pack | unmapped | unmapped |  |
+| Sack pack | FREE | needs-pack-single |  |
 | Secateurs | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Seed dibber | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Spade | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -12378,8 +11495,8 @@ Items: **13** · blocked today: **10**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Newcomer map | unmapped | unmapped |  |
@@ -12532,17 +11649,17 @@ Items: **12** · blocked today: **12**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
-| Adamant arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Adamant arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Adamant javelin | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Bronze arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Bronze javelin | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Iron arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Iron javelin | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Mithril arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Mithril javelin | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Rune arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Rune javelin | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel arrowtips | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Steel arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Steel javelin | FABRICABLE | skill-gated | fabrication gate on shop buy |
 
 **Review:** _(items here that should buy freely — list names or "none")_
@@ -12562,8 +11679,8 @@ Items: **13** · blocked today: **10**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Field ration | unmapped | unmapped |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -12673,8 +11790,8 @@ Items: **11** · blocked today: **9**
 | --- | --- | --- | --- |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -12836,7 +11953,7 @@ Items: **14** · blocked today: **13**
 | Bronze pickaxe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cooked meat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Leather boots | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Longbow | FABRICABLE | skill-gated | fabrication gate on shop buy |
@@ -12984,7 +12101,7 @@ Items: **5** · blocked today: **3**
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Bottle of wine | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug of vinegar | unmapped | unmapped |  |
 | Jug of wine | FABRICABLE | skill-gated | fabrication gate on shop buy |
@@ -13031,7 +12148,7 @@ Items: **4** · blocked today: **1**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
-| Amylase pack | unmapped | unmapped |  |
+| Amylase pack | FREE | open |  |
 | Calcified acorn | unmapped | unmapped |  |
 | Colossal wyrm teleport scroll | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Graceful crafting kit | unmapped | unmapped |  |
@@ -13230,8 +12347,8 @@ Items: **13** · blocked today: **10**
 | Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Cake tin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | unmapped | unmapped |  |
-| Empty jug pack | unmapped | unmapped |  |
+| Empty bucket pack | FREE | needs-pack-single |  |
+| Empty jug pack | FREE | needs-pack-single |  |
 | Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Newcomer map | unmapped | unmapped |  |
@@ -13307,4 +12424,5 @@ Items: **1** · blocked today: **0**
 
 ---
 
-Shops with at least one blocked item: **492**
+Shops with at least one blocked item: **460** (of **553** listed)
+Wiki totals: **589** shops, **2084** unique items sold

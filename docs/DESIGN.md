@@ -48,16 +48,17 @@ Herblore.
 
 ```
 tradeUnlocked(item) =
-  fabricable(item)                    -- meets any SKILL path at current levels
-  OR everObtained(item)               -- for GE items with no skill path
+  everObtained(item) AND fabricable(item)   -- skill-path items
+  OR everObtained(item)                     -- GE items with no skill path
   OR customRule.trade satisfied
 
-shopUnlocked(item) = same fabrication/obtain logic, with optional shop-specific overrides
+shopUnlocked(item) = same logic, with optional shop-specific overrides; SHOP_ONLY exempt
 ```
 
 - **fabricable** — real (non-boosted) levels satisfy at least one `UnlockPath`.
-- **everObtained** — persisted; first time the account genuinely held the item.
-- Shop purchases do **not** set `everObtained` (anti-launder).
+- **everObtained** — persisted; first time the account genuinely held the item. Required
+  before GE/shop for every fabrication item. The GE is never a legitimate obtain path.
+- Shop purchases do **not** set `everObtained` (anti-launder), except **`SHOP_ONLY`**.
 - All ~4 000 GE tradeables have a catalog entry (`FREE` if no recipe). Items with no skill
   path still need **one obtain** before trade/shop/use open.
 
@@ -97,8 +98,8 @@ may have Smithing and Fletching paths; the lower path wins automatically.
 
 ## 2. The unifying rule
 
-> **Trade/shop follow the fabrication ladder (or obtain for unmapped GE items). Use is
-> gated only where the game provides no requirement of its own.**
+> **Trade/shop require a legitimate obtain plus fabrication levels (or obtain alone for
+> unmapped GE items). Use is gated only where the game provides no requirement of its own.**
 
 | Class | Vanilla requirement | USE gated by default |
 | --- | --- | --- |

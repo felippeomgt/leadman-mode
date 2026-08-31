@@ -314,11 +314,7 @@ public class UnlockService
 		ItemRule rule = rules.forName(key);
 		if (rule != null && rule.hasSkillPath())
 		{
-			if (isSmithingEquipment(rule))
-			{
-				return meetsEquipmentSmithingForTrade(rule);
-			}
-			return satisfies(rule);
+			return canTradeFabricatedItem(key, rule);
 		}
 
 		if (rule != null && isObtainOnlyClass(rule.getItemClass()))
@@ -384,13 +380,14 @@ public class UnlockService
 			return true;
 		}
 
+		if (rule != null && rule.isShopAlwaysOpen())
+		{
+			return true;
+		}
+
 		if (rule != null && rule.hasSkillPath())
 		{
-			if (isSmithingEquipment(rule))
-			{
-				return meetsEquipmentSmithingForTrade(rule);
-			}
-			return satisfies(rule);
+			return canTradeFabricatedItem(key, rule);
 		}
 
 		if (rule != null && isObtainOnlyClass(rule.getItemClass()))
@@ -820,6 +817,25 @@ public class UnlockService
 			return config.gateCharged();
 		}
 		return wearGateApplies(consume);
+	}
+
+	private boolean meetsFabricationForTrade(ItemRule rule)
+	{
+		if (isSmithingEquipment(rule))
+		{
+			return meetsEquipmentSmithingForTrade(rule);
+		}
+		return satisfies(rule);
+	}
+
+	/** Skill-path items need a legitimate obtain before GE/shop; then fabrication levels apply. */
+	private boolean canTradeFabricatedItem(String key, ItemRule rule)
+	{
+		if (!state.getObtained().contains(key))
+		{
+			return false;
+		}
+		return meetsFabricationForTrade(rule);
 	}
 
 	private boolean isSmithingEquipment(ItemRule rule)

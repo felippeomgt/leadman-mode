@@ -23,6 +23,8 @@ public class ItemRule
 	private List<UnlockPath> paths;
 	/** When set, shop buy is allowed only after {@code packOf} appears in {@code obtained}. */
 	private String packOf;
+	/** Ticket/pearl shops: no Leadman shop gate (the game already gates currency). */
+	private boolean shopAlwaysOpen;
 
 	public ItemRule()
 	{
@@ -66,6 +68,11 @@ public class ItemRule
 	public String getPackOf()
 	{
 		return packOf;
+	}
+
+	public boolean isShopAlwaysOpen()
+	{
+		return shopAlwaysOpen;
 	}
 
 	public boolean hasSkillPath()
