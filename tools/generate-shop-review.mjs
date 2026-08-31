@@ -24,7 +24,7 @@ const writePath = process.argv.includes("--write")
   : null;
 
 /** Shops at or before this name were reviewed and dropped from the output. */
-const REVIEW_START_AFTER = "Arnold's Eclectic Supplies.";
+const REVIEW_START_AFTER = "Bolongo";
 
 function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));

@@ -1,10 +1,10 @@
 # Shop-by-shop review
 
-Generated: 2026-08-31T20:36:30.109Z
+Generated: 2026-08-31T21:09:14.498Z
 
 Walk through each shop and note items that should **not** require obtain/skill before buying.
 
-Review resumes after **[Arnold's Eclectic Supplies.](https://oldschool.runescape.wiki/w/Arnold's_Eclectic_Supplies.)** — earlier shops verified and omitted.
+Review resumes after **[Bolongo](https://oldschool.runescape.wiki/w/Bolongo)** — earlier shops verified and omitted.
 
 **Rules are per item**, not per shop. The same item in two shops shares one rule.
 
@@ -15,756 +15,7 @@ Review resumes after **[Arnold's Eclectic Supplies.](https://oldschool.runescape
 - `skill-gated` — needs fabrication level (Cooking, Smithing, etc.) to buy
 - `needs-pack-single` — bulk pack; obtain the single item first
 
-Total shops in this file: **553** · wiki unique items: **2084**
-
-## Artima's Crafting Supplies
-
-Wiki: [Artima's Crafting Supplies](https://oldschool.runescape.wiki/w/Artima's_Crafting_Supplies)
-
-Items: **12** · blocked today: **12**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Amulet mould | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bolt mould | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bracelet mould | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Glassblowing pipe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Necklace mould | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Needle | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Ring mould | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Shears | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Thread | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tiara mould | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Atlazora's Rest
-
-Wiki: [Atlazora's Rest](https://oldschool.runescape.wiki/w/Atlazora's_Rest)
-
-Items: **11** · blocked today: **11**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Beer | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Cider | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Gin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Jug of wine | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Meat pie | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Moon-lite | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rum | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Stew | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Sunbeam ale | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Vodka | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Whisky | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Aub
-
-Wiki: [Aub](https://oldschool.runescape.wiki/w/Aub)
-
-Items: **7** · blocked today: **7**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant cure | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Seed dibber | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watering can | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Auburn Pub
-
-Wiki: [Auburn Pub](https://oldschool.runescape.wiki/w/Auburn_Pub)
-
-Items: **12** · blocked today: **12**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Axeman's folly | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Beer | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Cider | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Gin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Jug of wine | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Meat pie | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Moon-lite | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rum | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Stew | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Sunbeam ale | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Vodka | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Whisky | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Auburnvale General Store
-
-Wiki: [Auburnvale General Store](https://oldschool.runescape.wiki/w/Auburnvale_General_Store)
-
-Items: **15** · blocked today: **15**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Bowl | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bronze axe | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Needle | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Pestle and mortar | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rope | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Spade | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Thread | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tinderbox | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Unlit torch | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Vial | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Aubury's Rune Shop.
-
-Wiki: [Aubury's Rune Shop.](https://oldschool.runescape.wiki/w/Aubury's_Rune_Shop.)
-
-Items: **16** · blocked today: **14**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Air rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Air rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Body rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chaos rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chaos rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Death rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mind rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mind rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Runecraft cape | unmapped | unmapped |  |
-| Runecraft cape(t) | unmapped | unmapped |  |
-| Water rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Aurel
-
-Wiki: [Aurel](https://oldschool.runescape.wiki/w/Aurel)
-
-Items: **1** · blocked today: **1**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Gadderhammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Aurel's Supplies
-
-Wiki: [Aurel's Supplies](https://oldschool.runescape.wiki/w/Aurel's_Supplies)
-
-Items: **4** · blocked today: **4**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Bronze axe | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Raw mackerel | GATHERABLE | skill-gated | fabrication gate on shop buy |
-| Thin snail | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tinderbox | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Authentic Throwing Weapons.
-
-Wiki: [Authentic Throwing Weapons.](https://oldschool.runescape.wiki/w/Authentic_Throwing_Weapons.)
-
-Items: **12** · blocked today: **12**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Adamant javelin | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Adamant thrownaxe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bronze javelin | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze thrownaxe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Iron javelin | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron thrownaxe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Mithril javelin | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril thrownaxe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rune javelin | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune thrownaxe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Steel javelin | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel thrownaxe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Ava
-
-Wiki: [Ava](https://oldschool.runescape.wiki/w/Ava)
-
-Items: **2** · blocked today: **0**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Ava's attractor | unmapped | unmapped |  |
-| Locator orb | unmapped | unmapped |  |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Ava's Odds and Ends
-
-Wiki: [Ava's Odds and Ends](https://oldschool.runescape.wiki/w/Ava's_Odds_and_Ends)
-
-Items: **6** · blocked today: **5**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Feather | DROP_ONLY | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Feather pack | FREE | needs-pack-single |  |
-| Iron arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel arrowtips | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Ayesha
-
-Wiki: [Ayesha](https://oldschool.runescape.wiki/w/Ayesha)
-
-Items: **7** · blocked today: **7**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant cure | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Seed dibber | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watering can | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Baba Yaga's Magic Shop.
-
-Wiki: [Baba Yaga's Magic Shop.](https://oldschool.runescape.wiki/w/Baba_Yaga's_Magic_Shop.)
-
-Items: **26** · blocked today: **24**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Air rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Air rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Astral rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Battlestaff | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Blood rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Body rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chaos rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chaos rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Death rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Law rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Lunar signet | unmapped | unmapped |  |
-| Mind rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mind rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Moonclan manual | unmapped | unmapped |  |
-| Nature rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Soul rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Staff of air | FREE | skill-gated | fabrication gate on shop buy |
-| Staff of earth | FREE | skill-gated | fabrication gate on shop buy |
-| Staff of fire | FREE | skill-gated | fabrication gate on shop buy |
-| Staff of water | FREE | skill-gated | fabrication gate on shop buy |
-| Water rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Bandit Bargains
-
-Wiki: [Bandit Bargains](https://oldschool.runescape.wiki/w/Bandit_Bargains)
-
-Items: **14** · blocked today: **8**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Bowl | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bowl of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bucket of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Desert boots | SHOP_ONLY | open |  |
-| Desert robe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Desert shirt | SHOP_ONLY | open |  |
-| Empty bucket pack | FREE | needs-pack-single |  |
-| Empty jug pack | FREE | needs-pack-single |  |
-| Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Jug of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Waterskin(0) | unmapped | unmapped |  |
-| Waterskin(4) | unmapped | unmapped |  |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Bandit Duty Free
-
-Wiki: [Bandit Duty Free](https://oldschool.runescape.wiki/w/Bandit_Duty_Free)
-
-Items: **8** · blocked today: **7**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Bronze axe | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze pickaxe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty jug pack | FREE | needs-pack-single |  |
-| Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tinderbox | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Baraek
-
-Wiki: [Baraek](https://oldschool.runescape.wiki/w/Baraek)
-
-Items: **3** · blocked today: **3**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Bear fur | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Fur | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Grey wolf fur | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Bardur
-
-Wiki: [Bardur](https://oldschool.runescape.wiki/w/Bardur)
-
-Items: **1** · blocked today: **0**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Fremennik shield | unmapped | unmapped |  |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Barkers' Haberdashery
-
-Wiki: [Barkers' Haberdashery](https://oldschool.runescape.wiki/w/Barkers'_Haberdashery)
-
-Items: **30** · blocked today: **30**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Black cape | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Blue cape | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Green cape | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Grey boots | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Grey gloves | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Grey hat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Grey robe bottoms | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Grey robe top | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Purple boots | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Purple gloves | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Purple hat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Purple robe bottoms | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Purple robe top | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Red boots | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Red cape | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Red gloves | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Red hat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Red robe bottoms | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Red robe top | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Teal boots | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Teal gloves | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Teal hat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Teal robe bottoms | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Teal robe top | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Yellow boots | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Yellow cape | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Yellow gloves | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Yellow hat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Yellow robe bottoms | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Yellow robe top | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Barmaid
-
-Wiki: [Barmaid](https://oldschool.runescape.wiki/w/Barmaid)
-
-Items: **2** · blocked today: **2**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Beer | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Stew | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Barman (Blurberry Bar)
-
-Wiki: [Barman (Blurberry Bar)](https://oldschool.runescape.wiki/w/Barman_(Blurberry_Bar))
-
-Items: **3** · blocked today: **3**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Cocktail shaker | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Lemon | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Orange | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Bartender (The Warrens)
-
-Wiki: [Bartender (The Warrens)](https://oldschool.runescape.wiki/w/Bartender_(The_Warrens))
-
-Items: **1** · blocked today: **1**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Beer | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Battle Runes
-
-Wiki: [Battle Runes](https://oldschool.runescape.wiki/w/Battle_Runes)
-
-Items: **15** · blocked today: **15**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Air rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Air rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Blood rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Body rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chaos rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chaos rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Death rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mind rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mind rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Bedabin Village Bartering
-
-Wiki: [Bedabin Village Bartering](https://oldschool.runescape.wiki/w/Bedabin_Village_Bartering)
-
-Items: **7** · blocked today: **5**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Bowl of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bucket of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Jug of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Waterskin(0) | unmapped | unmapped |  |
-| Waterskin(4) | unmapped | unmapped |  |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Benny
-
-Wiki: [Benny](https://oldschool.runescape.wiki/w/Benny)
-
-Items: **1** · blocked today: **0**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Newspaper | unmapped | unmapped |  |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Betty
-
-Wiki: [Betty](https://oldschool.runescape.wiki/w/Betty)
-
-Items: **1** · blocked today: **0**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Pink dye | DROP_ONLY | open |  |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Betty's Magic Emporium
-
-Wiki: [Betty's Magic Emporium](https://oldschool.runescape.wiki/w/Betty's_Magic_Emporium)
-
-Items: **18** · blocked today: **17**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Air rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Air rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Blue wizard hat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Body rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chaos rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chaos rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Death rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Eye of newt | DROP_ONLY | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Eye of newt pack | FREE | needs-pack-single |  |
-| Fire rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mind rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mind rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Wizard hat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Blackjack seller
-
-Wiki: [Blackjack seller](https://oldschool.runescape.wiki/w/Blackjack_seller)
-
-Items: **1** · blocked today: **1**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Willow blackjack | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Blades by Urbi.
-
-Wiki: [Blades by Urbi.](https://oldschool.runescape.wiki/w/Blades_by_Urbi.)
-
-Items: **11** · blocked today: **11**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Adamant dagger | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Black dagger | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bronze dagger | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze scimitar | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Dragon dagger | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Iron dagger | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron scimitar | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril dagger | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Rune dagger | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel dagger | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel scimitar | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Blair's Armour
-
-Wiki: [Blair's Armour](https://oldschool.runescape.wiki/w/Blair's_Armour)
-
-Items: **12** · blocked today: **12**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Bronze chainbody | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze med helm | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze platelegs | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze plateskirt | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron chainbody | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron med helm | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron platelegs | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron plateskirt | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel chainbody | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel med helm | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel platelegs | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel plateskirt | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Blandebir
-
-Wiki: [Blandebir](https://oldschool.runescape.wiki/w/Blandebir)
-
-Items: **1** · blocked today: **0**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Ale yeast | SHOP_ONLY | open |  |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Blue Moon Inn
-
-Wiki: [Blue Moon Inn](https://oldschool.runescape.wiki/w/Blue_Moon_Inn)
-
-Items: **1** · blocked today: **1**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Beer | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Blurberry Bar
-
-Wiki: [Blurberry Bar](https://oldschool.runescape.wiki/w/Blurberry_Bar)
-
-Items: **7** · blocked today: **7**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Premade blurb' sp. | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Premade choc s'dy | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Premade dr' dragon | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Premade fr' blast | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Premade p' punch | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Premade sgg | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Premade wiz blz'd | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Bob's Brilliant Axes.
-
-Wiki: [Bob's Brilliant Axes.](https://oldschool.runescape.wiki/w/Bob's_Brilliant_Axes.)
-
-Items: **7** · blocked today: **7**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Bronze axe | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze pickaxe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Iron axe | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Iron battleaxe | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mithril battleaxe | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel axe | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Steel battleaxe | FABRICABLE | skill-gated | fabrication gate on shop buy |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Bolkoy's Village Shop
-
-Wiki: [Bolkoy's Village Shop](https://oldschool.runescape.wiki/w/Bolkoy's_Village_Shop)
-
-Items: **12** · blocked today: **10**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Bronze arrow | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Bronze pickaxe | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bucket | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Cooked meat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty bucket pack | FREE | needs-pack-single |  |
-| Empty jug pack | FREE | needs-pack-single |  |
-| Hammer | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Jug | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Shears | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Tinderbox | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
-
-## Bolongo
-
-Wiki: [Bolongo](https://oldschool.runescape.wiki/w/Bolongo)
-
-Items: **7** · blocked today: **7**
-
-| Item | Rule class | Shop buy | Notes |
-| --- | --- | --- | --- |
-| Compost | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Empty plant pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Gardening trowel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Plant cure | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Rake | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Seed dibber | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Watering can | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-
-**Review:** _(items here that should buy freely — list names or "none")_
-
----
+Total shops in this file: **518** · wiki unique items: **2084**
 
 ## Bounty Hunter Store
 
@@ -2260,12 +1511,12 @@ Items: **17** · blocked today: **10**
 
 Wiki: [Dommik's Crafting Store.](https://oldschool.runescape.wiki/w/Dommik's_Crafting_Store.)
 
-Items: **11** · blocked today: **11**
+Items: **11** · blocked today: **10**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Amulet mould | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bolt mould | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Bolt mould | SHOP_ONLY | open |  |
 | Bracelet mould | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Holy mould | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -6343,9 +5594,9 @@ Items: **57** · blocked today: **2**
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Ardougne cloak | unmapped | unmapped |  |
-| Ava's accumulator | unmapped | unmapped |  |
-| Ava's assembler | unmapped | unmapped |  |
-| Ava's attractor | unmapped | unmapped |  |
+| Ava's accumulator | SHOP_ONLY | open |  |
+| Ava's assembler | SHOP_ONLY | open |  |
+| Ava's attractor | SHOP_ONLY | open |  |
 | Barrelchest anchor | unmapped | unmapped |  |
 | Beacon ring | unmapped | unmapped |  |
 | Bearhead | unmapped | unmapped |  |
@@ -6552,27 +5803,27 @@ Items: **10** · blocked today: **10**
 
 Wiki: [Lundail's Arena-side Rune Shop.](https://oldschool.runescape.wiki/w/Lundail's_Arena-side_Rune_Shop.)
 
-Items: **17** · blocked today: **17**
+Items: **17** · blocked today: **11**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Air rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Air rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Air rune pack | FREE | needs-pack-single |  |
 | Body rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Chaos rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chaos rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Chaos rune pack | FREE | needs-pack-single |  |
 | Cosmic rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Death rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Earth rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Earth rune pack | FREE | needs-pack-single |  |
 | Fire rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Fire rune pack | FREE | needs-pack-single |  |
 | Law rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Mind rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mind rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Mind rune pack | FREE | needs-pack-single |  |
 | Nature rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Water rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Water rune pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -6666,25 +5917,25 @@ Items: **7** · blocked today: **5**
 
 Wiki: [Magic Guild Store (Runes and Staves)](https://oldschool.runescape.wiki/w/Magic_Guild_Store_(Runes_and_Staves))
 
-Items: **23** · blocked today: **23**
+Items: **23** · blocked today: **17**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Air rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Air rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Air rune pack | FREE | needs-pack-single |  |
 | Battlestaff | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Blood rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Body rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Chaos rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chaos rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Chaos rune pack | FREE | needs-pack-single |  |
 | Death rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Earth rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Earth rune pack | FREE | needs-pack-single |  |
 | Fire rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Fire rune pack | FREE | needs-pack-single |  |
 | Law rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Mind rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mind rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Mind rune pack | FREE | needs-pack-single |  |
 | Nature rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Soul rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Staff of air | FREE | skill-gated | fabrication gate on shop buy |
@@ -6692,7 +5943,7 @@ Items: **23** · blocked today: **23**
 | Staff of fire | FREE | skill-gated | fabrication gate on shop buy |
 | Staff of water | FREE | skill-gated | fabrication gate on shop buy |
 | Water rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Water rune pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -7432,7 +6683,7 @@ Items: **4** · blocked today: **2**
 | Bread | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Cake | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Chocolate slice | unmapped | unmapped |  |
-| Waterskin(4) | unmapped | unmapped |  |
+| Waterskin(4) | DROP_ONLY | open |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -8027,7 +7278,7 @@ Items: **17** · blocked today: **10**
 | Orange | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Pot | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Tomato | GATHERABLE | skill-gated | fabrication gate on shop buy |
-| Waterskin(3) | unmapped | unmapped |  |
+| Waterskin(3) | DROP_ONLY | open |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -8747,7 +7998,7 @@ Items: **25** · blocked today: **17**
 | Sickle mould | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Spinach roll | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Swamp paste | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Waterskin(4) | unmapped | unmapped |  |
+| Waterskin(4) | DROP_ONLY | open |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -8862,28 +8113,28 @@ Items: **15** · blocked today: **10**
 
 Wiki: [Regath's Wares](https://oldschool.runescape.wiki/w/Regath's_Wares)
 
-Items: **20** · blocked today: **18**
+Items: **20** · blocked today: **13**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Air rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Air rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Air rune pack | FREE | needs-pack-single |  |
 | Blood rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Blue wizard hat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Body rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Earth rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Earth rune pack | FREE | needs-pack-single |  |
 | Eye of newt | DROP_ONLY | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Eye of newt pack | FREE | needs-pack-single |  |
 | Fire rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Fire rune pack | FREE | needs-pack-single |  |
 | Mind rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mind rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Mind rune pack | FREE | needs-pack-single |  |
 | Rope | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Soul rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Vial of water | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Water rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Water rune pack | FREE | needs-pack-single |  |
 | Water-filled vial pack | FREE | needs-pack-single |  |
 | Wizard hat | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 
@@ -9114,12 +8365,12 @@ Items: **2** · blocked today: **2**
 
 Wiki: [Rommik's Crafty Supplies.](https://oldschool.runescape.wiki/w/Rommik's_Crafty_Supplies.)
 
-Items: **11** · blocked today: **11**
+Items: **11** · blocked today: **10**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Amulet mould | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Bolt mould | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Bolt mould | SHOP_ONLY | open |  |
 | Bracelet mould | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Chisel | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Holy mould | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -9467,8 +8718,8 @@ Items: **20** · blocked today: **13**
 | Knife | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Rope | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Shantay pass (item) | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Waterskin(0) | unmapped | unmapped |  |
-| Waterskin(4) | unmapped | unmapped |  |
+| Waterskin(0) | DROP_ONLY | open |  |
+| Waterskin(4) | DROP_ONLY | open |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -10025,7 +9276,7 @@ Items: **18** · blocked today: **16**
 
 Wiki: [Sunlight's Sanctum](https://oldschool.runescape.wiki/w/Sunlight's_Sanctum)
 
-Items: **17** · blocked today: **17**
+Items: **17** · blocked today: **16**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
@@ -10040,7 +9291,7 @@ Items: **17** · blocked today: **17**
 | Jug of wine | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Meat pie | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Metztonalli white | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Moon-lite | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Moon-lite | SHOP_ONLY | open |  |
 | Rum | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Stew | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Sunbeam ale | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -10153,26 +9404,26 @@ Items: **16** · blocked today: **16**
 
 Wiki: [Tal Teklan Rune Shop](https://oldschool.runescape.wiki/w/Tal_Teklan_Rune_Shop)
 
-Items: **16** · blocked today: **16**
+Items: **16** · blocked today: **10**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Air rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Air rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Air rune pack | FREE | needs-pack-single |  |
 | Body rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Chaos rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chaos rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Chaos rune pack | FREE | needs-pack-single |  |
 | Cosmic rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Death rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Earth rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Earth rune pack | FREE | needs-pack-single |  |
 | Fire rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Fire rune pack | FREE | needs-pack-single |  |
 | Mind rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mind rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Mind rune pack | FREE | needs-pack-single |  |
 | Nature rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Water rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Water rune pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -10404,7 +9655,7 @@ Items: **4** · blocked today: **4**
 
 Wiki: [The Flaming Arrow](https://oldschool.runescape.wiki/w/The_Flaming_Arrow)
 
-Items: **15** · blocked today: **15**
+Items: **15** · blocked today: **14**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
@@ -10417,7 +9668,7 @@ Items: **15** · blocked today: **15**
 | Jug of wine | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Meat pie | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Metztonalli white | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Moon-lite | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Moon-lite | SHOP_ONLY | open |  |
 | Rum | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Stew | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Sunbeam ale | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -10449,7 +9700,7 @@ Items: **4** · blocked today: **4**
 
 Wiki: [The King's Inn](https://oldschool.runescape.wiki/w/The_King's_Inn)
 
-Items: **15** · blocked today: **15**
+Items: **15** · blocked today: **14**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
@@ -10462,7 +9713,7 @@ Items: **15** · blocked today: **15**
 | Jug of wine | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Meat pie | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Metztonalli white | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
-| Moon-lite | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Moon-lite | SHOP_ONLY | open |  |
 | Rum | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Stew | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Sunbeam ale | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -10635,26 +9886,26 @@ Items: **9** · blocked today: **9**
 
 Wiki: [The Runic Emporium](https://oldschool.runescape.wiki/w/The_Runic_Emporium)
 
-Items: **16** · blocked today: **16**
+Items: **16** · blocked today: **10**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Air rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Air rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Air rune pack | FREE | needs-pack-single |  |
 | Body rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Chaos rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chaos rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Chaos rune pack | FREE | needs-pack-single |  |
 | Death rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Earth rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Earth rune pack | FREE | needs-pack-single |  |
 | Fire rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Fire rune pack | FREE | needs-pack-single |  |
 | Law rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Mind rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mind rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Mind rune pack | FREE | needs-pack-single |  |
 | Nature rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Water rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Water rune pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -10732,7 +9983,7 @@ Items: **3** · blocked today: **3**
 
 Wiki: [The Windbreaker](https://oldschool.runescape.wiki/w/The_Windbreaker)
 
-Items: **11** · blocked today: **11**
+Items: **11** · blocked today: **10**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
@@ -10741,7 +9992,7 @@ Items: **11** · blocked today: **11**
 | Gin | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Jug of wine | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Meat pie | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Moon-lite | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
+| Moon-lite | SHOP_ONLY | open |  |
 | Rum | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
 | Stew | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Sunbeam ale | FREE | needs-obtain | likely SHOP_ONLY candidate if shop is only source |
@@ -10850,24 +10101,24 @@ Items: **10** · blocked today: **10**
 
 Wiki: [Thyria's Wares](https://oldschool.runescape.wiki/w/Thyria's_Wares)
 
-Items: **14** · blocked today: **14**
+Items: **14** · blocked today: **8**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Air rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Air rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Air rune pack | FREE | needs-pack-single |  |
 | Body rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Chaos rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chaos rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Chaos rune pack | FREE | needs-pack-single |  |
 | Death rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Earth rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Earth rune pack | FREE | needs-pack-single |  |
 | Fire rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Fire rune pack | FREE | needs-pack-single |  |
 | Mind rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mind rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Mind rune pack | FREE | needs-pack-single |  |
 | Water rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Water rune pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -11131,22 +10382,22 @@ Items: **1** · blocked today: **0**
 
 Wiki: [Tutab's Magical Market](https://oldschool.runescape.wiki/w/Tutab's_Magical_Market)
 
-Items: **12** · blocked today: **9**
+Items: **12** · blocked today: **5**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Air rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Air rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Air rune pack | FREE | needs-pack-single |  |
 | Earth rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Earth rune pack | FREE | needs-pack-single |  |
 | Eye of gnome | unmapped | unmapped |  |
 | Fire rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Fire rune pack | FREE | needs-pack-single |  |
 | Law rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Monkey dentures | unmapped | unmapped |  |
 | Monkey talisman | unmapped | unmapped |  |
 | Water rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Water rune pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -11696,24 +10947,24 @@ Items: **13** · blocked today: **10**
 
 Wiki: [Void Knight Magic Store](https://oldschool.runescape.wiki/w/Void_Knight_Magic_Store)
 
-Items: **14** · blocked today: **14**
+Items: **14** · blocked today: **8**
 
 | Item | Rule class | Shop buy | Notes |
 | --- | --- | --- | --- |
 | Air rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Air rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Air rune pack | FREE | needs-pack-single |  |
 | Body rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Chaos rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Chaos rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Chaos rune pack | FREE | needs-pack-single |  |
 | Death rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
 | Earth rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Earth rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Earth rune pack | FREE | needs-pack-single |  |
 | Fire rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Fire rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Fire rune pack | FREE | needs-pack-single |  |
 | Mind rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Mind rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Mind rune pack | FREE | needs-pack-single |  |
 | Water rune | FABRICABLE | skill-gated | fabrication gate on shop buy |
-| Water rune pack | FABRICABLE | skill-gated | fabrication gate on shop buy |
+| Water rune pack | FREE | needs-pack-single |  |
 
 **Review:** _(items here that should buy freely — list names or "none")_
 
@@ -12424,5 +11675,5 @@ Items: **1** · blocked today: **0**
 
 ---
 
-Shops with at least one blocked item: **460** (of **553** listed)
+Shops with at least one blocked item: **430** (of **518** listed)
 Wiki totals: **589** shops, **2084** unique items sold
