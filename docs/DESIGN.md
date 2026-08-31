@@ -48,16 +48,17 @@ Herblore.
 
 ```
 tradeUnlocked(item) =
-  fabricable(item)                    -- meets any SKILL path at current levels
-  OR everObtained(item)               -- for GE items with no skill path
+  everObtained(item) AND fabricable(item)   -- skill-path items
+  OR everObtained(item)                     -- GE items with no skill path
   OR customRule.trade satisfied
 
-shopUnlocked(item) = same fabrication/obtain logic, with optional shop-specific overrides
+shopUnlocked(item) = same logic, with optional shop-specific overrides; SHOP_ONLY exempt
 ```
 
 - **fabricable** — real (non-boosted) levels satisfy at least one `UnlockPath`.
-- **everObtained** — persisted; first time the account genuinely held the item.
-- Shop purchases do **not** set `everObtained` (anti-launder).
+- **everObtained** — persisted; first time the account genuinely held the item. Required
+  before GE/shop for every fabrication item. The GE is never a legitimate obtain path.
+- Shop purchases do **not** set `everObtained` (anti-launder), except **`SHOP_ONLY`**.
 - All ~4 000 GE tradeables have a catalog entry (`FREE` if no recipe). Items with no skill
   path still need **one obtain** before trade/shop/use open.
 
@@ -97,8 +98,8 @@ may have Smithing and Fletching paths; the lower path wins automatically.
 
 ## 2. The unifying rule
 
-> **Trade/shop follow the fabrication ladder (or obtain for unmapped GE items). Use is
-> gated only where the game provides no requirement of its own.**
+> **Trade/shop require a legitimate obtain plus fabrication levels (or obtain alone for
+> unmapped GE items). Use is gated only where the game provides no requirement of its own.**
 
 | Class | Vanilla requirement | USE gated by default |
 | --- | --- | --- |
@@ -106,7 +107,7 @@ may have Smithing and Fletching paths; the lower path wins automatically.
 | Potions | none | **yes** — brew, Herblore to drink |
 | Jewellery, worn | none | **yes** — glory, 80 Crafting to wear |
 | Charges / teleports | none | **yes** — glory, 68 Magic to rub |
-| Permanent equipment | Attack / Defence / Ranged | no — scimitar at 40 Attack |
+| Permanent equipment | Attack / Defence / Ranged + Smithing (mode) | **Mixed default:** balanced Smithing to wear; fabrication to trade |
 | Tools (axes) | Woodcutting on the axe rule | WC level to **chop**, not Smithing |
 | Ammunition | Ranged | no — opt-in Fletching gate |
 | Runes | spell Magic level | no — opt-in RC gate at cast time |
@@ -114,9 +115,15 @@ may have Smithing and Fletching paths; the lower path wins automatically.
 **Axes:** smithing gates **trade**; woodcutting level on the item rule gates **chop**.
 Pickaxes are not in the smithing generator — they fall through obtain/catalog rules.
 
-**Smithing gates equipment** (off by default): when on, wearing also needs the smithing
-level; when off, only vanilla Attack/Defence apply (platebody at 40 Def, trade at 99
-Smithing).
+**Smithing gates equipment** (`equipmentSmithingMode`, default **Mixed**):
+
+| Mode | Wield / wear | Trade / shop |
+| --- | --- | --- |
+| **Restrict** | fabrication Smithing | fabrication Smithing |
+| **Balanced** | max Attack/Def/Ranged wield level as Smithing | same |
+| **Mixed** | Balanced wield Smithing | fabrication Smithing |
+
+Example — rune scimitar (90 Smithing to smith, 40 Attack to wield): Restrict needs 90 for everything; Balanced needs 40 for everything; Mixed needs 40 to wield and 90 to trade.
 
 **Smithing gates tools** was removed — it only affected axes, deadlocked gathering, and
 did not cover pickaxes.
@@ -130,8 +137,8 @@ did not cover pickaxes.
 | Crafting gates wearing jewellery | **on** | wear |
 | Magic gates charges and teleports | **on** | activate |
 | Fletching gates ammunition | off | use (ammo) |
-| Runecrafting gates runes | off | cast (via rune check) |
-| Smithing gates equipment | off | wear (adds smithing on top of vanilla) |
+| Runecrafting gates runes | **on** | cast (via rune check) |
+| Smithing gates equipment | **Mixed** | wear + trade (see modes above) |
 
 Jewellery splits Crafting (wear) and Magic (teleport) independently.
 
@@ -218,7 +225,7 @@ Starter unlock seed at profile creation not implemented.
 | Key | Default |
 | --- | --- |
 | `gateFood` / `gatePotions` / `gateJewel` / `gateCharged` / `gateAmmo` / `gateRunes` | on |
-| `gateEquipment` | off |
+| `equipmentSmithingMode` | Mixed |
 | `blockOtherPlayerDrops` / `blockPlayerTrade` | on |
 | `allowedTradePartners` | `""` (comma-separated display names) |
 | `allowTradeWithParty` | off (RuneLite Party plugin, same party) |
@@ -256,7 +263,7 @@ explanations. Cannot cancel existing GE offers or block non-menu actions.
 
 ## 10. UI (implemented)
 
-- **Sidebar** — 20 most recent unlocks (view-only), search, ⚙ opens catalog
+- **Sidebar** — all unlocks (obtained + fabrication), searchable, ⚙ opens catalog
 - **Catalog dialog** — full list, bright/gray status, click to edit, reset all custom rules
 - **Per-item editor** — trade, shop, eat, drink, wield, use, teleport, bury; override flag
 - **Unlock popup** — batched on big level-ups; coloured chat lines

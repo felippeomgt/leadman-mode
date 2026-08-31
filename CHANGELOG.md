@@ -16,20 +16,28 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) (bug reports, rule fixes, code PRs).
 - README: **The idea in practice**, beta notice, and per-item customization examples.
 
+- Shop-by-shop review generator: `tools/generate-shop-review.mjs`, `docs/shop-review-by-store.md`.
+- `shopAlwaysOpen` rule flag for ticket/pearl shops (Agility Arena, etc.).
+
 ### Changed
+- **Smithing gates equipment** is now a three-mode selector: Restrict, Balanced, Mixed (default). Replaces the old on/off toggle.
 - Block explanations only on Examine or when the player attempts a blocked action.
 - Gem shop gated by Crafting level; eye of newt / feather packs require obtaining singles first.
 - **Teleport tablets** are `DROP_ONLY` — obtain once before GE/shop (no Construction/Magic ladder).
 - Bank booth menus no longer misidentified as locked items (object id vs item id).
 - Tightened GE trade: `obtained` alone no longer bypasses skill gates for non obtain-only items.
-- **Use gate defaults:** Fletching (ammo) and Runecrafting (runes) on by default; Smithing (equipment) stays off.
-- Expanded shop rules: brutal arrows, crossbow limbs, pies, brews, dyes, slayer shop `SHOP_ONLY`, bagged plants, Ali's disguise items.
+- **Use gate defaults:** Fletching (ammo) and Runecrafting (runes) on by default.
+- Expanded shop rules: brutal arrows, crossbow limbs, pies, brews, dyes, slayer shop `SHOP_ONLY`, bagged plants, Ali's disguise items, **Fine Fashions**, **Agmundi** / **Menaphite** clothes, farming produce and seeds, metal knives and arrowtips, general-store **packOf** mappings.
+- Shop review doc trimmed through Arnold's Eclectic Supplies (verified shops omitted).
+- Sidebar unlock list shows full history (obtained + fabrication), not capped at 20.
+- Plugin Hub build: `build=standard` in `runelite-plugin.properties` (review feedback).
 - README and DESIGN.md aligned with current gate defaults.
 
 ### Fixed
+- **GE/shop trade for fabricable items** no longer opens on skill level alone — a legitimate obtain is required first (Cod, Redberry pie, etc.).
 - Spell block messages firing when other players cast nearby (menu rebuild spam).
 - **Gold necklace** (and plain jewellery) bank deposit blocked when charge gate applied incorrectly.
-- **Smithing gates equipment:** wield now requires Smithing when that toggle is on (was only blocking use).
+- **Smithing gates equipment:** three modes (Restrict / Balanced / Mixed); wield respects fabrication Smithing in Restrict mode.
 - **Teleport tablets** appearing on the GE before obtain when the client item name did not match the ruleset key.
 
 ## [1.0.0-beta.1] - 2026-08-29

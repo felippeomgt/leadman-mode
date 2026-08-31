@@ -82,9 +82,6 @@ public interface LeadmanConfig extends Config
 		return true;
 	}
 
-	// Off by default: requiring 90 Smithing to wield a rune scimitar is unbalanced.
-	// Smithing still gates trade and shop; turn this on for the full restriction.
-
 	@ConfigItem(
 		keyName = "gateAmmo",
 		name = "Fletching gates ammunition",
@@ -110,15 +107,15 @@ public interface LeadmanConfig extends Config
 	}
 
 	@ConfigItem(
-		keyName = "gateEquipment",
+		keyName = "equipmentSmithingMode",
 		name = "Smithing gates equipment",
-		description = "Off by default: armour and weapons keep normal Attack/Defence wield reqs only. On, wearing them also needs the Smithing level to smith them.",
+		description = "Restrict: fabrication Smithing for every action. Balanced: Smithing level matches Attack/Defence/Ranged wield reqs. Mixed (default): Balanced for wield/wear, fabrication Smithing for trade and shop.",
 		position = 6,
 		section = gates
 	)
-	default boolean gateEquipment()
+	default EquipmentSmithingMode equipmentSmithingMode()
 	{
-		return false;
+		return EquipmentSmithingMode.MIXED;
 	}
 
 	// ---------------------------------------------------------------- conduct

@@ -320,7 +320,20 @@ public class LeadmanPlugin extends Plugin
 			return;
 		}
 
-		announceLevelUnlocks(skill, level, newly);
+		List<ItemRule> tradeUnlocked = new ArrayList<>();
+		for (ItemRule rule : newly)
+		{
+			if (unlockService.canTradeKey(rule.getName()))
+			{
+				tradeUnlocked.add(rule);
+			}
+		}
+		if (tradeUnlocked.isEmpty())
+		{
+			return;
+		}
+
+		announceLevelUnlocks(skill, level, tradeUnlocked);
 	}
 
 	private void announceLevelUnlocks(Skill skill, int level, List<ItemRule> newly)

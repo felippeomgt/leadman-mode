@@ -68,16 +68,21 @@ public class GateRulesTest
 	// ------------------------------------------------------------ the six examples
 
 	@Test
-	public void runeScimitarIsTradeGatedButFreelyWielded()
+	public void runeScimitarMixedModeUsesBalancedSmithingToWield()
 	{
 		level(Skill.SMITHING, 89);
 		level(Skill.ATTACK, 40);
 		assertFalse("90 Smithing not reached, so it cannot be traded",
 			service.canTradeKey("rune scimitar"));
-		assertTrue("40 Attack satisfies the wield requirement",
+		assertTrue("40 Attack and 89 Smithing satisfy mixed-mode wield",
+			service.canWieldKey("rune scimitar"));
+
+		level(Skill.SMITHING, 39);
+		assertFalse("mixed mode also needs 40 Smithing to wield",
 			service.canWieldKey("rune scimitar"));
 
 		level(Skill.SMITHING, 90);
+		service.getState().getObtained().add("rune scimitar");
 		assertTrue(service.canTradeKey("rune scimitar"));
 	}
 
@@ -99,6 +104,9 @@ public class GateRulesTest
 		assertTrue("raw fish carries no use gate", service.canUseKey("raw swordfish"));
 
 		level(Skill.FISHING, 50);
+		assertFalse("skill alone does not open GE without obtain",
+			service.canTradeKey("raw swordfish"));
+		service.getState().getObtained().add("raw swordfish");
 		assertTrue(service.canTradeKey("raw swordfish"));
 	}
 
@@ -116,6 +124,24 @@ public class GateRulesTest
 		level(Skill.HERBLORE, 81);
 		assertTrue(service.canTradeKey("saradomin brew"));
 		assertTrue(service.canDrinkKey("saradomin brew"));
+	}
+
+	@Test
+	public void fabricatedFoodRequiresObtainBeforeGeTradeEvenAtSkillLevel()
+	{
+		level(Skill.COOKING, 18);
+		assertFalse("Cod GE blocked without obtain even at 18 Cooking",
+			service.canTradeKey("cod"));
+		assertFalse(service.canShopKey("cod"));
+
+		service.getState().getObtained().add("cod");
+		assertTrue(service.canTradeKey("cod"));
+		assertTrue(service.canShopKey("cod"));
+
+		level(Skill.COOKING, 10);
+		assertFalse(service.canTradeKey("redberry pie"));
+		service.getState().getObtained().add("redberry pie");
+		assertTrue(service.canTradeKey("redberry pie"));
 	}
 
 	@Test
@@ -183,6 +209,7 @@ public class GateRulesTest
 			service.canTradeKey("amulet of glory"));
 
 		level(Skill.MAGIC, 68);
+		service.getState().getObtained().add("amulet of glory");
 		assertTrue(service.canTradeKey("amulet of glory"));
 	}
 
@@ -257,6 +284,7 @@ public class GateRulesTest
 		assertFalse(service.canShopKey("adamant brutal"));
 
 		level(Skill.FLETCHING, 63);
+		service.getState().getObtained().add("adamant brutal");
 		assertTrue(service.canShopKey("adamant brutal"));
 	}
 
@@ -267,6 +295,7 @@ public class GateRulesTest
 		assertFalse(service.canShopKey("adamantite limbs"));
 
 		level(Skill.SMITHING, 76);
+		service.getState().getObtained().add("adamantite limbs");
 		assertTrue(service.canShopKey("adamantite limbs"));
 	}
 
@@ -322,16 +351,14 @@ public class GateRulesTest
 	}
 
 	@Test
-	public void equipmentGateAppliesWhenToggledOn()
+	public void restrictModeRequiresFabricationSmithingToWield()
 	{
-		config.equipment = true;
+		config.equipmentSmithingMode = EquipmentSmithingMode.RESTRICT;
 		level(Skill.ATTACK, 40);
-		level(Skill.DEFENCE, 40);
-
 		level(Skill.SMITHING, 85);
-		assertFalse("rune scimitar needs 90 Smithing to use when equipment gate is on",
+		assertFalse("rune scimitar needs 90 Smithing to use in restrict mode",
 			service.canUseKey("rune scimitar"));
-		assertFalse("wield also needs Smithing when equipment gate is on",
+		assertFalse("wield also needs fabrication Smithing in restrict mode",
 			service.canWieldKey("rune scimitar"));
 
 		level(Skill.SMITHING, 90);
@@ -340,14 +367,35 @@ public class GateRulesTest
 	}
 
 	@Test
-	public void equipmentGateOffAllowsWieldWithoutSmithing()
+	public void balancedModeUsesWieldStatForTradeAndWield()
 	{
-		config.equipment = false;
+		config.equipmentSmithingMode = EquipmentSmithingMode.BALANCED;
 		level(Skill.ATTACK, 40);
-		level(Skill.SMITHING, 1);
-
+		level(Skill.SMITHING, 39);
 		assertFalse(service.canTradeKey("rune scimitar"));
+		assertFalse(service.canWieldKey("rune scimitar"));
+
+		level(Skill.SMITHING, 40);
+		service.getState().getObtained().add("rune scimitar");
+		assertTrue(service.canTradeKey("rune scimitar"));
 		assertTrue(service.canWieldKey("rune scimitar"));
+	}
+
+	@Test
+	public void mixedModeSplitsWieldAndTradeSmithing()
+	{
+		config.equipmentSmithingMode = EquipmentSmithingMode.MIXED;
+		level(Skill.ATTACK, 40);
+		level(Skill.SMITHING, 40);
+		assertFalse("trade still needs fabrication Smithing 90",
+			service.canTradeKey("rune scimitar"));
+		assertTrue(service.canWieldKey("rune scimitar"));
+		assertFalse(service.canShopKey("rune scimitar"));
+
+		level(Skill.SMITHING, 90);
+		service.getState().getObtained().add("rune scimitar");
+		assertTrue(service.canTradeKey("rune scimitar"));
+		assertTrue(service.canShopKey("rune scimitar"));
 	}
 
 	@Test
@@ -365,6 +413,7 @@ public class GateRulesTest
 		assertFalse("Woodcutting 21 is required to use the axe", service.canUseKey("mithril axe"));
 
 		level(Skill.SMITHING, 51);
+		service.getState().getObtained().add("mithril axe");
 		assertTrue(service.canTradeKey("mithril axe"));
 	}
 
@@ -389,7 +438,9 @@ public class GateRulesTest
 		assertFalse(service.canShopKey("chaos rune pack"));
 
 		level(Skill.RUNECRAFT, 35);
+		service.getState().getObtained().add("chaos rune");
 		assertTrue(service.canShopKey("chaos rune"));
+		service.getState().getObtained().add("chaos rune pack");
 		assertTrue(service.canShopKey("chaos rune pack"));
 	}
 
@@ -402,6 +453,7 @@ public class GateRulesTest
 		assertFalse(service.canTradeKey("rune armour set (lg)"));
 
 		level(Skill.SMITHING, 99);
+		service.getState().getObtained().add("rune armour set (lg)");
 		assertTrue(service.canShopKey("rune armour set (lg)"));
 		assertTrue(service.canTradeKey("rune armour set (lg)"));
 	}
@@ -414,6 +466,7 @@ public class GateRulesTest
 		assertFalse(service.canShopKey("mithril cannonball"));
 
 		level(Skill.SMITHING, 55);
+		service.getState().getObtained().add("mithril cannonball");
 		assertTrue(service.canShopKey("mithril cannonball"));
 		assertFalse(service.canUseKey("mithril cannonball"));
 
@@ -425,10 +478,13 @@ public class GateRulesTest
 	public void runePackShopRequiresSameRunecraftingAsRune()
 	{
 		level(Skill.RUNECRAFT, 1);
+		service.getState().getObtained().add("air rune pack");
 		assertTrue(service.canShopKey("air rune pack"));
 		assertFalse(service.canShopKey("chaos rune pack"));
 
 		level(Skill.RUNECRAFT, 35);
+		service.getState().getObtained().add("chaos rune");
+		service.getState().getObtained().add("chaos rune pack");
 		assertTrue(service.canShopKey("chaos rune pack"));
 	}
 
@@ -440,6 +496,8 @@ public class GateRulesTest
 		assertFalse(service.canShopKey("sapphire"));
 
 		level(Skill.CRAFTING, 20);
+		service.getState().getObtained().add("uncut sapphire");
+		service.getState().getObtained().add("sapphire");
 		assertTrue(service.canShopKey("uncut sapphire"));
 		assertTrue(service.canShopKey("sapphire"));
 	}
@@ -606,7 +664,7 @@ public class GateRulesTest
 		private Boolean charged;
 		private Boolean ammo;
 		private Boolean runes;
-		private Boolean equipment;
+		private EquipmentSmithingMode equipmentSmithingMode;
 		private String custom = "[]";
 
 		@Override
@@ -646,9 +704,11 @@ public class GateRulesTest
 		}
 
 		@Override
-		public boolean gateEquipment()
+		public EquipmentSmithingMode equipmentSmithingMode()
 		{
-			return equipment != null ? equipment : LeadmanConfig.super.gateEquipment();
+			return equipmentSmithingMode != null
+				? equipmentSmithingMode
+				: LeadmanConfig.super.equipmentSmithingMode();
 		}
 
 		@Override

@@ -30,7 +30,7 @@ This mode has a different progression than most Ironman guides assume. Extra ski
 - **Early ranged.** Many Ironmen hit 28 Ranged and grab a bone crossbow from Nardok. Here you need to **obtain** a Dorgeshuun crossbow first — for example from **Dorgesh-Kaan average chests** at **52 Thieving** — before Nardok’s shop or the GE opens up for it.
 - **Magic and runes.** **High Level Alchemy** stays blocked until you can craft **nature runes** yourself (Runecrafting gates runes is on by default). The list goes on.
 
-**Smithing and equipment.** The mode originally also blocked **wearing** gear behind smithing levels. That is **off by default** now: smithing only gates **buying and selling**, while wielding follows normal OSRS Attack and Defence requirements. Requiring 90 Smithing just to equip a rune scimitar was unbalanced and not fun. You can still turn **Smithing gates equipment** on if you want the full restriction — but it is miserable, and hopefully Smithing gets rebalanced someday so proper progression becomes viable.
+**Smithing and equipment.** By default (**Mixed**), wielding armour and weapons needs Smithing at the same level as the item’s Attack/Defence/Ranged requirement — rune scimitar at 40 Attack also needs 40 Smithing to equip — while **buying and selling** still follow the full fabrication ladder (90 Smithing for that scimitar). **Restrict** applies fabrication Smithing to every action (90 to wield). **Balanced** uses the wield-stat Smithing level for trade and shop too (40 Smithing unlocks everything for that scimitar).
 
 When a gate opens, the plugin shows a popup and a coloured chat message.
 
@@ -58,12 +58,13 @@ Items with no skill recipe (boss drops, uniques, and misc supplies) unlock for t
 | Your levels / state | Item | Trade (GE + shop buy) | Use (eat, wear, etc.) |
 | --- | --- | --- | --- |
 | 49 Fishing | Raw swordfish | Locked — needs 50 Fishing | N/A (raw fish is not eaten) |
-| 50 Fishing, 44 Cooking | Raw swordfish | Unlocked | N/A |
-| 44 Cooking | Swordfish (cooked) | Locked — needs 45 Cooking | Locked — needs 45 Cooking |
-| 45 Cooking | Swordfish (cooked) | Unlocked | Unlocked — can eat |
-| 40 Attack, 89 Smithing | Rune scimitar | Locked — needs 90 Smithing | Wield OK — game requires 40 Attack |
-| 40 Defence, 89 Smithing | Rune platebody | Locked — needs 99 Smithing | Wield OK — game requires 40 Defence |
-| 40 Herblore + obtained brew | Saradomin brew | Unlocked (you obtained one) | Locked — needs 81 Herblore to drink |
+| 50 Fishing, never caught one | Raw swordfish | Locked — obtain one first | N/A |
+| 50 Fishing + obtained raw | Raw swordfish | Unlocked | N/A |
+| 18 Cooking, never cooked cod | Cod | Locked — obtain one first | Locked — needs 18 Cooking to eat |
+| 45 Cooking, never cooked | Swordfish (cooked) | Locked — obtain one first | Locked — needs 45 Cooking to eat |
+| 45 Cooking + obtained swordfish | Swordfish (cooked) | Unlocked | Unlocked — can eat |
+| 40 Attack, 90 Smithing + obtained | Rune scimitar | Unlocked | Wield OK |
+| 40 Herblore + obtained brew | Saradomin brew | Unlocked at 81 Herblore | Locked — needs 81 Herblore to drink |
 | 70 Attack + obtained whip | Abyssal whip | Unlocked once obtained from a monster drop | Wield OK at 70 Attack |
 
 See [The idea in practice](#the-idea-in-practice) for more grounded early-game examples (wine, bone crossbow, High Alchemy).
@@ -80,9 +81,9 @@ These live under **Configuration → Leadman Mode → Use gates**. Each toggle a
 | **Magic gates charges and teleports** | On | Spending charges needs the **enchant** level, separate from Crafting | Glory equips at 80 Crafting, but teleports need 68 Magic |
 | **Fletching gates ammunition** | On | You must also be able to **fletch** ammo before use | Rune arrows need 75 Fletching on top of 40 Ranged |
 | **Runecrafting gates runes** | On | You must be able to **craft** every rune a spell consumes | High Alchemy blocked until you can craft nature runes |
-| **Smithing gates equipment** | Off | **Optional:** wearing armour/weapons also needs the **smithing** level to smith them | With toggle **on**, rune scimitar needs 90 Smithing to wield; with default **off**, 40 Attack is enough |
+| **Smithing gates equipment** | Mixed | **Restrict:** fabrication Smithing for every action. **Balanced:** Smithing = Attack/Def/Ranged wield level for all actions. **Mixed (default):** Balanced for wield/wear; fabrication Smithing for trade and shop | Rune scimitar: Mixed needs 40 Smithing to wield but 90 to trade; Restrict needs 90 for both; Balanced needs 40 for both |
 
-With defaults, food, potions, jewellery, charge/teleport actions, ammunition, and rune casting are gated. Trade always follows the fabrication ladder. Wielding armour and weapons follows normal OSRS Attack/Defence requirements unless you turn on **Smithing gates equipment**.
+With defaults, food, potions, jewellery, charge/teleport actions, ammunition, rune casting, and **Mixed** equipment smithing are gated. Trade follows the fabrication ladder except in **Balanced** equipment mode.
 
 Metal axes still require the matching **Woodcutting** level to chop — that comes from the item rule, not a config toggle. Pickaxes are not in the smithing ladder.
 
@@ -108,7 +109,7 @@ Open the sidebar **⚙ catalog** to browse every item, see which actions are ope
 
 Other examples: gate big bones behind 30 Prayer for bury, trade, and use; keep a whip trade-locked until 85 Attack even though the game allows 70.
 
-The main sidebar shows your **20 most recent unlocks** (view-only). The catalog is where you search the full list and customize.
+The main sidebar lists **every item you have unlocked** (obtained or fabrication), searchable. The catalog is where you browse the full ruleset and customize per item.
 
 Locked items in your inventory appear slightly dimmed. **Examine** an item to see which actions are still restricted.
 
