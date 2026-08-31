@@ -3,6 +3,7 @@ package com.leadman.unlock;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
+import com.leadman.EquipmentSmithingMode;
 import com.leadman.LeadmanConfig;
 import com.leadman.rules.ConsumeClass;
 import com.leadman.rules.ItemNames;
@@ -292,6 +293,10 @@ public class UnlockService
 		ItemRule rule = rules.forName(key);
 		if (rule != null && rule.hasSkillPath())
 		{
+			if (isSmithingEquipment(rule))
+			{
+				return meetsEquipmentSmithingForTrade(rule);
+			}
 			return satisfies(rule);
 		}
 
@@ -360,6 +365,10 @@ public class UnlockService
 
 		if (rule != null && rule.hasSkillPath())
 		{
+			if (isSmithingEquipment(rule))
+			{
+				return meetsEquipmentSmithingForTrade(rule);
+			}
 			return satisfies(rule);
 		}
 
@@ -436,7 +445,7 @@ public class UnlockService
 			return true;
 		}
 
-		return satisfies(rule, ReqFilter.WEAR);
+		return meetsEquipmentSmithingForWear(rule);
 	}
 
 	public boolean canEat(int itemId)
@@ -575,7 +584,7 @@ public class UnlockService
 			}
 			if (wearGateApplies(consume))
 			{
-				return satisfies(rule, ReqFilter.WEAR);
+				return meetsEquipmentSmithingForWear(rule);
 			}
 			return true;
 		}
@@ -598,7 +607,7 @@ public class UnlockService
 			return true;
 		}
 
-		return satisfies(rule, ReqFilter.WEAR);
+		return meetsEquipmentSmithingForWear(rule);
 	}
 
 	/**
@@ -774,7 +783,7 @@ public class UnlockService
 			case CHARGED:
 				return config.gateCharged();
 			case EQUIPMENT:
-				return config.gateEquipment();
+				return true;
 			case ELEMENTAL_STAFF:
 				return runeGateOn();
 			default:
@@ -790,6 +799,130 @@ public class UnlockService
 			return config.gateCharged();
 		}
 		return wearGateApplies(consume);
+	}
+
+	private boolean isSmithingEquipment(ItemRule rule)
+	{
+		return rule.getConsume() == ConsumeClass.EQUIPMENT && smithingTradeLevel(rule) > 0;
+	}
+
+	private int smithingTradeLevel(ItemRule rule)
+	{
+		for (Requirement req : tradeRequirements(rule))
+		{
+			if (req.getSkill() == Skill.SMITHING)
+			{
+				return req.getLevel();
+			}
+		}
+		return 0;
+	}
+
+	/** Smithing level tied to vanilla Attack/Defence/Ranged wield reqs; falls back to fabrication. */
+	private int balancedSmithingLevel(ItemRule rule)
+	{
+		int max = 0;
+		for (Requirement req : wieldRequirements(rule))
+		{
+			max = Math.max(max, req.getLevel());
+		}
+		if (max > 0)
+		{
+			return max;
+		}
+		return smithingTradeLevel(rule);
+	}
+
+	private boolean meetsBalancedSmithing(ItemRule rule)
+	{
+		int level = balancedSmithingLevel(rule);
+		if (level <= 0)
+		{
+			return satisfies(rule, ReqFilter.WEAR);
+		}
+		return client.getRealSkillLevel(Skill.SMITHING) >= level;
+	}
+
+	private boolean meetsEquipmentSmithingForWear(ItemRule rule)
+	{
+		if (!isSmithingEquipment(rule))
+		{
+			return satisfies(rule, ReqFilter.WEAR);
+		}
+
+		switch (config.equipmentSmithingMode())
+		{
+			case RESTRICT:
+				return satisfies(rule, ReqFilter.WEAR);
+			case BALANCED:
+			case MIXED:
+				return meetsBalancedSmithing(rule);
+			default:
+				return satisfies(rule, ReqFilter.WEAR);
+		}
+	}
+
+	private boolean meetsEquipmentSmithingForTrade(ItemRule rule)
+	{
+		if (!isSmithingEquipment(rule))
+		{
+			return satisfies(rule);
+		}
+
+		switch (config.equipmentSmithingMode())
+		{
+			case BALANCED:
+				return meetsBalancedSmithing(rule);
+			case RESTRICT:
+			case MIXED:
+				return satisfies(rule);
+			default:
+				return satisfies(rule);
+		}
+	}
+
+	private List<Requirement> equipmentSmithingDisplayRequirements(ItemRule rule)
+	{
+		if (!isSmithingEquipment(rule))
+		{
+			return Collections.emptyList();
+		}
+
+		int level;
+		switch (config.equipmentSmithingMode())
+		{
+			case RESTRICT:
+				level = smithingTradeLevel(rule);
+				break;
+			case BALANCED:
+			case MIXED:
+				level = balancedSmithingLevel(rule);
+				break;
+			default:
+				return Collections.emptyList();
+		}
+
+		return level > 0
+			? Collections.singletonList(new Requirement(Skill.SMITHING, level))
+			: Collections.emptyList();
+	}
+
+	private List<Requirement> equipmentSmithingTradeDisplayRequirements(ItemRule rule)
+	{
+		if (!isSmithingEquipment(rule))
+		{
+			return Collections.emptyList();
+		}
+
+		if (config.equipmentSmithingMode() == EquipmentSmithingMode.BALANCED)
+		{
+			return equipmentSmithingDisplayRequirements(rule);
+		}
+
+		int level = smithingTradeLevel(rule);
+		return level > 0
+			? Collections.singletonList(new Requirement(Skill.SMITHING, level))
+			: Collections.emptyList();
 	}
 
 	/**
@@ -1006,7 +1139,17 @@ public class UnlockService
 			return custom.getTradeReqs();
 		}
 		ItemRule rule = rules.forName(key);
-		return rule == null ? Collections.emptyList() : tradeRequirements(rule);
+		if (rule == null)
+		{
+			return Collections.emptyList();
+		}
+
+		List<Requirement> smithing = equipmentSmithingTradeDisplayRequirements(rule);
+		if (!smithing.isEmpty())
+		{
+			return smithing;
+		}
+		return tradeRequirements(rule);
 	}
 
 	public List<Requirement> displayShopRequirements(String key)
@@ -1090,7 +1233,14 @@ public class UnlockService
 			return custom.getWieldReqs();
 		}
 		ItemRule rule = rules.forName(key);
-		return rule == null ? Collections.emptyList() : wieldRequirements(rule);
+		if (rule == null)
+		{
+			return Collections.emptyList();
+		}
+
+		List<Requirement> reqs = new ArrayList<>(wieldRequirements(rule));
+		reqs.addAll(equipmentSmithingDisplayRequirements(rule));
+		return reqs;
 	}
 
 	public boolean meetsTradeRequirements(String key)

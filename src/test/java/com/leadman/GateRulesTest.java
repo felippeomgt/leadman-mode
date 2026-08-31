@@ -68,13 +68,17 @@ public class GateRulesTest
 	// ------------------------------------------------------------ the six examples
 
 	@Test
-	public void runeScimitarIsTradeGatedButFreelyWielded()
+	public void runeScimitarMixedModeUsesBalancedSmithingToWield()
 	{
 		level(Skill.SMITHING, 89);
 		level(Skill.ATTACK, 40);
 		assertFalse("90 Smithing not reached, so it cannot be traded",
 			service.canTradeKey("rune scimitar"));
-		assertTrue("40 Attack satisfies the wield requirement",
+		assertTrue("40 Attack and 89 Smithing satisfy mixed-mode wield",
+			service.canWieldKey("rune scimitar"));
+
+		level(Skill.SMITHING, 39);
+		assertFalse("mixed mode also needs 40 Smithing to wield",
 			service.canWieldKey("rune scimitar"));
 
 		level(Skill.SMITHING, 90);
@@ -322,16 +326,14 @@ public class GateRulesTest
 	}
 
 	@Test
-	public void equipmentGateAppliesWhenToggledOn()
+	public void restrictModeRequiresFabricationSmithingToWield()
 	{
-		config.equipment = true;
+		config.equipmentSmithingMode = EquipmentSmithingMode.RESTRICT;
 		level(Skill.ATTACK, 40);
-		level(Skill.DEFENCE, 40);
-
 		level(Skill.SMITHING, 85);
-		assertFalse("rune scimitar needs 90 Smithing to use when equipment gate is on",
+		assertFalse("rune scimitar needs 90 Smithing to use in restrict mode",
 			service.canUseKey("rune scimitar"));
-		assertFalse("wield also needs Smithing when equipment gate is on",
+		assertFalse("wield also needs fabrication Smithing in restrict mode",
 			service.canWieldKey("rune scimitar"));
 
 		level(Skill.SMITHING, 90);
@@ -340,14 +342,33 @@ public class GateRulesTest
 	}
 
 	@Test
-	public void equipmentGateOffAllowsWieldWithoutSmithing()
+	public void balancedModeUsesWieldStatForTradeAndWield()
 	{
-		config.equipment = false;
+		config.equipmentSmithingMode = EquipmentSmithingMode.BALANCED;
 		level(Skill.ATTACK, 40);
-		level(Skill.SMITHING, 1);
-
+		level(Skill.SMITHING, 39);
 		assertFalse(service.canTradeKey("rune scimitar"));
+		assertFalse(service.canWieldKey("rune scimitar"));
+
+		level(Skill.SMITHING, 40);
+		assertTrue(service.canTradeKey("rune scimitar"));
 		assertTrue(service.canWieldKey("rune scimitar"));
+	}
+
+	@Test
+	public void mixedModeSplitsWieldAndTradeSmithing()
+	{
+		config.equipmentSmithingMode = EquipmentSmithingMode.MIXED;
+		level(Skill.ATTACK, 40);
+		level(Skill.SMITHING, 40);
+		assertFalse("trade still needs fabrication Smithing 90",
+			service.canTradeKey("rune scimitar"));
+		assertTrue(service.canWieldKey("rune scimitar"));
+		assertFalse(service.canShopKey("rune scimitar"));
+
+		level(Skill.SMITHING, 90);
+		assertTrue(service.canTradeKey("rune scimitar"));
+		assertTrue(service.canShopKey("rune scimitar"));
 	}
 
 	@Test
@@ -606,7 +627,7 @@ public class GateRulesTest
 		private Boolean charged;
 		private Boolean ammo;
 		private Boolean runes;
-		private Boolean equipment;
+		private EquipmentSmithingMode equipmentSmithingMode;
 		private String custom = "[]";
 
 		@Override
@@ -646,9 +667,11 @@ public class GateRulesTest
 		}
 
 		@Override
-		public boolean gateEquipment()
+		public EquipmentSmithingMode equipmentSmithingMode()
 		{
-			return equipment != null ? equipment : LeadmanConfig.super.gateEquipment();
+			return equipmentSmithingMode != null
+				? equipmentSmithingMode
+				: LeadmanConfig.super.equipmentSmithingMode();
 		}
 
 		@Override
