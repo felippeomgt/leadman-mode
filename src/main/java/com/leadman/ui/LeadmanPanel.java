@@ -79,7 +79,7 @@ public class LeadmanPanel extends PluginPanel
 		summary.setFont(FontManager.getRunescapeSmallFont());
 		summary.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
 		summary.setBorder(BorderFactory.createEmptyBorder(0, 0, 6, 0));
-		search.setToolTipText("Filter recent unlocks");
+		search.setToolTipText("Filter your unlocks");
 		search.getDocument().addDocumentListener(filterListener());
 
 		catalogButton.setToolTipText("Browse and edit all items");
@@ -156,7 +156,7 @@ public class LeadmanPanel extends PluginPanel
 			}
 
 			List<Row> rows = new ArrayList<>();
-			for (String key : unlockService.getRecentUnlockedKeys())
+			for (String key : unlockService.getPanelUnlockKeys())
 			{
 				ItemRule rule = rules.forName(key);
 				String display = rule != null ? rule.getDisplay() : key;
@@ -182,7 +182,7 @@ public class LeadmanPanel extends PluginPanel
 			return;
 		}
 
-		summary.setText("Recent unlocks (" + itemRows.size() + ")");
+		summary.setText("Unlocks (" + itemRows.size() + ")");
 	}
 
 	private void renderItems()
@@ -193,7 +193,7 @@ public class LeadmanPanel extends PluginPanel
 
 		if (!unlockService.isLoaded())
 		{
-			itemsList.add(LeadmanUi.hintLabel("Log in to see recent unlocks here."));
+			itemsList.add(LeadmanUi.hintLabel("Log in to see your unlocks here."));
 		}
 		else if (itemRows.isEmpty())
 		{

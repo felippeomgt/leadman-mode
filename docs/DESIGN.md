@@ -262,7 +262,7 @@ explanations. Cannot cancel existing GE offers or block non-menu actions.
 
 ## 10. UI (implemented)
 
-- **Sidebar** — 20 most recent unlocks (view-only), search, ⚙ opens catalog
+- **Sidebar** — all unlocks (obtained + fabrication), searchable, ⚙ opens catalog
 - **Catalog dialog** — full list, bright/gray status, click to edit, reset all custom rules
 - **Per-item editor** — trade, shop, eat, drink, wield, use, teleport, bury; override flag
 - **Unlock popup** — batched on big level-ups; coloured chat lines

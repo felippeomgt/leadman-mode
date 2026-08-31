@@ -16,6 +16,8 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) (bug reports, rule fixes, code PRs).
 - README: **The idea in practice**, beta notice, and per-item customization examples.
 
+- Shop-by-shop review generator: `tools/generate-shop-review.mjs`, `docs/shop-review-by-store.md`.
+
 ### Changed
 - **Smithing gates equipment** is now a three-mode selector: Restrict, Balanced, Mixed (default). Replaces the old on/off toggle.
 - Block explanations only on Examine or when the player attempts a blocked action.

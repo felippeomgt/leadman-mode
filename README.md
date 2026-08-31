@@ -110,7 +110,7 @@ Open the sidebar **⚙ catalog** to browse every item, see which actions are ope
 
 Other examples: gate big bones behind 30 Prayer for bury, trade, and use; keep a whip trade-locked until 85 Attack even though the game allows 70.
 
-The main sidebar shows your **20 most recent unlocks** (view-only). The catalog is where you search the full list and customize.
+The main sidebar lists **every item you have unlocked** (obtained or fabrication), searchable. The catalog is where you browse the full ruleset and customize per item.
 
 Locked items in your inventory appear slightly dimmed. **Examine** an item to see which actions are still restricted.
 

@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -216,9 +217,7 @@ public class UnlockService
 		setCustomRules(Collections.emptyList());
 	}
 
-	private static final int MAX_RECENT_UNLOCKS = 20;
-
-	/** Records a unlock for the sidebar recent list (obtain or fabrication). */
+	/** Records an unlock for the sidebar list (obtain or fabrication), newest first. */
 	public void recordRecentUnlock(String key)
 	{
 		if (key == null || key.isEmpty())
@@ -228,16 +227,38 @@ public class UnlockService
 		List<String> recent = state.getRecentUnlocked();
 		recent.remove(key);
 		recent.add(0, key);
-		while (recent.size() > MAX_RECENT_UNLOCKS)
-		{
-			recent.remove(recent.size() - 1);
-		}
 		dirty = true;
 	}
 
 	public List<String> getRecentUnlockedKeys()
 	{
 		return Collections.unmodifiableList(new ArrayList<>(state.getRecentUnlocked()));
+	}
+
+	/**
+	 * Every item to show in the sidebar: recent unlock order first, then other obtained
+	 * and fabrication unlocks alphabetically.
+	 */
+	public List<String> getPanelUnlockKeys()
+	{
+		Set<String> seen = new LinkedHashSet<>();
+		List<String> keys = new ArrayList<>();
+
+		for (String key : state.getRecentUnlocked())
+		{
+			if (seen.add(key))
+			{
+				keys.add(key);
+			}
+		}
+
+		List<String> rest = new ArrayList<>();
+		rest.addAll(state.getObtained());
+		rest.addAll(satisfied);
+		rest.removeAll(seen);
+		Collections.sort(rest, String.CASE_INSENSITIVE_ORDER);
+		keys.addAll(rest);
+		return keys;
 	}
 
 	// ------------------------------------------------------------------ lookup

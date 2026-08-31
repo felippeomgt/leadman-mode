@@ -586,6 +586,17 @@ for (const item of ALI_DESERT_SHOP) {
   shopOnly(item, "Ali's Discount Wares");
 }
 
+const FINE_FASHIONS_SHOP = [
+  "Blue boots", "Blue hat", "Blue robe bottoms", "Blue robe top",
+  "Cream boots", "Cream hat", "Cream robe bottoms", "Cream robe top",
+  "Green boots", "Green hat", "Green robe bottoms", "Green robe top",
+  "Pink boots", "Pink hat", "Pink robe bottoms", "Pink robe top",
+  "Turquoise boots", "Turquoise hat", "Turquoise robe bottoms", "Turquoise robe top",
+];
+for (const item of FINE_FASHIONS_SHOP) {
+  shopOnly(item, "Fine Fashions");
+}
+
 rule("Broad arrowhead pack", "FREE", "NONE", [], "Slayer pack", { packOf: "broad arrowhead", tradeable: false });
 rule("Unfinished broad bolt pack", "FREE", "NONE", [], "Slayer pack", { packOf: "unfinished broad bolt", tradeable: false });
 

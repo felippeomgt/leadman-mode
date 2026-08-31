@@ -24,7 +24,7 @@ public class UnlockState
 	/** Unlocks already shown, so a popup never fires twice for the same item. */
 	private Set<String> seen = new HashSet<>();
 
-	/** Most recent unlocks (obtain or fabrication), newest first. Capped in UnlockService. */
+	/** Unlock order for the sidebar (newest first). Full history; panel also merges obtained. */
 	private java.util.List<String> recentUnlocked = new java.util.ArrayList<>();
 
 	/** True once the first full scan has run, so login does not fire a popup storm. */
