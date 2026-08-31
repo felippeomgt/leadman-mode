@@ -27,8 +27,9 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - Bank booth menus no longer misidentified as locked items (object id vs item id).
 - Tightened GE trade: `obtained` alone no longer bypasses skill gates for non obtain-only items.
 - **Use gate defaults:** Fletching (ammo) and Runecrafting (runes) on by default.
-- Expanded shop rules: brutal arrows, crossbow limbs, pies, brews, dyes, slayer shop `SHOP_ONLY`, bagged plants, Ali's disguise items, **Fine Fashions**, **Agmundi** / **Menaphite** clothes, farming produce and seeds, metal knives and arrowtips, general-store **packOf** mappings.
-- Shop review doc trimmed through Arnold's Eclectic Supplies (verified shops omitted).
+- Expanded shop rules: brutal arrows, crossbow limbs, pies, brews, dyes, slayer shop `SHOP_ONLY`, bagged plants, Ali's disguise items, **Fine Fashions**, **Agmundi** / **Menaphite** clothes, farming produce and seeds, metal knives and arrowtips, general-store **packOf** mappings; **Bolongo batch**: bolt mould, moon-lite, thrown axes, Ava's devices, locator orb, lunar signet, moonclan manual, newspaper, pink dye, blurberry premades, waterskins, fremennik shield.
+- Rune shop packs (`Mind rune pack`, etc.) use `packOf` — obtain the single rune before buying the pack.
+- Shop review doc trimmed through Bolongo (verified shops omitted).
 - Sidebar unlock list shows full history (obtained + fabrication), not capped at 20.
 - Plugin Hub build: `build=standard` in `runelite-plugin.properties` (review feedback).
 - README and DESIGN.md aligned with current gate defaults.

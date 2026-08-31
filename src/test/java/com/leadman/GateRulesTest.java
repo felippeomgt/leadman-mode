@@ -440,7 +440,21 @@ public class GateRulesTest
 		level(Skill.RUNECRAFT, 35);
 		service.getState().getObtained().add("chaos rune");
 		assertTrue(service.canShopKey("chaos rune"));
-		service.getState().getObtained().add("chaos rune pack");
+		assertTrue(service.canShopKey("chaos rune pack"));
+	}
+
+	@Test
+	public void runePackShopRequiresObtainingSingleRuneFirst()
+	{
+		assertFalse(service.canShopKey("air rune pack"));
+		assertFalse(service.canShopKey("mind rune pack"));
+
+		service.getState().getObtained().add("air rune");
+		assertTrue(service.canShopKey("air rune pack"));
+		assertFalse(service.canShopKey("mind rune pack"));
+
+		level(Skill.RUNECRAFT, 35);
+		service.getState().getObtained().add("chaos rune");
 		assertTrue(service.canShopKey("chaos rune pack"));
 	}
 
@@ -472,20 +486,6 @@ public class GateRulesTest
 
 		level(Skill.SAILING, 55);
 		assertTrue(service.canUseKey("mithril cannonball"));
-	}
-
-	@Test
-	public void runePackShopRequiresSameRunecraftingAsRune()
-	{
-		level(Skill.RUNECRAFT, 1);
-		service.getState().getObtained().add("air rune pack");
-		assertTrue(service.canShopKey("air rune pack"));
-		assertFalse(service.canShopKey("chaos rune pack"));
-
-		level(Skill.RUNECRAFT, 35);
-		service.getState().getObtained().add("chaos rune");
-		service.getState().getObtained().add("chaos rune pack");
-		assertTrue(service.canShopKey("chaos rune pack"));
 	}
 
 	@Test

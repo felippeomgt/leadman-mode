@@ -239,7 +239,7 @@ for (const [drink, level] of Object.entries(BREWING)) {
 
 // Dyes from Aggie / ingredients — obtain elsewhere before shop or GE.
 const DYES = [
-  "Red dye", "Blue dye", "Yellow dye", "Orange dye", "Green dye", "Purple dye", "Pink dye",
+  "Red dye", "Blue dye", "Yellow dye", "Orange dye", "Green dye", "Purple dye",
 ];
 for (const dye of DYES) {
   rule(dye, "DROP_ONLY", "NONE", [], "Obtain");
@@ -328,18 +328,13 @@ for (const [rune, level] of Object.entries(RUNES)) {
   rule(rune, "FABRICABLE", "RUNE", [["RUNECRAFT", level]], "Runecrafting");
 }
 
-// Magic shops sell 100-rune packs that are not GE-tradeable. Without explicit rules
-// they bypass shop gates (canShopKey treats unmapped non-GE items as free).
-const RUNE_PACKS = {
-  "Air rune pack": 1,
-  "Mind rune pack": 2,
-  "Water rune pack": 5,
-  "Earth rune pack": 9,
-  "Fire rune pack": 14,
-  "Chaos rune pack": 35,
-};
-for (const [pack, level] of Object.entries(RUNE_PACKS)) {
-  rule(pack, "FABRICABLE", "RUNE", [["RUNECRAFT", level]], "Runecrafting", { tradeable: false });
+// Magic shops sell 100-rune packs — obtain the single rune before buying a pack.
+const RUNE_PACKS = [
+  "Air rune pack", "Mind rune pack", "Water rune pack", "Earth rune pack", "Fire rune pack", "Chaos rune pack",
+];
+for (const pack of RUNE_PACKS) {
+  const single = pack.replace(/ pack$/, "").toLowerCase();
+  rule(pack, "FREE", "NONE", [], "Rune pack", { packOf: single, tradeable: false });
 }
 
 // --------------------------------------------------------------------- fletching
@@ -695,6 +690,41 @@ const AGILITY_ARENA_HERBS = ["Snapdragon", "Toadflax"];
 
 rule("Broad arrowhead pack", "FREE", "NONE", [], "Slayer pack", { packOf: "broad arrowhead", tradeable: false });
 rule("Unfinished broad bolt pack", "FREE", "NONE", [], "Slayer pack", { packOf: "unfinished broad bolt", tradeable: false });
+
+shopOnly("Bolt mould", "Crafting shop");
+shopOnly("Moon-lite", "Shop");
+
+const THROWN_AXES = [
+  "Bronze thrownaxe", "Iron thrownaxe", "Steel thrownaxe", "Mithril thrownaxe",
+  "Adamant thrownaxe", "Rune thrownaxe", "Dragon thrownaxe",
+];
+for (const axe of THROWN_AXES) {
+  shopOnly(axe, "Thrownaxe shop");
+}
+
+for (const item of ["Ava's attractor", "Ava's accumulator", "Ava's assembler"]) {
+  shopOnly(item, "Ava");
+}
+shopOnly("Locator orb", "Ava quest");
+shopOnly("Lunar signet", "Lunar Isles");
+shopOnly("Moonclan manual", "Lunar Isles");
+shopOnly("Newspaper", "Quest shop");
+shopOnly("Pink dye", "Quest shop");
+
+const PREMADE_SHOP_ONLY = [
+  "Premade dr' dragon", "Premade fr' blast", "Premade p' punch", "Premade sgg", "Premade wiz blz'd",
+];
+for (const drink of PREMADE_SHOP_ONLY) {
+  shopOnly(drink, "Blurberry Bar");
+}
+
+rule("Premade blurb' sp.", "DROP_ONLY", "NONE", [], "Obtain");
+rule("Premade choc s'dy", "DROP_ONLY", "NONE", [], "Obtain");
+
+rule("Fremennik shield", "DROP_ONLY", "NONE", [], "Obtain");
+for (const ws of ["Waterskin", "Waterskin(0)", "Waterskin(1)", "Waterskin(2)", "Waterskin(3)", "Waterskin(4)"]) {
+  rule(ws, "DROP_ONLY", "NONE", [], "Desert shop");
+}
 
 // ------------------------------------------------------------------------- free
 
