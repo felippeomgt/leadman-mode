@@ -218,14 +218,33 @@ for (const [raw, fishing, cooked, cooking] of FISH) {
 
 const OTHER_FOOD = {
   Bread: 1, "Redberry pie": 10, "Meat pie": 20, Stew: 25, "Apple pie": 30,
-  "Jug of wine": 35, Cake: 40, "Chocolate cake": 50, Curry: 60,
-  "Tuna potato": 68, "Summer pie": 95,
+  "Garden pie": 34, "Fish pie": 47, "Jug of wine": 35, Cake: 40, "Chocolate cake": 50,
+  "Mushroom pie": 60, Curry: 60, "Admiral pie": 70, "Tuna potato": 68, "Wild pie": 85,
+  "Summer pie": 95,
 };
 for (const [food, level] of Object.entries(OTHER_FOOD)) {
   rule(food, "FABRICABLE", "FOOD", [["COOKING", level]], "Cooking");
 }
 
-// ------------------------------------------------------------ farming, herblore
+// Pub ales and brews (Cooking/Brewing). Shop blocked until the brewing level is met.
+const BREWING = {
+  Beer: 1, "Asgarnian ale": 24, "Greenman's ale": 29, "Dragon bitter": 39,
+  "Axeman's folly": 49, "Chef's delight": 54, "Slayer's respite": 59,
+  Cider: 14, "Dwarven stout": 19, "Wizard's mind bomb": 34,
+};
+for (const [drink, level] of Object.entries(BREWING)) {
+  rule(drink, "FABRICABLE", "FOOD", [["COOKING", level]], "Brewing");
+}
+
+// Dyes from Aggie / ingredients — obtain elsewhere before shop or GE.
+const DYES = [
+  "Red dye", "Blue dye", "Yellow dye", "Orange dye", "Green dye", "Purple dye", "Pink dye",
+];
+for (const dye of DYES) {
+  rule(dye, "DROP_ONLY", "NONE", [], "Obtain");
+}
+
+// ---------------------------------------------------------------- farming, herblore
 
 // [herb, farming level to grow, herblore level to clean]
 const HERBS = [
@@ -315,6 +334,22 @@ for (const [bolt, level] of Object.entries(BOLTS)) {
   rule(bolt, "FABRICABLE", "AMMO", [["FLETCHING", level]], "Fletching");
 }
 rule("Broad arrows", "FABRICABLE", "AMMO", [["FLETCHING", 52]], "Fletching", { tradeable: false });
+
+const BRUTAL_ARROWS = {
+  "Black brutal": 38, "Iron brutal": 39, "Steel brutal": 49,
+  "Mithril brutal": 56, "Adamant brutal": 63, "Rune brutal": 77,
+};
+for (const [ammo, level] of Object.entries(BRUTAL_ARROWS)) {
+  rule(ammo, "FABRICABLE", "AMMO", [["FLETCHING", level]], "Fletching");
+}
+
+const CROSSBOW_LIMBS = {
+  "Bronze limbs": 1, "Iron limbs": 15, "Steel limbs": 31,
+  "Mithril limbs": 56, "Adamantite limbs": 76, "Runite limbs": 91,
+};
+for (const [limbs, level] of Object.entries(CROSSBOW_LIMBS)) {
+  rule(limbs, "FABRICABLE", "NONE", [["SMITHING", level]], "Smithing");
+}
 
 const BOWS = {
   Shortbow: 5, Longbow: 10, "Oak shortbow": 20, "Oak longbow": 25,
@@ -521,7 +556,38 @@ rule("Eye of newt pack", "FREE", "NONE", [], "Shop pack", { packOf: "eye of newt
 rule("Feather pack", "FREE", "NONE", [], "Shop pack", { packOf: "feather", tradeable: false });
 
 // NPC-shop-only items: buying counts as obtain so use is not deadlocked.
-rule("Teleport card", "SHOP_ONLY", "NONE", [], "Shop");
+function shopOnly(display, note = "Shop") {
+  rule(display, "SHOP_ONLY", "NONE", [], note);
+}
+
+shopOnly("Teleport card");
+shopOnly("Ale yeast");
+shopOnly("Anti-dragon shield");
+
+const SLAYER_EQUIPMENT_SHOP = [
+  "Bag of salt", "Facemask", "Earmuffs", "Nose peg", "Spiny helmet", "Mirror shield",
+  "Insulated boots", "Boots of stone", "Rock hammer", "Rock thrownhammer", "Slayer bell",
+  "Slayer's staff", "Unlit bug lantern", "Leaf-bladed sword", "Leaf-bladed spear",
+  "Witchwood icon", "Fishing explosive", "Ice cooler", "Fungicide spray", "Reinforced goggles",
+  "Slayer gloves", "Enchanted gem", "Butterfly jar",
+];
+for (const item of SLAYER_EQUIPMENT_SHOP) {
+  shopOnly(item, "Slayer Equipment");
+}
+
+const ALI_DESERT_SHOP = [
+  "Fake beard", "Fez", "Kharidian headpiece",
+  "Desert boots", "Desert legs", "Desert robes", "Desert top", "Desert top (overcoat)",
+  "Maple blackjack", "Maple blackjack(d)", "Maple blackjack(o)",
+  "Oak blackjack(d)", "Oak blackjack(o)",
+  "Willow blackjack(d)", "Willow blackjack(o)",
+];
+for (const item of ALI_DESERT_SHOP) {
+  shopOnly(item, "Ali's Discount Wares");
+}
+
+rule("Broad arrowhead pack", "FREE", "NONE", [], "Slayer pack", { packOf: "broad arrowhead", tradeable: false });
+rule("Unfinished broad bolt pack", "FREE", "NONE", [], "Slayer pack", { packOf: "unfinished broad bolt", tradeable: false });
 
 // ------------------------------------------------------------------------- free
 
@@ -625,6 +691,16 @@ for (const key of GE_KEYS) {
   const display = key.charAt(0).toUpperCase() + key.slice(1);
   rule(display, "FREE", "NONE", [], null);
   covered.add(key);
+}
+
+// Construction bagged plants/hedges — shop is the only obtain path.
+for (const item of items) {
+  const name = item.name;
+  if (/^bagged /i.test(name) || /\(bagged\)$/i.test(name)) {
+    item.itemClass = "SHOP_ONLY";
+    item.consume = "NONE";
+    item.paths = [];
+  }
 }
 
 // ------------------------------------------------------------------ output

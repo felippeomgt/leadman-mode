@@ -187,18 +187,30 @@ public class GateRulesTest
 	// ----------------------------------------------- the revised rule for ammo/runes
 
 	@Test
-	public void ammoAndRunesAreTradeGatedOnlyByDefault()
+	public void ammoAndRunesGateUseByDefault()
 	{
 		level(Skill.FLETCHING, 1);
 		level(Skill.RUNECRAFT, 1);
 
 		assertFalse(service.canTradeKey("rune arrow"));
 		assertFalse(service.canTradeKey("law rune"));
+		assertFalse("Fletching gate is on by default", service.canUseKey("rune arrow"));
+		assertFalse("Runecraft gate is on by default for rune items", service.canUseKey("law rune"));
 
-		assertTrue("the game already asks 40 Ranged for rune arrows",
-			service.canUseKey("rune arrow"));
-		assertTrue("the spellbook already asks for a Magic level",
-			service.canUseKey("law rune"));
+		level(Skill.FLETCHING, 75);
+		assertTrue(service.canUseKey("rune arrow"));
+	}
+
+	@Test
+	public void ammoAndRunesUseFreeWhenGatesOff()
+	{
+		config.ammo = false;
+		config.runes = false;
+		level(Skill.FLETCHING, 1);
+		level(Skill.RUNECRAFT, 1);
+
+		assertTrue(service.canUseKey("rune arrow"));
+		assertTrue(service.canUseKey("law rune"));
 	}
 
 	@Test
@@ -207,13 +219,73 @@ public class GateRulesTest
 		level(Skill.FLETCHING, 1);
 		level(Skill.RUNECRAFT, 1);
 
-		config.ammo = true;
+		config.runes = false;
+		config.ammo = false;
+		assertTrue(service.canUseKey("rune arrow"));
 
+		config.ammo = true;
 		assertFalse("Fletching gate now applies", service.canUseKey("rune arrow"));
-		assertTrue("but Runecrafting was left alone", service.canUseKey("law rune"));
+		assertTrue("Runecrafting was left alone", service.canUseKey("law rune"));
 
 		level(Skill.FLETCHING, 75);
 		assertTrue(service.canUseKey("rune arrow"));
+	}
+
+	@Test
+	public void plainJewelleryIsNotActivatableForMenuHooks()
+	{
+		assertFalse("no teleport charge on a gold necklace",
+			service.isActivatable("gold necklace"));
+		level(Skill.CRAFTING, 6);
+		assertTrue(service.canUseKey("gold necklace"));
+		assertTrue("activate check passes when there is nothing to activate",
+			service.canActivateKey("gold necklace"));
+	}
+
+	@Test
+	public void gloryRemainsActivatable()
+	{
+		assertTrue(service.isActivatable("amulet of glory"));
+	}
+
+	@Test
+	public void brutalArrowsNeedFletchingForShop()
+	{
+		level(Skill.FLETCHING, 62);
+		assertFalse(service.canShopKey("adamant brutal"));
+
+		level(Skill.FLETCHING, 63);
+		assertTrue(service.canShopKey("adamant brutal"));
+	}
+
+	@Test
+	public void crossbowLimbsNeedSmithingForShop()
+	{
+		level(Skill.SMITHING, 75);
+		assertFalse(service.canShopKey("adamantite limbs"));
+
+		level(Skill.SMITHING, 76);
+		assertTrue(service.canShopKey("adamantite limbs"));
+	}
+
+	@Test
+	public void shopOnlyItemsAllowShopWithoutPriorObtain()
+	{
+		when(tradeables.isGeTradeableKey("ale yeast")).thenReturn(true);
+		when(tradeables.isGeTradeableKey("fake beard")).thenReturn(true);
+
+		assertTrue(service.canShopKey("ale yeast"));
+		assertTrue(service.canShopKey("fake beard"));
+	}
+
+	@Test
+	public void dyesNeedObtainBeforeShop()
+	{
+		when(tradeables.isGeTradeableKey("blue dye")).thenReturn(true);
+		assertFalse(service.canShopKey("blue dye"));
+
+		service.getState().getObtained().add("blue dye");
+		assertTrue(service.canShopKey("blue dye"));
 	}
 
 	@Test
@@ -257,11 +329,23 @@ public class GateRulesTest
 		level(Skill.SMITHING, 85);
 		assertFalse("rune scimitar needs 90 Smithing to use when equipment gate is on",
 			service.canUseKey("rune scimitar"));
-		assertTrue("wield still follows Attack, not Smithing, unless gate adds wear reqs",
+		assertFalse("wield also needs Smithing when equipment gate is on",
 			service.canWieldKey("rune scimitar"));
 
 		level(Skill.SMITHING, 90);
 		assertTrue(service.canUseKey("rune scimitar"));
+		assertTrue(service.canWieldKey("rune scimitar"));
+	}
+
+	@Test
+	public void equipmentGateOffAllowsWieldWithoutSmithing()
+	{
+		config.equipment = false;
+		level(Skill.ATTACK, 40);
+		level(Skill.SMITHING, 1);
+
+		assertFalse(service.canTradeKey("rune scimitar"));
+		assertTrue(service.canWieldKey("rune scimitar"));
 	}
 
 	@Test

@@ -217,8 +217,8 @@ Starter unlock seed at profile creation not implemented.
 
 | Key | Default |
 | --- | --- |
-| `gateFood` / `gatePotions` / `gateJewel` / `gateCharged` | on |
-| `gateAmmo` / `gateRunes` / `gateEquipment` | off |
+| `gateFood` / `gatePotions` / `gateJewel` / `gateCharged` / `gateAmmo` / `gateRunes` | on |
+| `gateEquipment` | off |
 | `blockOtherPlayerDrops` / `blockPlayerTrade` | on |
 | `allowedTradePartners` | `""` (comma-separated display names) |
 | `allowTradeWithParty` | off (RuneLite Party plugin, same party) |

@@ -82,32 +82,31 @@ public interface LeadmanConfig extends Config
 		return true;
 	}
 
-	// Off by default: the game already gates these behind Ranged, Magic, Attack and
-	// Defence levels, so a looted item you meet the requirements for is fair to use.
-	// Turn one on to also require that you could have made it.
+	// Off by default: requiring 90 Smithing to wield a rune scimitar is unbalanced.
+	// Smithing still gates trade and shop; turn this on for the full restriction.
 
 	@ConfigItem(
 		keyName = "gateAmmo",
 		name = "Fletching gates ammunition",
-		description = "Off by default: arrows and bolts already have Ranged requirements. On, you must also be able to fletch them.",
+		description = "On by default: you must be able to fletch ammo before using it. Off, normal Ranged requirements apply.",
 		position = 4,
 		section = gates
 	)
 	default boolean gateAmmo()
 	{
-		return false;
+		return true;
 	}
 
 	@ConfigItem(
 		keyName = "gateRunes",
 		name = "Runecrafting gates runes",
-		description = "Off by default: spells already have Magic requirements. On, you must also be able to craft every rune a spell uses.",
+		description = "On by default: you must be able to craft every rune a spell uses before casting. Off, spells only need their Magic level.",
 		position = 5,
 		section = gates
 	)
 	default boolean gateRunes()
 	{
-		return false;
+		return true;
 	}
 
 	@ConfigItem(

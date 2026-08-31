@@ -408,7 +408,10 @@ public class UnlockService
 		List<Requirement> wieldReqs = wieldRequirements(rule);
 		if (!wieldReqs.isEmpty() && wieldGateApplies(rule))
 		{
-			return meets(wieldReqs);
+			if (!meets(wieldReqs))
+			{
+				return false;
+			}
 		}
 
 		ConsumeClass consume = rule.getConsume();
@@ -630,7 +633,19 @@ public class UnlockService
 			return true;
 		}
 
-		return satisfies(rule, ReqFilter.ACTIVATE);
+		List<Requirement> activateReqs = collectRequirements(rule, ReqFilter.ACTIVATE);
+		if (activateReqs.isEmpty())
+		{
+			// Plain jewellery (gold necklace, etc.) has no charge to spend.
+			return true;
+		}
+
+		return meets(activateReqs);
+	}
+
+	private boolean hasActivateRequirements(ItemRule rule)
+	{
+		return !collectRequirements(rule, ReqFilter.ACTIVATE).isEmpty();
 	}
 
 	/** True when this item has a charge worth gating separately. */
@@ -642,7 +657,15 @@ public class UnlockService
 			return false;
 		}
 		ConsumeClass consume = rule.getConsume();
-		return consume == ConsumeClass.JEWELLERY || consume == ConsumeClass.CHARGED;
+		if (consume == ConsumeClass.CHARGED)
+		{
+			return true;
+		}
+		if (consume == ConsumeClass.JEWELLERY)
+		{
+			return hasActivateRequirements(rule);
+		}
+		return false;
 	}
 
 	/**
