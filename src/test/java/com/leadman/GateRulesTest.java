@@ -9,7 +9,9 @@ import java.util.Collections;
 import java.util.EnumMap;
 import java.util.Map;
 import net.runelite.api.Client;
+import net.runelite.api.ItemComposition;
 import net.runelite.api.Skill;
+import net.runelite.client.game.ItemManager;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -465,6 +467,30 @@ public class GateRulesTest
 		service.getState().getObtained().add("varrock teleport (tablet)");
 		assertTrue(service.canTradeKey("varrock teleport (tablet)"));
 		assertTrue(service.canShopKey("varrock teleport (tablet)"));
+	}
+
+	@Test
+	public void teleportTabletGeSearchUsesBundledKeyNotClientName()
+	{
+		Client client = mock(Client.class);
+		ItemManager itemManager = mock(ItemManager.class);
+		when(itemManager.canonicalize(8007)).thenReturn(8007);
+
+		ItemComposition comp = mock(ItemComposition.class);
+		when(comp.getName()).thenReturn("Varrock teleport");
+		when(itemManager.getItemComposition(8007)).thenReturn(comp);
+
+		when(tradeables.geKeyForItemId(8007)).thenReturn("varrock teleport (tablet)");
+		when(tradeables.isGeTradeableKey("varrock teleport (tablet)")).thenReturn(true);
+
+		UnlockService keyed = new UnlockService(client, itemManager, service.getRules(),
+			tradeables, config, new Gson());
+		keyed.reloadCustomRules();
+
+		assertFalse(keyed.canTrade(8007));
+
+		keyed.getState().getObtained().add("varrock teleport (tablet)");
+		assertTrue(keyed.canTrade(8007));
 	}
 
 	@Test

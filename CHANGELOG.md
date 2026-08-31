@@ -30,6 +30,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 - Spell block messages firing when other players cast nearby (menu rebuild spam).
 - **Gold necklace** (and plain jewellery) bank deposit blocked when charge gate applied incorrectly.
 - **Smithing gates equipment:** wield now requires Smithing when that toggle is on (was only blocking use).
+- **Teleport tablets** appearing on the GE before obtain when the client item name did not match the ruleset key.
 
 ## [1.0.0-beta.1] - 2026-08-29
 

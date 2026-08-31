@@ -245,6 +245,12 @@ public class UnlockService
 	public String keyFor(int itemId)
 	{
 		int canonical = itemManager.canonicalize(itemId);
+		String geKey = tradeableIndex.geKeyForItemId(canonical);
+		if (geKey != null && !geKey.isEmpty())
+		{
+			return geKey;
+		}
+
 		ItemComposition comp = itemManager.getItemComposition(canonical);
 		return comp == null ? "" : ItemNames.normalise(comp.getName());
 	}
@@ -260,7 +266,12 @@ public class UnlockService
 
 	public boolean canTrade(int itemId)
 	{
-		return canTradeKey(keyFor(itemId));
+		String key = keyFor(itemId);
+		if (key.isEmpty())
+		{
+			return !tradeableIndex.isGeTradeableId(itemId);
+		}
+		return canTradeKey(key);
 	}
 
 	public boolean canTradeKey(String key)
