@@ -377,28 +377,28 @@ for (const [limbs, level] of Object.entries(CROSSBOW_LIMBS)) {
 }
 
 const BOWS = {
-  Shortbow: 5, Longbow: 10, "Oak shortbow": 20, "Oak longbow": 25,
-  "Willow shortbow": 35, "Willow longbow": 40, "Maple shortbow": 50,
-  "Maple longbow": 55, "Yew shortbow": 65, "Yew longbow": 70,
-  "Magic shortbow": 80, "Magic longbow": 85,
+  Shortbow: [5, 1], Longbow: [10, 1], "Oak shortbow": [20, 5], "Oak longbow": [25, 5],
+  "Willow shortbow": [35, 20], "Willow longbow": [40, 20], "Maple shortbow": [50, 30],
+  "Maple longbow": [55, 30], "Yew shortbow": [65, 40], "Yew longbow": [70, 40],
+  "Magic shortbow": [80, 50], "Magic longbow": [85, 50],
 };
-for (const [bow, level] of Object.entries(BOWS)) {
-  rule(bow, "FABRICABLE", "EQUIPMENT", [["FLETCHING", level]], "Fletching");
+for (const [bow, [fletching, ranged]] of Object.entries(BOWS)) {
+  fletchRangedWeapon(bow, fletching, ranged);
 }
 
 // Crossbows: Fletching only (limbs are usually dropped, not smithed).
 const CROSSBOWS = {
-  Crossbow: 9, "Crossbow string": 10,
-  "Bronze crossbow": 9, "Bronze crossbow (u)": 9,
-  "Iron crossbow": 39, "Iron crossbow (u)": 39,
-  "Steel crossbow": 46, "Steel crossbow (u)": 46,
-  "Mithril crossbow": 54, "Mithril crossbow (u)": 54,
-  "Adamant crossbow": 61, "Adamant crossbow (u)": 61,
-  "Rune crossbow": 69, "Runite crossbow (u)": 69,
-  "Dragon crossbow": 78, "Dragon crossbow (u)": 78,
+  Crossbow: [9, 1], "Crossbow string": [10, 1],
+  "Bronze crossbow": [9, 1], "Bronze crossbow (u)": [9, 1],
+  "Iron crossbow": [39, 1], "Iron crossbow (u)": [39, 1],
+  "Steel crossbow": [46, 1], "Steel crossbow (u)": [46, 1],
+  "Mithril crossbow": [54, 40], "Mithril crossbow (u)": [54, 40],
+  "Adamant crossbow": [61, 50], "Adamant crossbow (u)": [61, 50],
+  "Rune crossbow": [69, 61], "Runite crossbow (u)": [69, 61],
+  "Dragon crossbow": [78, 64], "Dragon crossbow (u)": [78, 64],
 };
-for (const [crossbow, level] of Object.entries(CROSSBOWS)) {
-  rule(crossbow, "FABRICABLE", "EQUIPMENT", [["FLETCHING", level]], "Fletching");
+for (const [crossbow, [fletching, ranged]] of Object.entries(CROSSBOWS)) {
+  fletchRangedWeapon(crossbow, fletching, ranged);
 }
 
 // Bolt tips: gate at the highest skill involved (usually Smithing for metal, Fletching for gems).
@@ -549,13 +549,59 @@ for (const [name, base, gem] of ENCHANTED) {
   ], "Crafting + Enchant");
 }
 
-const DHIDE = [
-  ["Green", 57, 60, 63], ["Blue", 66, 68, 71], ["Red", 73, 75, 77], ["Black", 79, 82, 84],
+function craftRangedArmour(display, crafting, ranged, defence = null) {
+  const reqs = [["CRAFTING", crafting], ["RANGED", ranged, "WIELD"]];
+  if (defence != null) {
+    reqs.push(["DEFENCE", defence, "WIELD"]);
+  }
+  rule(display, "FABRICABLE", "EQUIPMENT", reqs, "Crafting");
+}
+
+function fletchRangedWeapon(display, fletching, ranged) {
+  rule(display, "FABRICABLE", "EQUIPMENT", [
+    ["FLETCHING", fletching],
+    ["RANGED", ranged, "WIELD"],
+  ], "Fletching");
+}
+
+const LEATHER_RANGED = [
+  ["Leather gloves", 1, 1], ["Leather boots", 7, 1], ["Leather cowl", 9, 1],
+  ["Leather vambraces", 11, 1], ["Leather body", 14, 1], ["Leather chaps", 18, 1],
+  ["Leather shield", 14, 1, 1], ["Hardleather body", 28, 10], ["Hard leather shield", 41, 1, 15],
+  ["Coif", 38, 20],
 ];
-for (const [colour, vambs, chaps, body] of DHIDE) {
-  rule(`${colour} d'hide vambraces`, "FABRICABLE", "EQUIPMENT", [["CRAFTING", vambs]], "Crafting");
-  rule(`${colour} d'hide chaps`, "FABRICABLE", "EQUIPMENT", [["CRAFTING", chaps]], "Crafting");
-  rule(`${colour} d'hide body`, "FABRICABLE", "EQUIPMENT", [["CRAFTING", body]], "Crafting");
+for (const [piece, crafting, ranged, defence] of LEATHER_RANGED) {
+  craftRangedArmour(piece, crafting, ranged, defence ?? null);
+}
+
+const SNAKESKIN = [
+  ["Snakeskin bandana", 32, 30, 30], ["Snakeskin boots", 45, 30],
+  ["Snakeskin vambraces", 47, 35], ["Snakeskin chaps", 51, 40],
+  ["Snakeskin body", 55, 45, 45], ["Snakeskin shield", 48, 35, 35],
+];
+for (const [piece, crafting, ranged, defence] of SNAKESKIN) {
+  craftRangedArmour(piece, crafting, ranged, defence ?? null);
+}
+
+const FROG_LEATHER = [
+  ["Frog-leather boots", 43, 25, 25], ["Frog-leather chaps", 47, 30, 30],
+  ["Frog-leather body", 53, 35, 35],
+];
+for (const [piece, crafting, ranged, defence] of FROG_LEATHER) {
+  craftRangedArmour(piece, crafting, ranged, defence);
+}
+
+const DHIDE_TIER = { Green: 40, Blue: 50, Red: 60, Black: 70 };
+const DHIDE = [
+  ["Green", 57, 60, 63, 62], ["Blue", 66, 68, 71, 72],
+  ["Red", 73, 75, 77, 78], ["Black", 79, 82, 84, 80],
+];
+for (const [colour, vambs, chaps, body, shield] of DHIDE) {
+  const tier = DHIDE_TIER[colour];
+  craftRangedArmour(`${colour} d'hide vambraces`, vambs, tier);
+  craftRangedArmour(`${colour} d'hide chaps`, chaps, tier);
+  craftRangedArmour(`${colour} d'hide body`, body, tier, tier);
+  craftRangedArmour(`${colour} d'hide shield`, shield, tier, tier);
 }
 
 // Battlestaves need a charged orb, so magic co-gates them.
@@ -653,6 +699,7 @@ for (const item of AGMUNDI_CLOTHES) {
 
 shopOnly("Red hot sauce", "Quest shop");
 shopOnly("Desert shirt", "Desert clothes");
+shopOnly("Shantay pass (item)", "Shantay Pass");
 
 const MENAPHITE_CLOTHES = [
   "Menaphite purple hat", "Menaphite purple kilt", "Menaphite purple robe", "Menaphite purple top",
@@ -710,6 +757,8 @@ shopOnly("Lunar signet", "Lunar Isles");
 shopOnly("Moonclan manual", "Lunar Isles");
 shopOnly("Newspaper", "Quest shop");
 shopOnly("Pink dye", "Quest shop");
+shopOnly("Plant cure", "Farming shop");
+shopOnly("Pie recipe book", "Quest shop");
 
 const PREMADE_SHOP_ONLY = [
   "Premade dr' dragon", "Premade fr' blast", "Premade p' punch", "Premade sgg", "Premade wiz blz'd",

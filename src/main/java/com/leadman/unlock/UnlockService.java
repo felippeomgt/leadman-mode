@@ -3,6 +3,7 @@ package com.leadman.unlock;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
+import com.leadman.CraftingRangedEquipmentMode;
 import com.leadman.EquipmentSmithingMode;
 import com.leadman.LeadmanConfig;
 import com.leadman.rules.ConsumeClass;
@@ -825,6 +826,10 @@ public class UnlockService
 		{
 			return meetsEquipmentSmithingForTrade(rule);
 		}
+		if (isFabricatedRangedEquipment(rule))
+		{
+			return meetsFabricatedRangedForTrade(rule);
+		}
 		return satisfies(rule);
 	}
 
@@ -841,6 +846,226 @@ public class UnlockService
 	private boolean isSmithingEquipment(ItemRule rule)
 	{
 		return rule.getConsume() == ConsumeClass.EQUIPMENT && smithingTradeLevel(rule) > 0;
+	}
+
+	/**
+	 * Leather, dragonhide, snakeskin, and Fletching-made bows/crossbows. Excludes
+	 * battlestaves (Crafting + Magic) and smithing gear.
+	 */
+	private boolean isFabricatedRangedEquipment(ItemRule rule)
+	{
+		if (rule.getConsume() != ConsumeClass.EQUIPMENT || isSmithingEquipment(rule))
+		{
+			return false;
+		}
+
+		int crafting = craftingTradeLevel(rule);
+		if (crafting > 0 && !hasMagicTradeRequirement(rule))
+		{
+			return true;
+		}
+
+		return fletchingTradeLevel(rule) > 0;
+	}
+
+	private boolean hasMagicTradeRequirement(ItemRule rule)
+	{
+		for (Requirement req : tradeRequirements(rule))
+		{
+			if (req.getSkill() == Skill.MAGIC)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private int craftingTradeLevel(ItemRule rule)
+	{
+		for (Requirement req : tradeRequirements(rule))
+		{
+			if (req.getSkill() == Skill.CRAFTING)
+			{
+				return req.getLevel();
+			}
+		}
+		return 0;
+	}
+
+	private int fletchingTradeLevel(ItemRule rule)
+	{
+		for (Requirement req : tradeRequirements(rule))
+		{
+			if (req.getSkill() == Skill.FLETCHING)
+			{
+				return req.getLevel();
+			}
+		}
+		return 0;
+	}
+
+	private boolean meetsFabricatedRangedForWear(ItemRule rule)
+	{
+		switch (config.craftingRangedEquipmentMode())
+		{
+			case RESTRICT:
+				return satisfies(rule, ReqFilter.WEAR);
+			case BALANCED:
+			case MIXED:
+				return meetsBalancedFabricatedRanged(rule);
+			default:
+				return satisfies(rule, ReqFilter.WEAR);
+		}
+	}
+
+	private boolean meetsFabricatedRangedForTrade(ItemRule rule)
+	{
+		switch (config.craftingRangedEquipmentMode())
+		{
+			case BALANCED:
+				return meetsBalancedFabricatedRanged(rule);
+			case RESTRICT:
+			case MIXED:
+				return satisfies(rule);
+			default:
+				return satisfies(rule);
+		}
+	}
+
+	private boolean meetsBalancedFabricatedRanged(ItemRule rule)
+	{
+		int crafting = craftingTradeLevel(rule);
+		if (crafting > 0 && !hasMagicTradeRequirement(rule))
+		{
+			int level = balancedCraftingRangedLevel(rule);
+			if (level <= 0)
+			{
+				return satisfies(rule, ReqFilter.WEAR);
+			}
+			return client.getRealSkillLevel(Skill.CRAFTING) >= level;
+		}
+
+		int fletching = fletchingTradeLevel(rule);
+		if (fletching > 0)
+		{
+			int level = balancedFletchingRangedLevel(rule);
+			if (level <= 0)
+			{
+				return satisfies(rule, ReqFilter.WEAR);
+			}
+			return client.getRealSkillLevel(Skill.FLETCHING) >= level;
+		}
+
+		return true;
+	}
+
+	/** Crafting level tied to vanilla Ranged/Defence wield reqs; falls back to fabrication. */
+	private int balancedCraftingRangedLevel(ItemRule rule)
+	{
+		int max = 0;
+		for (Requirement req : wieldRequirements(rule))
+		{
+			Skill skill = req.getSkill();
+			if (skill == Skill.RANGED || skill == Skill.DEFENCE)
+			{
+				max = Math.max(max, req.getLevel());
+			}
+		}
+		if (max > 0)
+		{
+			return max;
+		}
+		return craftingTradeLevel(rule);
+	}
+
+	/** Fletching level tied to vanilla Ranged wield reqs; falls back to fabrication. */
+	private int balancedFletchingRangedLevel(ItemRule rule)
+	{
+		int max = 0;
+		for (Requirement req : wieldRequirements(rule))
+		{
+			if (req.getSkill() == Skill.RANGED)
+			{
+				max = Math.max(max, req.getLevel());
+			}
+		}
+		if (max > 0)
+		{
+			return max;
+		}
+		return fletchingTradeLevel(rule);
+	}
+
+	private List<Requirement> fabricatedRangedDisplayRequirements(ItemRule rule)
+	{
+		if (!isFabricatedRangedEquipment(rule))
+		{
+			return Collections.emptyList();
+		}
+
+		int level;
+		Skill skill;
+		switch (config.craftingRangedEquipmentMode())
+		{
+			case RESTRICT:
+				if (craftingTradeLevel(rule) > 0 && !hasMagicTradeRequirement(rule))
+				{
+					return Collections.singletonList(
+						new Requirement(Skill.CRAFTING, craftingTradeLevel(rule)));
+				}
+				if (fletchingTradeLevel(rule) > 0)
+				{
+					return Collections.singletonList(
+						new Requirement(Skill.FLETCHING, fletchingTradeLevel(rule)));
+				}
+				return Collections.emptyList();
+			case BALANCED:
+			case MIXED:
+				if (craftingTradeLevel(rule) > 0 && !hasMagicTradeRequirement(rule))
+				{
+					skill = Skill.CRAFTING;
+					level = balancedCraftingRangedLevel(rule);
+				}
+				else if (fletchingTradeLevel(rule) > 0)
+				{
+					skill = Skill.FLETCHING;
+					level = balancedFletchingRangedLevel(rule);
+				}
+				else
+				{
+					return Collections.emptyList();
+				}
+				break;
+			default:
+				return Collections.emptyList();
+		}
+
+		return level > 0
+			? Collections.singletonList(new Requirement(skill, level))
+			: Collections.emptyList();
+	}
+
+	private List<Requirement> fabricatedRangedTradeDisplayRequirements(ItemRule rule)
+	{
+		if (!isFabricatedRangedEquipment(rule))
+		{
+			return Collections.emptyList();
+		}
+
+		if (config.craftingRangedEquipmentMode() == CraftingRangedEquipmentMode.BALANCED)
+		{
+			return fabricatedRangedDisplayRequirements(rule);
+		}
+
+		if (craftingTradeLevel(rule) > 0 && !hasMagicTradeRequirement(rule))
+		{
+			return Collections.singletonList(new Requirement(Skill.CRAFTING, craftingTradeLevel(rule)));
+		}
+		if (fletchingTradeLevel(rule) > 0)
+		{
+			return Collections.singletonList(new Requirement(Skill.FLETCHING, fletchingTradeLevel(rule)));
+		}
+		return Collections.emptyList();
 	}
 
 	private int smithingTradeLevel(ItemRule rule)
@@ -882,21 +1107,26 @@ public class UnlockService
 
 	private boolean meetsEquipmentSmithingForWear(ItemRule rule)
 	{
-		if (!isSmithingEquipment(rule))
+		if (isSmithingEquipment(rule))
 		{
-			return satisfies(rule, ReqFilter.WEAR);
+			switch (config.equipmentSmithingMode())
+			{
+				case RESTRICT:
+					return satisfies(rule, ReqFilter.WEAR);
+				case BALANCED:
+				case MIXED:
+					return meetsBalancedSmithing(rule);
+				default:
+					return satisfies(rule, ReqFilter.WEAR);
+			}
 		}
 
-		switch (config.equipmentSmithingMode())
+		if (isFabricatedRangedEquipment(rule))
 		{
-			case RESTRICT:
-				return satisfies(rule, ReqFilter.WEAR);
-			case BALANCED:
-			case MIXED:
-				return meetsBalancedSmithing(rule);
-			default:
-				return satisfies(rule, ReqFilter.WEAR);
+			return meetsFabricatedRangedForWear(rule);
 		}
+
+		return satisfies(rule, ReqFilter.WEAR);
 	}
 
 	private boolean meetsEquipmentSmithingForTrade(ItemRule rule)
@@ -1186,6 +1416,11 @@ public class UnlockService
 		{
 			return smithing;
 		}
+		List<Requirement> ranged = fabricatedRangedTradeDisplayRequirements(rule);
+		if (!ranged.isEmpty())
+		{
+			return ranged;
+		}
 		return tradeRequirements(rule);
 	}
 
@@ -1277,6 +1512,7 @@ public class UnlockService
 
 		List<Requirement> reqs = new ArrayList<>(wieldRequirements(rule));
 		reqs.addAll(equipmentSmithingDisplayRequirements(rule));
+		reqs.addAll(fabricatedRangedDisplayRequirements(rule));
 		return reqs;
 	}
 

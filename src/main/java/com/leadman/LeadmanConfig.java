@@ -118,6 +118,18 @@ public interface LeadmanConfig extends Config
 		return EquipmentSmithingMode.MIXED;
 	}
 
+	@ConfigItem(
+		keyName = "craftingRangedEquipmentMode",
+		name = "Crafting gates ranged equipment",
+		description = "Restrict: fabrication Crafting/Fletching for every action. Balanced: skill level matches Ranged/Defence wield reqs. Mixed (default): Balanced for wield/wear, fabrication Crafting/Fletching for trade and shop.",
+		position = 7,
+		section = gates
+	)
+	default CraftingRangedEquipmentMode craftingRangedEquipmentMode()
+	{
+		return CraftingRangedEquipmentMode.MIXED;
+	}
+
 	// ---------------------------------------------------------------- conduct
 
 	@ConfigItem(

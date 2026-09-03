@@ -351,6 +351,59 @@ public class GateRulesTest
 	}
 
 	@Test
+	public void mixedModeUsesBalancedCraftingToWieldDhide()
+	{
+		config.craftingRangedEquipmentMode = CraftingRangedEquipmentMode.MIXED;
+		level(Skill.CRAFTING, 69);
+		level(Skill.RANGED, 70);
+		level(Skill.DEFENCE, 70);
+		assertFalse(service.canWieldKey("black d'hide body"));
+
+		level(Skill.CRAFTING, 70);
+		assertTrue(service.canWieldKey("black d'hide body"));
+	}
+
+	@Test
+	public void mixedModeSplitsCraftingRangedWieldAndTrade()
+	{
+		config.craftingRangedEquipmentMode = CraftingRangedEquipmentMode.MIXED;
+		level(Skill.CRAFTING, 70);
+		level(Skill.RANGED, 70);
+		level(Skill.DEFENCE, 70);
+		assertTrue(service.canWieldKey("black d'hide body"));
+		assertFalse(service.canTradeKey("black d'hide body"));
+
+		level(Skill.CRAFTING, 84);
+		service.getState().getObtained().add("black d'hide body");
+		assertTrue(service.canTradeKey("black d'hide body"));
+	}
+
+	@Test
+	public void restrictModeRequiresFabricationCraftingToWieldDhide()
+	{
+		config.craftingRangedEquipmentMode = CraftingRangedEquipmentMode.RESTRICT;
+		level(Skill.CRAFTING, 83);
+		level(Skill.RANGED, 70);
+		level(Skill.DEFENCE, 70);
+		assertFalse(service.canWieldKey("black d'hide body"));
+
+		level(Skill.CRAFTING, 84);
+		assertTrue(service.canWieldKey("black d'hide body"));
+	}
+
+	@Test
+	public void balancedModeUsesRangedStatForFletchingWeaponWield()
+	{
+		config.craftingRangedEquipmentMode = CraftingRangedEquipmentMode.BALANCED;
+		level(Skill.FLETCHING, 49);
+		level(Skill.RANGED, 50);
+		assertFalse(service.canWieldKey("magic shortbow"));
+
+		level(Skill.FLETCHING, 50);
+		assertTrue(service.canWieldKey("magic shortbow"));
+	}
+
+	@Test
 	public void restrictModeRequiresFabricationSmithingToWield()
 	{
 		config.equipmentSmithingMode = EquipmentSmithingMode.RESTRICT;
@@ -664,6 +717,7 @@ public class GateRulesTest
 		private Boolean charged;
 		private Boolean ammo;
 		private Boolean runes;
+		private CraftingRangedEquipmentMode craftingRangedEquipmentMode;
 		private EquipmentSmithingMode equipmentSmithingMode;
 		private String custom = "[]";
 
@@ -701,6 +755,14 @@ public class GateRulesTest
 		public boolean gateRunes()
 		{
 			return runes != null ? runes : LeadmanConfig.super.gateRunes();
+		}
+
+		@Override
+		public CraftingRangedEquipmentMode craftingRangedEquipmentMode()
+		{
+			return craftingRangedEquipmentMode != null
+				? craftingRangedEquipmentMode
+				: LeadmanConfig.super.craftingRangedEquipmentMode();
 		}
 
 		@Override
