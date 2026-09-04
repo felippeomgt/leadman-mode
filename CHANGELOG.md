@@ -7,51 +7,36 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
-### Added
-- Item catalog (⚙), inventory overlay, trade partner allowlist, and `setup-windows.cmd`.
-- `SHOP_ONLY` and `packOf` rule types for shop-only items and bulk packs.
-- GE rules audit script: `node tools/audit-ge-rules.mjs`.
-- Shop-source audit script and candidate list: `tools/audit-shop-sources.mjs`, `docs/shop-only-candidates.md`.
-- Player FAQ: [`docs/FAQ.md`](docs/FAQ.md) (shops, obtain paths, GE vs use).
-- [`CONTRIBUTING.md`](CONTRIBUTING.md) (bug reports, rule fixes, code PRs).
-- README: **The idea in practice**, beta notice, and per-item customization examples.
+## [1.0.0-beta.2] - 2026-09-04
 
-- Shop-by-shop review generator: `tools/generate-shop-review.mjs`, `docs/shop-review-by-store.md`.
-- `shopAlwaysOpen` rule flag for ticket/pearl shops (Agility Arena, etc.).
+### Added
+- **Crafting gates ranged equipment** — Restrict / Balanced / Mixed (default Mixed) for leather, dragonhide, snakeskin, and Fletching bows/crossbows.
+- Crafting ladders for leather, snakeskin, frog-leather, and d'hide shields.
+- Shop rules: Plant cure, Pie recipe book, Shantay pass (item) as `SHOP_ONLY`.
+- Rune shop packs use `packOf` (obtain the single rune before buying a pack).
 
 ### Changed
-- **Smithing gates equipment** is now a three-mode selector: Restrict, Balanced, Mixed (default). Replaces the old on/off toggle.
-- Block explanations only on Examine or when the player attempts a blocked action.
-- Gem shop gated by Crafting level; eye of newt / feather packs require obtaining singles first.
-- **Teleport tablets** are `DROP_ONLY` — obtain once before GE/shop (no Construction/Magic ladder).
-- Bank booth menus no longer misidentified as locked items (object id vs item id).
-- Tightened GE trade: `obtained` alone no longer bypasses skill gates for non obtain-only items.
-- **Use gate defaults:** Fletching (ammo) and Runecrafting (runes) on by default.
-- Expanded shop rules: brutal arrows, crossbow limbs, pies, brews, dyes, slayer shop `SHOP_ONLY`, bagged plants, Ali's disguise items, **Fine Fashions**, **Agmundi** / **Menaphite** clothes, farming produce and seeds, metal knives and arrowtips, general-store **packOf** mappings; **Bolongo batch**: bolt mould, moon-lite, thrown axes, Ava's devices, locator orb, lunar signet, moonclan manual, newspaper, pink dye, blurberry premades, waterskins, fremennik shield; **Plant cure** and **Pie recipe book** `SHOP_ONLY`.
-- Rune shop packs (`Mind rune pack`, etc.) use `packOf` — obtain the single rune before buying the pack.
-- **Crafting gates ranged equipment** three-mode selector (Restrict / Balanced / Mixed, default Mixed): leather, dragonhide, snakeskin armour and Fletching bows/crossbows.
-- Crafting ladders for leather, snakeskin, frog-leather, and d'hide shields (trade/shop gates).
-- Shop review doc trimmed through Bolongo (verified shops omitted).
-- Sidebar unlock list shows full history (obtained + fabrication), not capped at 20.
-- Plugin Hub build: `build=standard` in `runelite-plugin.properties` (review feedback).
-- README and DESIGN.md aligned with current gate defaults.
-
-### Fixed
-- **GE/shop trade for fabricable items** no longer opens on skill level alone — a legitimate obtain is required first (Cod, Redberry pie, etc.).
-- Spell block messages firing when other players cast nearby (menu rebuild spam).
-- **Gold necklace** (and plain jewellery) bank deposit blocked when charge gate applied incorrectly.
-- **Smithing gates equipment:** three modes (Restrict / Balanced / Mixed); wield respects fabrication Smithing in Restrict mode.
-- **Teleport tablets** appearing on the GE before obtain when the client item name did not match the ruleset key.
+- README rewritten — shorter focus on obtain vs use and skill examples.
+- Shop review doc trimmed through Bolongo.
 
 ## [1.0.0-beta.1] - 2026-08-29
 
-Initial beta on Plugin Hub workflow.
+Initial beta on Plugin Hub.
 
 ### Added
 - Core gate engine: trade, shop, eat, drink, wield, use, activate, bury, cast.
-- ~4 000 item rules generated from `tools/generate-rules.mjs`.
-- Sidebar panel, per-item rule editor, unlock popups, Ironman conduct toggles.
-- Plugin Hub submission (Gradle, icon, `build=gradle`).
+- Item catalog (⚙), inventory overlay, trade partner allowlist.
+- `SHOP_ONLY`, `packOf`, and `shopAlwaysOpen` rule types.
+- **Smithing gates equipment** — Restrict / Balanced / Mixed (default Mixed).
+- GE obtain fix: skill level alone no longer unlocks trade; legitimate obtain required first.
+- Shop-by-shop review tooling and expanded shop rules (Fine Fashions, slayer shop, farming, packs, Bolongo batch, etc.).
+- Sidebar full unlock history, `build=standard` for Plugin Hub.
+- Player FAQ, CONTRIBUTING, audit scripts.
 
-[Unreleased]: https://github.com/felippeomgt/leadman-mode/compare/v1.0.0-beta.1...HEAD
+### Fixed
+- GE/shop trade bypass without obtain (Cod, Redberry pie, etc.).
+- Teleport tablets on GE before obtain; bank booth false blocks; spell menu spam; gold necklace deposit.
+
+[Unreleased]: https://github.com/felippeomgt/leadman-mode/compare/v1.0.0-beta.2...HEAD
+[1.0.0-beta.2]: https://github.com/felippeomgt/leadman-mode/compare/v1.0.0-beta.1...v1.0.0-beta.2
 [1.0.0-beta.1]: https://github.com/felippeomgt/leadman-mode/releases/tag/v1.0.0-beta.1
